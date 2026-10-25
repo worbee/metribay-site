@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+*.log
+playwright-report/
+test-results/
+.gstack/
+
+.gstack/
+.DS_Store
