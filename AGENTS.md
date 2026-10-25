@@ -1,22 +1,25 @@
-# Metribay holding site
+# Metribay marketing site
 
-This independent repository is intended to be public. It contains the static marketing site for https://metribay.com, hosted by GitHub Pages.
+Read workspace AGENTS.md and PROGRESS.md first. This independent public repository contains the English/German Astro website, built for standalone GitHub Pages hosting. Rob's latest Astro/GitHub Pages request supersedes the older buildless holding page and Cloudflare-only marketing plan. Publication remains deferred.
 
 ## Boundaries
-- Deploy only public/. Keep operational notes, credentials, real project data, and private SaaS code out of this repository.
-- No framework, build step, remote fonts, analytics, or runtime dependencies are needed for the holding page.
-- Preserve supplied logo geometry and colours. Theme-specific SVGs are the source assets; small raster icons are derived from the supplied PNG.
-- Use honest development-status copy. Do not add a signup form, release date, working app link, or product claims without an actual destination and verified support.
-- Maintain keyboard access, contrast, reduced-motion behaviour, responsive layout, and a useful page with JavaScript disabled.
-- No commits, staging, pushes, publication, or coauthor attribution unless Rob explicitly requests the corresponding action.
+- Deploy only `dist/`, never the repository or raw `public/` directory. Keep credentials, real project data and private SaaS code out of source/output.
+- Keep the site small, static and independent of the Laravel app. Use Astro templates and CSS; no client framework is needed.
+- Preserve supplied logo geometry and colours. Use the app's cream/navy/berry/lime palette.
+- Keep both languages complete in `src/i18n/copy.ts`, including metadata and preview labels. English is `/`; German is `/de/`.
+- Claims must match implemented app behavior. The hosted app is live; the core is private and public open-source/self-hosted release is planned. Do not add a public core link until it is actually public.
+- Dashboard illustrations must use fictional/sanitized data and be identified as samples. Do not publish screenshots containing real project data.
+- Maintain keyboard access, contrast, reduced motion, responsive layout and useful content without JavaScript.
+- Never stage, commit, push, publish or add coauthor attribution without Rob explicitly requesting the corresponding action.
 
-## Local development
-Run `python3 -m http.server 4175 --bind 127.0.0.1 --directory public` from this repository, then open http://127.0.0.1:4175. Stop it with Ctrl-C when finished.
+## Checks and preview
 
-Run `node --check public/assets/theme.js`. Verify desktop/mobile, both themes, keyboard focus, the 404 document, and the page without JavaScript. No dependency installation is required.
+Use Node24 and npm. Run `npm ci`, `npm run check`, `npm run build`, `npm test`. `npm run dev` serves source; `npm run preview` serves the build. Check English/German at desktop/mobile sizes and the bilingual 404. Test both default custom-domain and repository-subdirectory builds when changing URLs/configuration. Generated `dist/` and `.astro/` are ignored.
 
 ## Deployment
-Read docs/deployment.md before changing hosting. The Actions workflow uploads public/ only. Actions-based Pages ignores CNAME files; custom domain must be configured in repository Settings → Pages. Do not treat a local CNAME as evidence that production is configured.
+
+Read docs/deployment.md. GitHub Pages workflow packages `dist/` only and remains gated by `METRIBAY_PAGES_ENABLED`. Never enable it merely to test a build. No DNS, repository visibility or production app changes are part of site development.
 
 ## Progress
-Record meaningful changes and exact verification in docs/progress.md. Workspace-wide integration progress lives outside this repository.
+
+Record meaningful changes and exact verification in docs/progress.md and workspace PROGRESS.md.

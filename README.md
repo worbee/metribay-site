@@ -1,43 +1,51 @@
 # Metribay website
 
-A small holding page for [metribay.com](https://metribay.com/). Metribay is a project metrics dashboard in development.
+A small English/German Astro marketing site for [Metribay](https://metribay.com/), separate from the Laravel app. English lives at `/`, German at `/de/`. Both pages are rendered at build time and work without JavaScript.
 
-This is an independent, public-ready static site. The dashboard and hosted service live in separate repositories. Only `public/` is deployed.
+## Development
 
-## Run locally
-
-No packages or build tools are required. From this repository:
+Use Node 24 (minimum 22.23.4) and npm:
 
 ```sh
-python3 -m http.server 4175 --bind 127.0.0.1 --directory public
+npm ci
+npm run dev
+npm run check
+npm run build
+npm test
+npm run preview
 ```
 
-Open http://127.0.0.1:4175. Assets use root-relative paths for the custom domain; serve `public/` as the web root. Stop the server with Ctrl-C.
+The build goes into `dist/`. Deploy that directory only. `public/` contains brand assets; it is not a complete website.
+
+## Content and design
+
+- `src/i18n/copy.ts`: all English/German copy, including the illustrative dashboard.
+- `src/components/Home.astro`: page sections and integrations.
+- `src/components/Dashboard.astro`: static product illustration using fictional `.example` projects.
+- `src/styles/global.css`: the app's cream, navy, berry and lime palette, responsive layout, reduced-motion support.
+- `src/layouts/Page.astro`: page metadata and language alternates.
+- `src/lib/structured-data.ts`: linked Organization, WebSite, SoftwareApplication and localized WebPage JSON-LD.
+- `src/pages/`: language routes, bilingual 404, sitemap and robots.
+
+Brand SVGs retain the supplied geometry and colours. No external fonts, analytics, cookies, forms or client JavaScript. The website is intentionally light themed. App signup and login link to the existing hosted app, which is currently in English. Core source stays private; copy describes open source and self-hosting as planned, with no inaccessible GitHub link.
+
+Both language pages include descriptive titles, meta descriptions, robots directives, canonical/hreflang links, complete Open Graph and Twitter summary-card metadata, translated image descriptions, and the real sharing image dimensions. JSON-LD is an inert data block; it does not execute JavaScript. It describes the actual publisher and app, with English as the app language and current free access; it makes no rating, review, price or public-source claims. This is semantic markup, not a claim of Google software-app rich-result eligibility (which requires genuine reviews/ratings and offer details).
+
+The sample-data caption precedes the dashboard, whose fictional content carries Google's `data-nosnippet` control. This controls Google snippets and related AI search previews; other engines may handle it differently. The 404 is noindex, has its own metadata and carries no product JSON-LD. `npm test` validates generated metadata, JSON-LD references, actual PNG dimensions, sample controls and base-aware URLs. Live indexing, redirects and Core Web Vitals still require checks on the published domain.
+
+## GitHub Pages
+
+The default build targets `https://metribay.com/`. For a repository Pages URL:
 
 ```sh
-node --check public/assets/theme.js
+SITE_URL=https://worbee.github.io SITE_BASE=/metribay-site/ npm run build
+SITE_URL=https://worbee.github.io SITE_BASE=/metribay-site/ npm test
 ```
 
-Verify the layout at desktop and mobile widths, light/dark themes, keyboard focus, reduced motion, and `/404.html`. Without JavaScript, the page follows the system theme and hides its theme button.
+The build generates a `CNAME` for custom domains, and omits it for `*.github.io`. All internal links, assets, metadata and sitemap URLs respect the base path. Rebuild with the default settings before previewing at `/` again.
 
-## Files
-
-- `public/index.html`: the holding page and sharing/search metadata.
-- `public/404.html`: GitHub Pages error document.
-- `public/assets/`: supplied light/dark SVG marks, derived PNG icons, CSS and theme script.
-- `public/CNAME`, `.nojekyll`, `robots.txt`, `sitemap.xml`: domain intent and crawler files.
-- `.github/workflows/pages.yml`: syntax check, public-only artifact upload and Pages deployment.
-- `docs/deployment.md`: GitHub settings, DNS and HTTPS setup.
-- `docs/progress.md`: implementation and verification log.
-
-## Privacy and accessibility
-
-There are no forms, analytics, cookies, remote fonts, or third-party scripts. The optional theme control stores only a light/dark preference in local storage. All assets are served by the same host. The design respects system colour and reduced-motion preferences; content remains available without JavaScript.
-
-## Publish
-
-GitHub Pages and DNS still need to be configured for the chosen GitHub owner. Follow [deployment instructions](docs/deployment.md) when publication is authorized. A `CNAME` file alone does **not** configure an Actions-based Pages custom domain.
+The workflow checks and builds on pushes and PRs. Publication stays gated by `METRIBAY_PAGES_ENABLED=true`; no deployment is enabled by this implementation. See [deployment instructions](docs/deployment.md). The same static output can also be hosted on Cloudflare Pages.
 
 ## Rights
 
-Website source and Metribay branding are copyright Worbee EOOD, all rights reserved; see [LICENSE](LICENSE). Public hosting does not grant reuse rights. The separate dashboard product will have its own licence.
+Website source and branding are copyright Worbee EOOD, all rights reserved; see [LICENSE](LICENSE). Dashboard licensing is separate.

@@ -1,15 +1,9 @@
-name: Deploy holding site
+name: Check and deploy Astro site
 
 on:
   push:
     branches: [main]
-    paths:
-      - "public/**"
-      - ".github/workflows/pages.yml"
   pull_request:
-    paths:
-      - "public/**"
-      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 permissions:
@@ -19,6 +13,10 @@ concurrency:
   group: pages-${{ github.event_name == 'pull_request' && github.event.pull_request.number || 'production' }}
   cancel-in-progress: false
 
+env:
+  SITE_URL: ${{ vars.METRIBAY_SITE_URL || 'https://metribay.com' }}
+  SITE_BASE: ${{ vars.METRIBAY_SITE_BASE || '/' }}
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -27,24 +25,36 @@ jobs:
         uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - name: Check JavaScript syntax
-        run: node --check public/assets/theme.js
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-fund
+      - run: npm run check
+      - run: npm run build
+      - run: npm test
+      - name: Upload static build
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-site
+          path: dist/
+          include-hidden-files: true
 
   package:
     if: vars.METRIBAY_PAGES_ENABLED == 'true' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: check
     runs-on: ubuntu-latest
     steps:
-      - name: Check out source
-        uses: actions/checkout@v7
+      - uses: actions/download-artifact@v4
         with:
-          persist-credentials: false
+          name: static-site
+          path: dist/
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Upload only public files
+      - name: Upload only built public files
         uses: actions/upload-pages-artifact@v4
         with:
-          path: public
+          path: dist/
           include-hidden-files: true
 
   deploy:
@@ -60,4 +70,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,46 @@
+---
+import Brand from './Brand.astro';
+import { copy, type Locale } from '../i18n/copy';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const d = copy[locale].dashboard;
+const metrics = [
+  { label: d.visitors, value: locale === 'de' ? '12.846' : '12,846', change: locale === 'de' ? '+18,6%' : '+18.6%', points: '0,35 12,37 24,30 36,34 48,24 60,28 72,16 84,21 96,11 108,16 120,4' },
+  { label: d.clicks, value: locale === 'de' ? '3.218' : '3,218', change: locale === 'de' ? '+12,4%' : '+12.4%', points: '0,37 12,30 24,33 36,23 48,27 60,20 72,25 84,11 96,16 108,8 120,4' },
+  { label: d.stars, value: '284', change: '+24', points: '0,38 12,38 24,31 36,31 48,27 60,27 72,17 84,17 96,10 108,10 120,3' },
+  { label: d.uptime, value: locale === 'de' ? '99,98%' : '99.98%', change: locale === 'de' ? 'Stabil' : 'Healthy', points: '0,8 12,8 24,8 36,8 48,8 60,17 72,8 84,8 96,8 108,8 120,8' },
+];
+const rows = [
+  { name: 'Paper & Pine', domain: 'paperandpine.example', initial: 'P', signal: d.visits, value: locale === 'de' ? '12.846' : '12,846', change: metrics[0].change, points: metrics[0].points },
+  { name: 'Little Forms', domain: 'littleforms.example', initial: 'L', signal: d.downloads, value: locale === 'de' ? '2.105' : '2,105', change: locale === 'de' ? '+8,2%' : '+8.2%', points: metrics[1].points },
+  { name: 'Orbit Kit', domain: 'orbitkit.example', initial: 'O', signal: d.activity, value: '284', change: '+24', points: metrics[2].points },
+];
+---
+<figure class="product-figure" aria-labelledby="preview-caption">
+  <figcaption id="preview-caption"><span>{copy[locale].preview}</span><span>{copy[locale].sample}</span></figcaption>
+  <div class="dashboard" data-nosnippet aria-label={copy[locale].sample}>
+    <div class="demo-topbar"><Brand /><span class="demo-divider">/</span><span class="demo-workspace">{d.workspace}<span aria-hidden="true">⌄</span></span><span class="demo-avatar" aria-hidden="true">JD</span></div>
+    <div class="demo-tabs"><span class="active">{d.overview}</span><span>{d.projects}</span><span>{d.settings}</span></div>
+    <div class="demo-body">
+      <div class="demo-heading"><div><span class="demo-eyebrow">{d.workspace}</span><h2>{d.heading}<span class="brand-dot">.</span></h2><p>{d.subtitle}</p></div><span class="demo-period">{d.period} <span aria-hidden="true">⌄</span></span></div>
+      <div class="demo-summary"><span>{d.projectCount}<span class="demo-divider">/</span>{d.sourceCount}</span><span class="demo-health"><i></i>{d.health}</span></div>
+      <div class="demo-metrics">{metrics.map(m => <div class="demo-metric"><span>{m.label}</span><strong>{m.value}</strong><div><span class="metric-change">{m.change}</span><svg viewBox="0 0 120 44" aria-hidden="true"><polyline points={m.points} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></div></div>)}</div>
+      <div class="demo-chart-heading"><h3>{d.traffic}</h3><div><span class="chart-key current"></span>{d.current}<span class="chart-key"></span>{d.previous}</div></div>
+      <div class="demo-chart">
+        <div class="chart-axis" aria-hidden="true"><span>800</span><span>600</span><span>400</span><span>200</span></div>
+        <svg viewBox="0 0 900 170" preserveAspectRatio="none" role="img" aria-label={d.chartAlt}>
+          <defs><linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aa336d" stop-opacity=".12"/><stop offset="1" stop-color="#aa336d" stop-opacity="0"/></linearGradient></defs>
+          <g stroke="#e9eae6" stroke-width="1"><path d="M0 10H900M0 58H900M0 106H900M0 154H900"/></g>
+          <path d="M0 133 31 125 62 136 93 107 124 119 155 94 186 107 217 87 248 108 279 93 310 108 341 78 372 87 403 71 434 91 465 67 496 80 527 49 558 69 589 48 620 59 651 32 682 52 713 36 744 49 775 20 806 34 837 14 868 27 900 7V170H0Z" fill="url(#chart-fill)"/>
+          <path d="M0 142 31 139 62 145 93 127 124 135 155 121 186 135 217 120 248 130 279 115 310 125 341 111 372 120 403 106 434 116 465 99 496 112 527 95 558 109 589 97 620 106 651 89 682 103 713 86 744 98 775 78 806 92 837 81 868 97 900 85" fill="none" stroke="#b0b4b8" stroke-width="2" stroke-dasharray="5 5"/>
+          <path class="chart-line" d="M0 133 31 125 62 136 93 107 124 119 155 94 186 107 217 87 248 108 279 93 310 108 341 78 372 87 403 71 434 91 465 67 496 80 527 49 558 69 589 48 620 59 651 32 682 52 713 36 744 49 775 20 806 34 837 14 868 27 900 7" fill="none" stroke="#aa336d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="chart-dates">{d.dates.map(date => <span>{date}</span>)}</div>
+      <div class="demo-table" role="table" aria-label={d.projects}>
+        <div class="demo-table-head" role="row"><span role="columnheader">{d.project}</span><span role="columnheader">{d.signal}</span><span role="columnheader">{d.trend}</span><span role="columnheader">{d.change}</span></div>
+        {rows.map(row => <div class="demo-table-row" role="row"><div class="demo-project" role="cell"><span class="project-initial">{row.initial}</span><div><strong>{row.name}</strong><small>{row.domain}</small></div></div><div class="demo-signal" role="cell"><strong>{row.value}</strong><small>{row.signal}</small></div><div class="row-trend" role="cell"><svg viewBox="0 0 120 44" aria-label={d.trend}><polyline points={row.points} fill="none" stroke="currentColor" stroke-width="2"/></svg></div><span class="row-change" role="cell">{row.change}</span></div>)}
+      </div>
+    </div>
+  </div>
+</figure>

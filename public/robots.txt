@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://metribay.com/sitemap.xml

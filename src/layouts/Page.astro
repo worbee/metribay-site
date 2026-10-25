@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+import { copy, type Locale } from '../i18n/copy';
+import { home, local } from '../lib/urls';
+import { structuredData, serializeStructuredData } from '../lib/structured-data';
+interface Props { locale: Locale; title?: string; description?: string; pagePath?: string; noindex?: boolean }
+const { locale, title, description, pagePath, noindex = false } = Astro.props;
+const t = copy[locale];
+const canonical = new URL(home(locale), Astro.site);
+const pageTitle = title || t.title;
+const pageDescription = description || t.description;
+const pageUrl = noindex ? new URL(pagePath || Astro.url.pathname, Astro.site) : canonical;
+const shareImage = new URL(local('assets/metribay-share.png'), Astro.site);
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fafaf7" />
+    <meta name="description" content={pageDescription} />
+    <meta name="application-name" content="Metribay" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+    {!noindex && <>
+      <link rel="canonical" href={canonical} />
+      <link rel="alternate" hreflang="en" href={new URL(home('en'), Astro.site)} />
+      <link rel="alternate" hreflang="de" href={new URL(home('de'), Astro.site)} />
+      <link rel="alternate" hreflang="x-default" href={new URL(home('en'), Astro.site)} />
+    </>}
+    <title>{pageTitle}</title>
+    <link rel="icon" href={local('assets/favicon-32.png')} sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href={local('assets/apple-touch-icon.png')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Metribay" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:locale" content={locale === 'de' ? 'de_DE' : 'en_US'} />
+    <meta property="og:locale:alternate" content={locale === 'de' ? 'en_US' : 'de_DE'} />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content={t.shareImageAlt} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={shareImage} />
+    <meta name="twitter:image:alt" content={t.shareImageAlt} />
+    {!noindex && <script type="application/ld+json" set:html={serializeStructuredData(structuredData(locale, Astro.site!))} />}
+  </head>
+  <body>
+    <a href="#main" class="skip-link">{t.skip}</a>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,15 @@
+---
+import Page from '../layouts/Page.astro';
+import Brand from '../components/Brand.astro';
+import { copy } from '../i18n/copy';
+import { home, local } from '../lib/urls';
+---
+<Page locale="en" title="404 — Metribay" description={copy.en.notFoundText} pagePath={local('404.html')} noindex>
+  <header class="site-header wrap"><a href={home('en')}><Brand /></a></header>
+  <main id="main" class="error-page wrap" tabindex="-1">
+    <p class="eyebrow">404</p>
+    <h1>{copy.en.notFound}</h1><p>{copy.en.notFoundText}</p>
+    <a class="button button-primary" href={home('en')}>{copy.en.back}</a>
+    <div lang="de" class="error-translation"><h2>{copy.de.notFound}</h2><p>{copy.de.notFoundText}</p><a class="text-link" href={home('de')}>{copy.de.back} →</a></div>
+  </main>
+</Page>

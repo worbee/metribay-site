@@ -1,0 +1,54 @@
+---
+import Page from '../layouts/Page.astro';
+import Brand from './Brand.astro';
+import Arrow from './Arrow.astro';
+import Dashboard from './Dashboard.astro';
+import { copy, type Locale } from '../i18n/copy';
+import { home, local, register, login } from '../lib/urls';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = copy[locale];
+const integrations = [
+  { name: 'Google Analytics', mark: 'GA', category: locale === 'de' ? 'Website-Analyse' : 'Website analytics' },
+  { name: 'Search Console', mark: 'SC', category: locale === 'de' ? 'Google-Suchdaten' : 'Google search' },
+  { name: 'Bing Webmaster', mark: 'B', category: locale === 'de' ? 'Bing-Suchdaten' : 'Bing search' },
+  { name: 'Umami', mark: 'U', category: locale === 'de' ? 'Website-Analyse' : 'Website analytics' },
+  { name: 'GitHub', mark: 'GH', category: locale === 'de' ? 'Repository-Aktivität' : 'Repository activity' },
+  { name: 'WordPress.org', mark: 'W', category: locale === 'de' ? 'Plugin-Downloads' : 'Plugin downloads' },
+  { name: 'UptimeRobot', mark: 'UR', category: locale === 'de' ? 'Verfügbarkeit' : 'Availability' },
+];
+---
+<Page locale={locale}>
+  <header class="site-header wrap">
+    <a href={home(locale)} aria-label="Metribay"><Brand /></a>
+    <nav aria-label={t.nav} class="desktop-nav"><a href="#why">{t.features}</a><a href="#integrations">{t.integrations}</a></nav>
+    <div class="header-actions"><nav class="language-switch" aria-label={t.language}><a href={home('en')} lang="en" hreflang="en" aria-current={locale === 'en' ? 'page' : undefined} aria-label="English">EN</a><span aria-hidden="true">/</span><a href={home('de')} lang="de" hreflang="de" aria-current={locale === 'de' ? 'page' : undefined} aria-label="Deutsch">DE</a></nav><a href={login} class="login-link">{t.login} <span aria-hidden="true">↗</span></a></div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner wrap">
+        <p class="eyebrow"><span class="little-dot"></span>{t.eyebrow}</p>
+        <h1 id="hero-title">{t.headline[0]}<br /><span>{t.headline[1]}</span></h1>
+        <p class="hero-intro">{t.intro}</p>
+        <div class="hero-actions"><a class="button button-primary" href={register}>{t.cta}<Arrow /></a><a class="text-link" href="#preview">{t.secondary}<span aria-hidden="true">↓</span></a></div>
+        <p class="cta-note">{t.free}</p>
+        {locale === 'de' && <p class="cta-note app-language">{t.appLanguage}</p>}
+      </div>
+      <div class="preview-stage" id="preview"><div class="preview-inner wrap"><Dashboard locale={locale} /></div></div>
+    </section>
+    <section class="integrations-section wrap" id="integrations" aria-labelledby="integrations-title">
+      <div class="section-intro"><p class="eyebrow">{t.sourcesLabel}</p><h2 id="integrations-title">{t.sourcesHeading}</h2><p>{t.sourcesIntro}</p></div>
+      <ul class="integrations-list">{integrations.map(item => <li><span class="integration-mark" aria-hidden="true">{item.mark}</span><div><strong>{item.name}</strong><span>{item.category}</span></div></li>)}</ul>
+    </section>
+    <section class="benefits-section" id="why" aria-labelledby="benefits-title"><div class="wrap">
+      <div class="benefits-heading"><p class="eyebrow">{t.benefitsLabel}</p><h2 id="benefits-title">{t.benefitsHeading}</h2></div>
+      <div class="benefits-list">{t.benefits.map(item => <article><span class="feature-number">{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+    </div></section>
+    <section class="open-section wrap" aria-labelledby="open-title">
+      <div class="open-visual" aria-hidden="true"><img src={local('assets/metribay-light.svg')} width="200" height="200" alt="" /><span class="open-visual-caption">{locale === 'de' ? 'Mit Raum zum Wachsen.' : 'Room to grow.'}</span></div>
+      <div class="open-copy"><p class="eyebrow">{t.openLabel}</p><h2 id="open-title">{t.openHeading}</h2><p>{t.openText}</p><p class="release-note"><span class="little-dot"></span>{t.openStatus}</p></div>
+    </section>
+    <section class="final-section" aria-labelledby="final-title"><div class="wrap final-inner"><div><p class="eyebrow">Metribay<span class="brand-dot">.</span></p><h2 id="final-title">{t.finalHeading}</h2><p>{t.finalText}</p></div><div class="final-action"><a class="button button-primary" href={register}>{t.cta}<Arrow /></a><p class="cta-note">{t.free}</p>{locale === 'de' && <p class="cta-note app-language">{t.appLanguage}</p>}</div></div></section>
+  </main>
+  <footer class="site-footer wrap"><div><a href={home(locale)} aria-label="Metribay"><Brand /></a><p>{t.footer}</p></div><p>© {new Date().getUTCFullYear()} Worbee EOOD</p><a href={login}>{t.login}<span aria-hidden="true">↗</span></a></footer>
+</Page>
