@@ -9,7 +9,10 @@
     "check": "astro check",
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
-    "test": "node scripts/check-build.mjs"
+    "test": "node scripts/check-build.mjs",
+    "deploy": "node --env-file-if-exists=.env scripts/cloudflare-pages.mjs deploy",
+    "cf:setup": "node --env-file-if-exists=.env scripts/cloudflare-pages.mjs setup",
+    "cf:status": "node --env-file-if-exists=.env scripts/cloudflare-pages.mjs status"
   },
   "dependencies": { "astro": "7.4.2" },
   "devDependencies": { "@astrojs/check": "0.9.12", "typescript": "6.0.3" }

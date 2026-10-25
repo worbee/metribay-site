@@ -33,7 +33,11 @@ Both language pages include descriptive titles, meta descriptions, robots direct
 
 The sample-data caption precedes the dashboard, whose fictional content carries Google's `data-nosnippet` control. This controls Google snippets and related AI search previews; other engines may handle it differently. The 404 is noindex, has its own metadata and carries no product JSON-LD. `npm test` validates generated metadata, JSON-LD references, actual PNG dimensions, sample controls and base-aware URLs. Live indexing, redirects and Core Web Vitals still require checks on the published domain.
 
-## GitHub Pages
+## Hosting
+
+Production runs on Cloudflare Pages at `https://metribay.com/`, with `www` redirected to the bare domain. `npm run deploy` checks, builds, tests and uploads `dist/`; `npm run cf:setup` and `npm run cf:status` manage and inspect the project, domain and redirect. Credentials go in the ignored `.env` (see `.env.example`). Details: [deployment instructions](docs/deployment.md).
+
+### GitHub Pages alternative
 
 The default build targets `https://metribay.com/`. For a repository Pages URL:
 
@@ -44,7 +48,7 @@ SITE_URL=https://worbee.github.io SITE_BASE=/metribay-site/ npm test
 
 The build generates a `CNAME` for custom domains, and omits it for `*.github.io`. All internal links, assets, metadata and sitemap URLs respect the base path. Rebuild with the default settings before previewing at `/` again.
 
-The workflow checks and builds on pushes and PRs. Publication stays gated by `METRIBAY_PAGES_ENABLED=true`; no deployment is enabled by this implementation. See [deployment instructions](docs/deployment.md). The same static output can also be hosted on Cloudflare Pages.
+The workflow checks and builds on pushes and PRs. Its GitHub Pages deploy stays gated by `METRIBAY_PAGES_ENABLED` and must remain disabled while Cloudflare Pages serves the domain.
 
 ## Rights
 

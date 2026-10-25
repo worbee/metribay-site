@@ -1,6 +1,6 @@
 # Metribay marketing site
 
-Read workspace AGENTS.md and PROGRESS.md first. This independent public repository contains the English/German Astro website, built for standalone GitHub Pages hosting. Rob's latest Astro/GitHub Pages request supersedes the older buildless holding page and Cloudflare-only marketing plan. Publication remains deferred.
+Read workspace AGENTS.md and PROGRESS.md first. This independent public repository contains the English/German Astro website. Since 2026-10-25 it is live on Cloudflare Pages (project `metribay`) at metribay.com, with www redirected to the bare domain.
 
 ## Boundaries
 - Deploy only `dist/`, never the repository or raw `public/` directory. Keep credentials, real project data and private SaaS code out of source/output.
@@ -18,7 +18,7 @@ Use Node24 and npm. Run `npm ci`, `npm run check`, `npm run build`, `npm test`. 
 
 ## Deployment
 
-Read docs/deployment.md. GitHub Pages workflow packages `dist/` only and remains gated by `METRIBAY_PAGES_ENABLED`. Never enable it merely to test a build. No DNS, repository visibility or production app changes are part of site development.
+Read docs/deployment.md. `npm run deploy` (scripts/cloudflare-pages.mjs) checks, builds and uploads `dist/` to production; deploy only when Rob asks for publication, and use `--branch=<name>` for previews. `npm run cf:setup` manages the Pages project, apex DNS and www redirect idempotently. Credentials stay in the ignored `.env`/private files. The legacy GitHub Pages deploy stays gated off by `METRIBAY_PAGES_ENABLED`; never enable it. App DNS and repository visibility are not part of site development.
 
 ## Progress
 
