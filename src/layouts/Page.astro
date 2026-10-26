@@ -55,6 +55,7 @@ const shareImage = new URL(local(`assets/metribay-share-${locale}.png`), Astro.s
   </head>
   <body>
     <a href="#main" class="skip-link">{t.skip}</a>
-    <slot />
+    <!-- Keep the public contact address usable without Cloudflare’s decode script. -->
+    <!--email_off--><slot /><!--/email_off-->
   </body>
 </html>

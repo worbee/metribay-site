@@ -34,15 +34,13 @@ npm run cf:setup                       # idempotent infrastructure setup (see be
 
 The upload records the Git commit hash and marks dirty trees. Deployments can be rolled back in the Cloudflare dashboard (Workers & Pages > metribay > Deployments).
 
-## Before publishing pricing and legal pages
+## Pricing, policies and Paddle approval
 
-The pricing, FAQ and legal pages added on 2026-10-26 are meant to go live together with Paddle live checkout. Before `npm run deploy`:
+Rob approved publication and confirmed the full registered company address, UIC, VAT ID, representative and email. The English/German pricing and policy pages are published, including USD 29/month and USD 190/year with tax included everywhere. Company details remain centralized in `src/lib/company.ts`.
 
-- Add the full registered street address to `company.address` in `src/lib/company.ts`. The imprint currently shows only "Bankya, Sofia".
-- Confirm the UIC (derived from the VAT ID as 206543923), the representative name and the contact email.
-- Have the terms, privacy policy and refund policy reviewed. They follow Paddle's seller-policy requirements (Merchant of Record sentence, 14-day refund window, Paddle named as recipient) but are not legal advice.
-- Check that the app's billing mode is `paddle`, so the trial and prices the site promises are what new users get.
-- Submit metribay.com (pricing and policies) and app.metribay.com (checkout) for Paddle live domain approval.
+Both `metribay.com` and `app.metribay.com` have been submitted to Paddle and are in review. Production keeps free access until Paddle approves the checkout domain and accepts the default payment link. Follow `cloud/docs/LIVE_PADDLE.md` in the workspace for activation and real-checkout acceptance; do not treat marketing publication as proof that paid checkout is enabled.
+
+`src/layouts/Page.astro` includes Cloudflare `email_off` comments so public contact links work with the site's script-free CSP. Preserve them when changing the layout.
 
 ## Infrastructure setup
 
@@ -74,3 +72,8 @@ SITE_URL=https://worbee.github.io SITE_BASE=/metribay-site/ npm test
 Rebuild without overrides to restore the custom-domain output.
 
 References: [Cloudflare Pages direct upload](https://developers.cloudflare.com/pages/get-started/direct-upload/), [Pages headers](https://developers.cloudflare.com/pages/configuration/headers/), [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/).
+
+
+## Paddle publication closeout
+
+Rob approved publishing the prepared site and confirmed all company details/full registered address. Current production deployment7868292b includes USD29/190inclusive pricing, EN/DE policies and that address, plus email_off markers so the contact mailto links remain usable without Cloudflare's injected JavaScript. Both Metribay domains have been submitted to Paddle and show In review. The app currently keeps free mode while its default payment URL awaits approval; follow cloud/docs/LIVE_PADDLE.md before activation.

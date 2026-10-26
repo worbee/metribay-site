@@ -2,8 +2,7 @@
 export const company = {
   name: 'Worbee EOOD',
   representative: 'Robert Ivanov',
-  // The public worbee.com page lists only the town. German imprint rules expect a full street address, so add it here before publishing.
-  address: ['Bankya, Sofia', 'Bulgaria, EU'],
+  address: ['Alexander Stamboliyski street 7', 'Bankya 1320, Sofia District', 'Bulgaria'],
   uic: '206543923',
   vatId: 'BG206543923',
   email: 'rob@worbee.com',
