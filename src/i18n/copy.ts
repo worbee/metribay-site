@@ -4,7 +4,7 @@ export const copy = {
   en: {
     title: 'Metribay — Project metrics dashboard',
     description: 'Track website traffic, search visibility, downloads, repository activity and uptime in one project metrics dashboard. Compare trends and share access with your team.',
-    shareImageAlt: 'Metribay logo: berry and lime circles above a navy base.',
+    shareImageAlt: 'Metribay logo, a berry dot and a lime dot above a rounded tray, beside the words “Your projects. The bigger picture.”',
     skip: 'Skip to content', nav: 'Main navigation', features: 'Why Metribay', integrations: 'Integrations', login: 'Log in', start: 'Get started',
     eyebrow: 'For the projects you care about',
     headline: ['Your projects.', 'The bigger picture.'],
@@ -37,7 +37,7 @@ export const copy = {
   de: {
     title: 'Metribay — Dashboard für Projektkennzahlen',
     description: 'Website-Besuche, Suchdaten, Downloads, Repository-Aktivität und Verfügbarkeit in einem Dashboard für Projektkennzahlen. Vergleiche Trends gemeinsam mit deinem Team.',
-    shareImageAlt: 'Metribay-Logo: beerenfarbene und limettengrüne Kreise über einem dunkelblauen Sockel.',
+    shareImageAlt: 'Metribay-Logo, ein beerenfarbener und ein limettengrüner Punkt über einer abgerundeten Schale, neben den Worten „Deine Projekte. Das ganze Bild.“',
     skip: 'Zum Inhalt springen', nav: 'Hauptnavigation', features: 'Warum Metribay', integrations: 'Integrationen', login: 'Anmelden', start: 'Jetzt starten',
     eyebrow: 'Für die Projekte, die dir wichtig sind',
     headline: ['Deine Projekte.', 'Das ganze Bild.'],

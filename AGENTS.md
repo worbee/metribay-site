@@ -5,7 +5,7 @@ Read workspace AGENTS.md and PROGRESS.md first. This independent public reposito
 ## Boundaries
 - Deploy only `dist/`, never the repository or raw `public/` directory. Keep credentials, real project data and private SaaS code out of source/output.
 - Keep the site small, static and independent of the Laravel app. Use Astro templates and CSS; no client framework is needed.
-- Preserve supplied logo geometry and colours. Use the app's cream/navy/berry/lime palette.
+- Use the logo masters in brand/ as they are (soft tray mark, approved 2026-10-26); never redraw or recolour them. Change a master, then rerun scripts/brand-export.sh. Use the app's cream/navy/berry/lime palette for the UI.
 - Keep both languages complete in `src/i18n/copy.ts`, including metadata and preview labels. English is `/`; German is `/de/`.
 - Claims must match implemented app behavior. The hosted app is live; the core is private and public open-source/self-hosted release is planned. Do not add a public core link until it is actually public.
 - Dashboard illustrations must use fictional/sanitized data and be identified as samples. Do not publish screenshots containing real project data.

@@ -37,7 +37,7 @@ for (const [i, file] of ['index.html', 'de/index.html', '404.html'].entries()) {
   check(Number(meta('og:image:width')) === image.readUInt32BE(16) && Number(meta('og:image:height')) === image.readUInt32BE(20), `${file}: declared sharing dimensions match real image`);
   check(meta('og:locale') === (locale === 'de' ? 'de_DE' : 'en_US'), `${file}: sharing locale`);
   check(meta('og:locale:alternate') === (locale === 'de' ? 'en_US' : 'de_DE'), `${file}: alternate sharing locale`);
-  check(meta('twitter:card') === 'summary', `${file}: square-image sharing card`);
+  check(meta('twitter:card') === 'summary_large_image', `${file}: wide-image sharing card`);
   meta('viewport');
   meta('theme-color');
   check(meta('application-name') === 'Metribay', `${file}: application name`);

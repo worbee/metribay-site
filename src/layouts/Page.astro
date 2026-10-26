@@ -10,7 +10,7 @@ const canonical = new URL(home(locale), Astro.site);
 const pageTitle = title || t.title;
 const pageDescription = description || t.description;
 const pageUrl = noindex ? new URL(pagePath || Astro.url.pathname, Astro.site) : canonical;
-const shareImage = new URL(local('assets/metribay-share.png'), Astro.site);
+const shareImage = new URL(local(`assets/metribay-share-${locale}.png`), Astro.site);
 ---
 <!doctype html>
 <html lang={locale}>
@@ -29,7 +29,8 @@ const shareImage = new URL(local('assets/metribay-share.png'), Astro.site);
       <link rel="alternate" hreflang="x-default" href={new URL(home('en'), Astro.site)} />
     </>}
     <title>{pageTitle}</title>
-    <link rel="icon" href={local('assets/favicon-32.png')} sizes="32x32" type="image/png" />
+    <link rel="icon" href={local('favicon.ico')} sizes="48x48" />
+    <link rel="icon" href={local('assets/metribay-favicon.svg')} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={local('assets/apple-touch-icon.png')} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Metribay" />
@@ -40,10 +41,10 @@ const shareImage = new URL(local('assets/metribay-share.png'), Astro.site);
     <meta property="og:locale:alternate" content={locale === 'de' ? 'en_US' : 'de_DE'} />
     <meta property="og:image" content={shareImage} />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1024" />
-    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={t.shareImageAlt} />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={shareImage} />

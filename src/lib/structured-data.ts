@@ -35,7 +35,7 @@ export function structuredData(locale: Locale, site: URL) {
         applicationCategory: 'BusinessApplication',
         inLanguage: 'en',
         isAccessibleForFree: true,
-        image: new URL(local('assets/metribay-share.png'), site).href,
+        image: new URL(local('assets/metribay-icon-512.png'), site).href,
         publisher: { '@id': organization },
       },
       {

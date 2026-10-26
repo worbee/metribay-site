@@ -45,7 +45,7 @@ const integrations = [
       <div class="benefits-list">{t.benefits.map(item => <article><span class="feature-number">{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
     </div></section>
     <section class="open-section wrap" aria-labelledby="open-title">
-      <div class="open-visual" aria-hidden="true"><img src={local('assets/metribay-light.svg')} width="200" height="200" alt="" /><span class="open-visual-caption">{locale === 'de' ? 'Mit Raum zum Wachsen.' : 'Room to grow.'}</span></div>
+      <div class="open-visual" aria-hidden="true"><img src={local('assets/metribay-mark.svg')} width="200" height="200" alt="" /><span class="open-visual-caption">{locale === 'de' ? 'Mit Raum zum Wachsen.' : 'Room to grow.'}</span></div>
       <div class="open-copy"><p class="eyebrow">{t.openLabel}</p><h2 id="open-title">{t.openHeading}</h2><p>{t.openText}</p><p class="release-note"><span class="little-dot"></span>{t.openStatus}</p></div>
     </section>
     <section class="final-section" aria-labelledby="final-title"><div class="wrap final-inner"><div><p class="eyebrow">Metribay<span class="brand-dot">.</span></p><h2 id="final-title">{t.finalHeading}</h2><p>{t.finalText}</p></div><div class="final-action"><a class="button button-primary" href={register}>{t.cta}<Arrow /></a><p class="cta-note">{t.free}</p>{locale === 'de' && <p class="cta-note app-language">{t.appLanguage}</p>}</div></div></section>
