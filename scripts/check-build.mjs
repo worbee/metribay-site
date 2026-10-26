@@ -6,13 +6,17 @@ const root = path.resolve('dist');
 const site = process.env.SITE_URL || 'https://metribay.com';
 const base = (process.env.SITE_BASE || '/').replace(/\/$/, '');
 const urls = [base + '/', base + '/de/'];
+const legalPages = [['terms', 'agb'], ['privacy', 'datenschutz'], ['refunds', 'erstattung'], ['imprint', 'impressum']];
+const legalFiles = legalPages.flatMap(([en, de]) => [[`${en}/index.html`, 'en', `${base}/${en}/`, `${base}/de/${de}/`], [`de/${de}/index.html`, 'de', `${base}/de/${de}/`, `${base}/${en}/`]]);
 let checks = 0;
 const check = (condition, message) => { assert.ok(condition, message); checks++; };
 const decode = value => value.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
 
-for (const [i, file] of ['index.html', 'de/index.html', '404.html'].entries()) {
+const pages = ['index.html', 'de/index.html', '404.html', ...legalFiles.map(([file]) => file)];
+for (const [i, file] of pages.entries()) {
   const html = await readFile(path.join(root, file), 'utf8');
-  const locale = i === 1 ? 'de' : 'en';
+  const legal = legalFiles.find(([legalFile]) => legalFile === file);
+  const locale = legal ? legal[1] : i === 1 ? 'de' : 'en';
   check(html.includes(`lang="${locale}"`), `${file}: document language`);
   check((html.match(/<h1[\s>]/g) || []).length === 1, `${file}: one main heading`);
   check(html.includes('id="main"'), `${file}: skip target`);
@@ -47,7 +51,9 @@ for (const [i, file] of ['index.html', 'de/index.html', '404.html'].entries()) {
     check(html.includes('hreflang="en"') && html.includes('hreflang="de"') && html.includes('hreflang="x-default"'), `${file}: locale alternates`);
     check(html.includes('https://app.metribay.com/register'), `${file}: working signup destination`);
     check(html.includes(i === 1 ? 'fiktive Daten' : 'sample data'), `${file}: sample data identified`);
-    check(html.includes(i === 1 ? 'derzeit privat' : 'currently private'), `${file}: release status is honest`);
+    check(html.includes('id="pricing"') && html.includes(i === 1 ? '29 USD' : '$29') && html.includes(i === 1 ? '190 USD' : '$190') && html.includes(i === 1 ? 'inkl. MwSt.' : 'taxes included'), `${file}: tax-inclusive USD pricing`);
+    check(['how', 'integrations', 'security', 'about', 'faq'].every(id => html.includes(`id="${id}"`)), `${file}: trust sections present`);
+    for (const [en, de] of legalPages) check(html.includes(`href="${base}/${i === 1 ? `de/${de}` : en}/"`), `${file}: footer links ${en}`);
     check(title.includes(i === 1 ? 'Projektkennzahlen' : 'Project metrics dashboard'), `${file}: explicit product category`);
     check(/<div\b[^>]*class="dashboard"[^>]*data-nosnippet/.test(html), `${file}: fictional dashboard excluded from Google snippets`);
     check(html.indexOf('<figcaption') < html.indexOf('class="dashboard"'), `${file}: visible sample label precedes dashboard`);
@@ -69,9 +75,19 @@ for (const [i, file] of ['index.html', 'de/index.html', '404.html'].entries()) {
     check(byType('WebSite').url === new URL(urls[0], site).href, `${file}: canonical website root`);
     const app = byType('SoftwareApplication');
     check(app.url === 'https://app.metribay.com/' && app.inLanguage === 'en', `${file}: app destination and actual app language`);
-    check(app.isAccessibleForFree === true && app.applicationCategory === 'BusinessApplication', `${file}: current app category/access`);
-    check(!('offers' in app) && !('review' in app) && !('aggregateRating' in app) && !('codeRepository' in app), `${file}: no invented commercial/review/source claims`);
+    check(app.applicationCategory === 'BusinessApplication', `${file}: app category`);
+    check(app.offers?.length === 2 && app.offers.every(offer => offer.priceCurrency === 'USD' && offer.priceSpecification.valueAddedTaxIncluded === true) && app.offers.map(offer => offer.price).join() === '29,190', `${file}: real plan offers, tax included`);
+    check(!('review' in app) && !('aggregateRating' in app) && !('codeRepository' in app), `${file}: no invented review/source claims`);
     check(meta('og:url') === new URL(urls[i], site).href, `${file}: localized sharing URL`);
+  } else if (legal) {
+    const [, , self, other] = legal;
+    check(meta('robots') === 'index, follow, max-image-preview:large', `${file}: indexable legal page`);
+    check(html.includes(`rel="canonical" href="${new URL(self, site)}"`) && meta('og:url') === new URL(self, site).href, `${file}: own canonical`);
+    check(html.includes(`hreflang="${locale === 'en' ? 'de' : 'en'}" href="${new URL(other, site)}"`), `${file}: translated alternate`);
+    check(html.includes(`href="${other}"`), `${file}: language switch keeps the page`);
+    check(scripts.length === 0, `${file}: no product graph`);
+    check(html.includes('Worbee EOOD') && html.includes('BG206543923') && html.includes('datetime="'), `${file}: company and date`);
+    if (file.includes('terms') || file.includes('agb')) check(html.includes('Paddle.com is the Merchant of Record for all our orders') || html.includes('Paddle.com ist der Merchant of Record'), `${file}: Merchant of Record disclosure`);
   } else {
     check(meta('robots') === 'noindex, follow', '404: excluded from indexing');
     check(scripts.length === 0 && !html.includes('rel="canonical"'), '404: no product graph or home canonical');
@@ -93,9 +109,9 @@ for (const [i, file] of ['index.html', 'de/index.html', '404.html'].entries()) {
   }
 }
 const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8');
-for (const url of urls) check(sitemap.includes(`<loc>${new URL(url, site)}</loc>`), `Sitemap: ${url}`);
+for (const url of [...urls, ...legalFiles.map(([, , self]) => self)]) check(sitemap.includes(`<loc>${new URL(url, site)}</loc>`), `Sitemap: ${url}`);
 check((await readFile(path.join(root, 'robots.txt'), 'utf8')).includes(new URL(base + '/sitemap.xml', site).href), 'Robots sitemap URL');
 check((await stat(path.join(root, '.nojekyll'))).isFile(), 'Pages .nojekyll marker');
 if (!new URL(site).hostname.endsWith('.github.io')) check((await readFile(path.join(root, 'CNAME'), 'utf8')).trim() === new URL(site).hostname, 'Custom domain CNAME');
 else await assert.rejects(stat(path.join(root, 'CNAME')), { code: 'ENOENT' });
-console.log(`Passed ${checks} static-site checks (English, German, 404, metadata, local links, assets, Pages paths).`);
+console.log(`Passed ${checks} static-site checks (English, German, legal pages, 404, metadata, local links, assets, Pages paths).`);

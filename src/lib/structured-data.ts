@@ -1,5 +1,6 @@
 import { copy, type Locale } from '../i18n/copy';
 import { home, local } from './urls';
+import { company, plan } from './company';
 
 export function structuredData(locale: Locale, site: URL) {
   const root = new URL(home('en'), site).href;
@@ -14,8 +15,11 @@ export function structuredData(locale: Locale, site: URL) {
       {
         '@type': 'Organization',
         '@id': organization,
-        name: 'Worbee EOOD',
+        name: company.name,
         url: root,
+        email: company.email,
+        vatID: company.vatId,
+        founder: { '@type': 'Person', name: company.representative },
       },
       {
         '@type': 'WebSite',
@@ -34,7 +38,10 @@ export function structuredData(locale: Locale, site: URL) {
         description: copy[locale].description,
         applicationCategory: 'BusinessApplication',
         inLanguage: 'en',
-        isAccessibleForFree: true,
+        offers: [
+          { '@type': 'Offer', name: 'Metribay Cloud, monthly', price: plan.monthly, priceCurrency: plan.currency, priceSpecification: { '@type': 'UnitPriceSpecification', price: plan.monthly, priceCurrency: plan.currency, billingDuration: 'P1M', valueAddedTaxIncluded: true }, url: new URL(`${home(locale)}#pricing`, site).href },
+          { '@type': 'Offer', name: 'Metribay Cloud, annual', price: plan.annual, priceCurrency: plan.currency, priceSpecification: { '@type': 'UnitPriceSpecification', price: plan.annual, priceCurrency: plan.currency, billingDuration: 'P1Y', valueAddedTaxIncluded: true }, url: new URL(`${home(locale)}#pricing`, site).href },
+        ],
         image: new URL(local('assets/metribay-icon-512.png'), site).href,
         publisher: { '@id': organization },
       },

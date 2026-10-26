@@ -1,0 +1,27 @@
+---
+import Page from '../layouts/Page.astro';
+import SiteHeader from './SiteHeader.astro';
+import SiteFooter from './SiteFooter.astro';
+import { copy, type Locale } from '../i18n/copy';
+import { legalContent, legalUpdated } from '../i18n/legal';
+import { home, legal, type LegalPage } from '../lib/urls';
+interface Props { locale: Locale; page: LegalPage }
+const { locale, page } = Astro.props;
+const t = copy[locale];
+const doc = legalContent[locale][page];
+const alternates = { en: legal('en', page), de: legal('de', page) };
+// Turn plain URLs and email addresses in the legal text into links; trailing punctuation stays outside the link.
+const linkPattern = /(https:\/\/[^\s]*[^\s.,;)]|[\w.+-]+@[\w-]+\.[a-z]{2,})/g;
+const parts = (text: string) => text.split(linkPattern).map((part, index) => index % 2 ? { href: part.startsWith('https://') ? part : `mailto:${part}`, text: part.replace(/^https:\/\//, '') } : { text: part });
+---
+<Page locale={locale} title={`${doc.title} — Metribay`} description={doc.description} alternates={alternates}>
+  <SiteHeader locale={locale} alternates={alternates} />
+  <main id="main" class="legal-page wrap" tabindex="-1">
+    <p class="eyebrow"><a href={home(locale)}>{t.backHome}</a></p>
+    <h1>{doc.title}</h1>
+    <p class="legal-updated">{t.legalUpdated}: <time datetime={legalUpdated.iso}>{legalUpdated[locale]}</time></p>
+    <p class="legal-intro">{doc.intro}</p>
+    {doc.sections.map(section => <section><h2>{section.heading}</h2>{section.body.map(paragraph => <p>{parts(paragraph).map(part => part.href ? <a href={part.href}>{part.text}</a> : part.text)}</p>)}</section>)}
+  </main>
+  <SiteFooter locale={locale} />
+</Page>

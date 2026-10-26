@@ -1,0 +1,19 @@
+---
+import Brand from './Brand.astro';
+import { copy, type Locale } from '../i18n/copy';
+import { company } from '../lib/company';
+import { contact, home, legal, legalPages, login } from '../lib/urls';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = copy[locale];
+const section = (id: string) => `${home(locale)}#${id}`;
+---
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand"><a href={home(locale)} aria-label="Metribay"><Brand /></a><p>{t.footer}</p></div>
+    <nav class="footer-links" aria-label={t.footerHeadings.product}><h2>{t.footerHeadings.product}</h2><a href={section('how')}>{t.navItems.how}</a><a href={section('pricing')}>{t.navItems.pricing}</a><a href={section('faq')}>{t.navItems.faq}</a><a href={login}>{t.login} <span aria-hidden="true">↗</span></a></nav>
+    <nav class="footer-links" aria-label={t.footerHeadings.company}><h2>{t.footerHeadings.company}</h2><a href={section('about')}>{t.footerLinks.about}</a><a href={contact}>{t.footerLinks.contact}</a></nav>
+    <nav class="footer-links" aria-label={t.footerHeadings.legal}><h2>{t.footerHeadings.legal}</h2>{legalPages.map(page => <a href={legal(locale, page)}>{t.footerLinks[page]}</a>)}</nav>
+  </div>
+  <p class="wrap footer-legal">© {new Date().getUTCFullYear()} {company.name} · {company.vatId}</p>
+</footer>

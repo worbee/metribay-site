@@ -3,10 +3,12 @@ import '../styles/global.css';
 import { copy, type Locale } from '../i18n/copy';
 import { home, local } from '../lib/urls';
 import { structuredData, serializeStructuredData } from '../lib/structured-data';
-interface Props { locale: Locale; title?: string; description?: string; pagePath?: string; noindex?: boolean }
-const { locale, title, description, pagePath, noindex = false } = Astro.props;
+// Subpages pass their localized paths as alternates; the home page uses the locale roots and carries the product graph.
+interface Props { locale: Locale; title?: string; description?: string; pagePath?: string; noindex?: boolean; alternates?: Record<Locale, string> }
+const { locale, title, description, pagePath, noindex = false, alternates } = Astro.props;
+const paths = alternates || { en: home('en'), de: home('de') };
 const t = copy[locale];
-const canonical = new URL(home(locale), Astro.site);
+const canonical = new URL(paths[locale], Astro.site);
 const pageTitle = title || t.title;
 const pageDescription = description || t.description;
 const pageUrl = noindex ? new URL(pagePath || Astro.url.pathname, Astro.site) : canonical;
@@ -24,9 +26,9 @@ const shareImage = new URL(local(`assets/metribay-share-${locale}.png`), Astro.s
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
     {!noindex && <>
       <link rel="canonical" href={canonical} />
-      <link rel="alternate" hreflang="en" href={new URL(home('en'), Astro.site)} />
-      <link rel="alternate" hreflang="de" href={new URL(home('de'), Astro.site)} />
-      <link rel="alternate" hreflang="x-default" href={new URL(home('en'), Astro.site)} />
+      <link rel="alternate" hreflang="en" href={new URL(paths.en, Astro.site)} />
+      <link rel="alternate" hreflang="de" href={new URL(paths.de, Astro.site)} />
+      <link rel="alternate" hreflang="x-default" href={new URL(paths.en, Astro.site)} />
     </>}
     <title>{pageTitle}</title>
     <link rel="icon" href={local('favicon.ico')} sizes="48x48" />
@@ -49,7 +51,7 @@ const shareImage = new URL(local(`assets/metribay-share-${locale}.png`), Astro.s
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={shareImage} />
     <meta name="twitter:image:alt" content={t.shareImageAlt} />
-    {!noindex && <script type="application/ld+json" set:html={serializeStructuredData(structuredData(locale, Astro.site!))} />}
+    {!noindex && !alternates && <script type="application/ld+json" set:html={serializeStructuredData(structuredData(locale, Astro.site!))} />}
   </head>
   <body>
     <a href="#main" class="skip-link">{t.skip}</a>

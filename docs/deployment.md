@@ -34,6 +34,16 @@ npm run cf:setup                       # idempotent infrastructure setup (see be
 
 The upload records the Git commit hash and marks dirty trees. Deployments can be rolled back in the Cloudflare dashboard (Workers & Pages > metribay > Deployments).
 
+## Before publishing pricing and legal pages
+
+The pricing, FAQ and legal pages added on 2026-10-26 are meant to go live together with Paddle live checkout. Before `npm run deploy`:
+
+- Add the full registered street address to `company.address` in `src/lib/company.ts`. The imprint currently shows only "Bankya, Sofia".
+- Confirm the UIC (derived from the VAT ID as 206543923), the representative name and the contact email.
+- Have the terms, privacy policy and refund policy reviewed. They follow Paddle's seller-policy requirements (Merchant of Record sentence, 14-day refund window, Paddle named as recipient) but are not legal advice.
+- Check that the app's billing mode is `paddle`, so the trial and prices the site promises are what new users get.
+- Submit metribay.com (pricing and policies) and app.metribay.com (checkout) for Paddle live domain approval.
+
 ## Infrastructure setup
 
 `npm run cf:setup` is safe to rerun. It ensures:
