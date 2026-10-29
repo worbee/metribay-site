@@ -1,0 +1,66 @@
+---
+title: UptimeRobot
+description: Connect UptimeRobot with a read-only API key and track monitor status, 24-hour uptime and response time.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+See at a glance whether your sites are up, next to how they're doing.
+
+## What you get
+
+| Metric | Meaning |
+|---|---|
+| **Monitor status** | *Up*, *Seems down*, *Down*, *Paused* or *Not checked yet* |
+| **Uptime · last 24h** | Share of the last 24 hours the monitor was up |
+| **Response time · last 24h** | Average response time over the last 24 hours, in milliseconds |
+
+All three describe the current state, so each card shows the latest observation and when it was taken. Metribay checks every hour, more often than other sources.
+
+Response time isn't available for heartbeat monitors.
+
+:::note[History starts when you connect]
+UptimeRobot reports the current state and the last 24 hours. Metribay records a new observation every hour from the moment you add the monitor, so the chart fills up over time.
+:::
+
+## Step 1: Get a read-only API key
+
+<Steps>
+
+1. Sign in to [UptimeRobot](https://uptimerobot.com/).
+
+2. Open **Integrations & API**, then the **API** section.
+
+3. Create or copy the **Read-only API key**.
+
+</Steps>
+
+A read-only key can see all your monitors and change none of them. That's all Metribay needs.
+
+If you only want to share one monitor, create a **monitor-specific API key** for it instead. Metribay will then only see that monitor.
+
+## Step 2: Connect it in Metribay
+
+<Steps>
+
+1. Select **Add source** and choose **UptimeRobot**.
+
+2. Open **Use your own credentials** and paste the key into **Api Key**.
+
+3. Choose a monitor from the list.
+
+4. Pick a project and select **Connect and start import**.
+
+</Steps>
+
+### Enter the monitor by hand
+
+Open **Enter a resource manually** and type the **Monitor ID**. It's the number at the end of the monitor's address in the UptimeRobot dashboard.
+
+## Good to know
+
+- **The history window doesn't apply.** Uptime is a snapshot, so the setting has no effect for this source.
+- **Request limits.** UptimeRobot limits how many API requests each key may make, especially on free plans. Metribay spreads requests for all monitors on the same key. If the limit is reached, the next hourly check simply tries again.
+- **Monitor status** on the overview reflects the last check, up to an hour old. For instant alerts, keep using UptimeRobot's own notifications.
+
+See also [Troubleshooting](../../troubleshooting/).

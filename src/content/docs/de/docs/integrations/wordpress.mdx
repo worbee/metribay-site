@@ -1,0 +1,41 @@
+---
+title: WordPress.org
+description: Verfolge die täglichen Downloads jedes Plugins im WordPress.org-Plugin-Verzeichnis. Kein Konto nötig.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Verfolge die Downloads jedes Plugins im [WordPress.org-Plugin-Verzeichnis](https://de.wordpress.org/plugins/), deiner eigenen oder fremder. Die Daten sind öffentlich, du musst also nichts einrichten.
+
+## Was du bekommst
+
+| Kennzahl | Bedeutung | Wert im Zeitraum |
+|---|---|---|
+| **Downloads** | Downloads pro Tag, wie von WordPress.org veröffentlicht | Summe der Tage |
+
+Tage werden in UTC gezählt. Der heutige Tag läuft noch und ist als teilweise markiert.
+
+## Plugin verbinden
+
+<Steps>
+
+1. Wähle **Add source** und dann **WordPress.org**.
+
+2. Tippe den Namen des Plugins in **Plugin name** und wähle **Search plugins**.
+
+3. Wähle das Plugin aus den Ergebnissen.
+
+4. Wähle ein Projekt und dann **Connect and start import**.
+
+</Steps>
+
+### Plugin von Hand eintragen
+
+Öffne **Enter a resource manually** und gib den **Plugin slug** ein: den letzten Teil der Plugin-Adresse. Bei `https://wordpress.org/plugins/query-monitor/` ist der Slug `query-monitor`.
+
+## Gut zu wissen
+
+- **Nur Plugins.** Themes werden nicht unterstützt.
+- **Probier Metribay damit aus.** Weil kein Konto nötig ist, siehst du mit WordPress.org am schnellsten, wie Metribay funktioniert. Füg einem Testprojekt ein beliebtes Plugin hinzu.
+- **Auch Bearbeiter können es hinzufügen.** Da keine Zugangsdaten im Spiel sind, brauchen Bearbeiter dafür keine Eigentümer.
+- **Downloads sind keine Installationen.** WordPress.org zählt Downloads, auch automatische Updates. Sie sind ein gutes Signal für Trends, aber keine Zahl aktiver Websites.

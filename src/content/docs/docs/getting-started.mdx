@@ -1,0 +1,65 @@
+---
+title: Quick start
+description: Create a Metribay Cloud account, connect your first source and see your first numbers.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+This guide takes you from no account to your first chart. It takes about five minutes, plus however long your first import runs.
+
+## 1. Create your account
+
+<Steps>
+
+1. Open [app.metribay.com/register](https://app.metribay.com/register) and enter your name and email address.
+
+2. Check your inbox for an email from Metribay. The link in it works for one hour.
+
+3. Open the link and choose a password with at least 14 characters.
+
+4. Sign in with your email address and new password.
+
+</Steps>
+
+Metribay creates your first workspace for you. You land on an empty project overview.
+
+:::tip[No email?]
+Check your spam folder, then try again from the sign-up page. For privacy reasons the sign-up page never says whether an address already has an account. If you signed up before, use **Forgot password** on the sign-in page instead.
+:::
+
+## 2. Connect your first source
+
+A source is one connection that feeds numbers into a project, such as a Search Console property or a GitHub repository.
+
+<Steps>
+
+1. Select **Add your first source** on the overview.
+
+2. **Provider.** Choose where your data lives. If you just want to try Metribay, pick **WordPress.org**. It needs no account: search for any plugin by name.
+
+3. **Account.** Choose a saved account or enter credentials for a new one. Each [integration guide](../integrations/) explains exactly what to enter. Metribay checks the credentials before it saves them.
+
+4. **Resource.** Pick the website, property, repository or monitor you want to track. Metribay lists only what this account can actually see. You can also enter one by hand.
+
+5. **Connect.** Choose an existing project or create a new one, then select **Connect and start import**.
+
+</Steps>
+
+You can leave the setup at any point with **Save for later**. Select **Add source** again within an hour and you'll pick up where you stopped, in the same browser.
+
+## 3. Wait for the first import
+
+The first import reads up to 180 days of history. It runs in the background, so you can close the page. Most sources finish within a few minutes. Large GitHub repositories and long history windows take longer.
+
+While you wait, the overview shows a short checklist and the source shows **Awaiting first sync**. When the import finishes, your numbers and charts appear.
+
+## 4. Make it yours
+
+- [Add more sources](../sources/) to the same project. A website might have Google Analytics, Search Console and an uptime monitor.
+- [Add annotations](../annotations/) for launches and changes, so you remember why a chart moved.
+- [Invite your team](../team/) as editors or viewers.
+- [Turn on two-factor authentication](../account/#two-factor-authentication) for your account.
+
+## What happens next
+
+Metribay checks your sources every four hours, and uptime monitors every hour. You don't need to do anything. See [Updates and syncing](../syncing/) for the details.

@@ -1,0 +1,7 @@
+---
+import { home, login } from '../../lib/urls';
+// Header links back to the website and into the app, in place of Starlight's social icons.
+const de = Astro.locals.starlightRoute.lang === 'de';
+---
+<a class="docs-header-link" href={home(de ? 'de' : 'en')}>Website</a>
+<a class="docs-header-link docs-header-app" href={login}>{de ? 'Zur App' : 'Open the app'}</a>

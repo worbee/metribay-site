@@ -1,0 +1,90 @@
+---
+title: GitHub
+description: Verbinde ein GitHub-Repository mit einem Token mit Lesezugriff und verfolge Commits, gemergte Pull Requests, geänderte Zeilen, offene Issues und Releases.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Verfolge die Aktivität in deinen öffentlichen und privaten Repositorys direkt neben dem Rest jedes Projekts.
+
+## Was du bekommst
+
+| Kennzahl | Wie gezählt wird | Wert im Zeitraum |
+|---|---|---|
+| **Commits** | Commits auf dem Standard-Branch, nach Commit-Datum | Summe der Tage |
+| **PRs merged** | Gemergte Pull Requests, nach Merge-Datum | Summe der Tage |
+| **Lines changed** | Hinzugefügte plus entfernte Zeilen, ohne Merge-Commits | Summe der Tage |
+| **Open issues** | Aktuell offene Issues (ohne Pull Requests) | Letzte Beobachtung |
+
+**Releases** werden zu [Notizen](../../annotations/#github-releases) im Projekt. So siehst du, was wann veröffentlicht wurde.
+
+Tage werden in UTC gezählt. Offene Issues erscheinen nur, wenn im Repository Issues eingeschaltet sind.
+
+:::note[Aktivität, nicht Produktivität]
+Diese Zahlen beschreiben die Aktivität eines Repositorys. Sie messen nicht die Arbeit einzelner Personen, und ein großer Commit kann weniger bedeuten als zehn kleine.
+:::
+
+## Schritt 1: Token erstellen
+
+Mit einem **Fine-grained Personal Access Token** legst du genau fest, welche Repositorys Metribay lesen darf, und zwar nur lesend.
+
+<Steps>
+
+1. Öffne auf GitHub **Settings → Developer settings → Personal access tokens → Fine-grained tokens** und wähle **Generate new token**.
+
+2. Gib ihm einen Namen wie „Metribay“ und wähle ein Ablaufdatum.
+
+3. Wähle unter **Resource owner** dich selbst oder die Organisation, der die Repositorys gehören.
+
+4. Wähle unter **Repository access** **Only select repositories** und die Repositorys, die du verfolgen willst.
+
+5. Setz unter **Permissions → Repository permissions** diese Rechte auf **Read-only**:
+   - **Contents**
+   - **Issues**
+   - **Pull requests**
+
+   **Metadata** kommt automatisch mit Lesezugriff dazu.
+
+6. Wähle **Generate token** und kopier es. GitHub zeigt es nur einmal an.
+
+</Steps>
+
+Manche Organisationen müssen Fine-grained Tokens erst freigeben. Tauchen die Repositorys nicht auf, bitte eine Person mit Eigentümerrechten in der Organisation, die Anfrage zu genehmigen.
+
+:::tip[Ablauf einplanen]
+Läuft das Token ab, zeigt die Datenquelle *Needs attention*. Setz dir eine Erinnerung, erstell vorher ein neues Token und [aktualisiere das gespeicherte Konto](../../saved-accounts/#zugangsdaten-ändern-oder-erneuern).
+:::
+
+## Schritt 2: In Metribay verbinden
+
+<Steps>
+
+1. Wähle **Add source** und dann **GitHub**.
+
+2. Öffne **Use your own credentials** und füge das Token in **Personal access token** ein.
+
+3. Wähle **Save account and continue**.
+
+4. Wähle ein Repository aus der Liste.
+
+5. Wähle ein Projekt und dann **Connect and start import**.
+
+</Steps>
+
+### Repository von Hand eintragen
+
+Öffne **Enter a resource manually** und gib es als `owner/repository` ein, etwa `octocat/hello-world`.
+
+## Andere Anmeldearten
+
+**Klassisches Personal Access Token.** Funktioniert ebenfalls. Für öffentliche Repositorys braucht es keine Scopes. Für private braucht es den Scope `repo`, der auch Schreibzugriff gewährt. Nimm deshalb lieber ein Fine-grained Token.
+
+**GitHub App.** Betreibst du eine eigene GitHub App, öffne **Use a GitHub App instead** und trag **Client Id**, **Installation Id** und **GitHub App private key (PEM)** ein. Gib der App Leserechte für **Contents**, **Issues** und **Pull requests**. Mit einer App trägst du Repositorys von Hand ein: Die Liste steht dann nicht zur Verfügung.
+
+## Gut zu wissen
+
+- **Der erste Import kann dauern** bei aktiven Repositorys, weil Metribay jeden Commit, Pull Request und jedes Release im Verlaufszeitraum liest.
+- **Jede Synchronisierung liest den ganzen Verlaufszeitraum neu.** Commits können lange nach ihrem Entstehen auf dem Standard-Branch auftauchen, wenn ein Branch gemergt wird. Das Neueinlesen hält die Zahlen richtig.
+- **Lange Zeiträume bei sehr großen Repositorys** können an Grenzen von GitHub stoßen. Schlägt der erste Import fehl, versuch einen kürzeren Verlaufszeitraum.
+
+Siehe auch [Fehlerbehebung](../../troubleshooting/).

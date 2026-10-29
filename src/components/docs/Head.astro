@@ -1,0 +1,20 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+import { copy, type Locale } from '../../i18n/copy';
+import { local } from '../../lib/urls';
+// Starlight writes the title, description, canonical and language links; add the site's share card and app name.
+const locale: Locale = Astro.locals.starlightRoute.lang === 'de' ? 'de' : 'en';
+const image = new URL(local(`assets/metribay-share-${locale}.png`), Astro.site);
+const alt = copy[locale].shareImageAlt;
+---
+<Default />
+<meta name="application-name" content="Metribay" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta property="og:locale:alternate" content={locale === 'de' ? 'en_US' : 'de_DE'} />
+<meta property="og:image" content={image} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={alt} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:image:alt" content={alt} />

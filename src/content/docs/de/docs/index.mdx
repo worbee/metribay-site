@@ -1,0 +1,47 @@
+---
+title: Willkommen bei Metribay
+description: Metribay zeigt Besuche, Suchdaten, Downloads, Repository-Aktivität und Verfügbarkeit aller deiner Projekte in einem Dashboard. Hier erfährst du, wie es funktioniert.
+tableOfContents: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Metribay ist ein Dashboard für die Projekte, die du betreibst. Es liest Zahlen aus den Tools, die du schon nutzt, etwa Google Analytics, Search Console, GitHub und UptimeRobot, und stellt sie nebeneinander. So siehst du, wie es jedem Projekt geht, ohne für jedes Tool einen eigenen Tab zu öffnen.
+
+Metribay ersetzt diese Tools nicht. Es liest nur aus ihnen und ändert dort nie etwas.
+
+## Wo du anfängst
+
+<CardGrid>
+  <LinkCard title="Schnellstart" description="Konto anlegen, erste Datenquelle verbinden und in wenigen Minuten das erste Diagramm sehen." href="getting-started/" />
+  <LinkCard title="So ist Metribay aufgebaut" description="Arbeitsbereiche, Projekte, Datenquellen und gespeicherte Konten auf einer Seite." href="concepts/" />
+  <LinkCard title="Tools verbinden" description="Schritt-für-Schritt-Anleitungen für alle sieben Integrationen." href="integrations/" />
+  <LinkCard title="Die Zahlen richtig lesen" description="Warum ein Strich keine Null ist, was „Partial“ bedeutet und wie Vergleiche funktionieren." href="reading-the-numbers/" />
+</CardGrid>
+
+## Was du mit Metribay machen kannst
+
+- **Alle Projekte auf einen Blick sehen.** Die Übersicht zeigt jedes Projekt mit seinen aktuellen Zahlen, kleinen Trenddiagrammen und dem Zustand jeder Datenquelle.
+- **Zeiträume vergleichen.** Wechsle zwischen den letzten 7, 30 oder 90 Tagen und sieh die Veränderung zum Zeitraum davor.
+- **Festhalten, warum sich etwas geändert hat.** Ergänze Notizen zu Launches, Kampagnen oder Fehlerbehebungen. GitHub-Releases erscheinen von selbst.
+- **Im Team arbeiten.** Lade Leute als Eigentümer, Bearbeiter oder Leser in einen Arbeitsbereich ein. *(Metribay Cloud)*
+- **Den Zahlen vertrauen.** Metribay zeigt fehlende Daten als fehlend, markiert die letzten Tage, die Anbieter noch korrigieren können, und addiert nie Zahlen, die sich nicht addieren lassen.
+
+## Zwei Wege, Metribay zu nutzen
+
+| | Metribay Cloud | Selbst gehostet |
+|---|---|---|
+| Wo es läuft | Für dich in der EU gehostet unter [app.metribay.com](https://app.metribay.com/) | Auf deinem eigenen Server |
+| Personen | Bis zu 5 Arbeitsbereiche mit je 10 Mitgliedern | Eine Person, ein Arbeitsbereich |
+| Projekte und Datenquellen | 10 aktive Projekte, 50 aktive Datenquellen | Unbegrenzt |
+| Updates und Backups | Erledigen wir | Liegen bei dir |
+
+Beide Varianten haben dasselbe Dashboard und dieselben Integrationen. Mehr dazu unter [Pläne und Abrechnung](billing/) und [Metribay selbst betreiben](self-hosting/).
+
+:::note[Die App ist auf Englisch]
+Die Metribay-App gibt es derzeit auf Englisch. Diese Doku gibt es auf Englisch und Deutsch. Damit du jeden Button findest, nennen wir die Bezeichnungen aus der App im englischen Original, zum Beispiel **Add source**.
+:::
+
+## Brauchst du Hilfe?
+
+Schau zuerst unter [Fehlerbehebung](troubleshooting/) nach. Kommst du nicht weiter, schreib an [rob@worbee.com](mailto:rob@worbee.com). Fragen landen direkt bei dem Menschen, der Metribay baut.

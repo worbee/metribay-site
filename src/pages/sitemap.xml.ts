@@ -1,8 +1,12 @@
 import type { APIRoute } from 'astro';
-import { home, legal, legalPages } from '../lib/urls';
+import { getCollection } from 'astro:content';
+import { home, legal, legalPages, local } from '../lib/urls';
 
-export const GET: APIRoute = ({ site }) => {
-  const pairs = [{ en: home('en'), de: home('de') }, ...legalPages.map(page => ({ en: legal('en', page), de: legal('de', page) }))];
+export const GET: APIRoute = async ({ site }) => {
+  // Docs pages share their slug across languages; German lives under de/.
+  const docs = (await getCollection('docs')).map(entry => entry.id).filter(id => !id.startsWith('de/'))
+    .map(id => ({ en: local(`${id}/`), de: local(`de/${id}/`) }));
+  const pairs = [{ en: home('en'), de: home('de') }, ...legalPages.map(page => ({ en: legal('en', page), de: legal('de', page) })), ...docs];
   const entries = pairs.map(pair => {
     const en = new URL(pair.en, site).href;
     const de = new URL(pair.de, site).href;

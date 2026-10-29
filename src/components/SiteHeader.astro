@@ -1,7 +1,7 @@
 ---
 import Brand from './Brand.astro';
 import { copy, type Locale } from '../i18n/copy';
-import { home, login } from '../lib/urls';
+import { docs, home, login } from '../lib/urls';
 interface Props { locale: Locale; alternates?: Record<Locale, string> }
 const { locale, alternates = { en: home('en'), de: home('de') } } = Astro.props;
 const t = copy[locale];
@@ -9,6 +9,6 @@ const section = (id: string) => `${home(locale)}#${id}`;
 ---
 <header class="site-header wrap">
   <a href={home(locale)} aria-label="Metribay"><Brand /></a>
-  <nav aria-label={t.nav} class="desktop-nav"><a href={section('how')}>{t.navItems.how}</a><a href={section('integrations')}>{t.navItems.integrations}</a><a href={section('pricing')}>{t.navItems.pricing}</a><a href={section('faq')}>{t.navItems.faq}</a></nav>
+  <nav aria-label={t.nav} class="desktop-nav"><a href={section('how')}>{t.navItems.how}</a><a href={section('integrations')}>{t.navItems.integrations}</a><a href={section('pricing')}>{t.navItems.pricing}</a><a href={section('faq')}>{t.navItems.faq}</a><a href={docs(locale)}>{t.navItems.docs}</a></nav>
   <div class="header-actions"><nav class="language-switch" aria-label={t.language}><a href={alternates.en} lang="en" hreflang="en" aria-current={locale === 'en' ? 'page' : undefined} aria-label="English">EN</a><span aria-hidden="true">/</span><a href={alternates.de} lang="de" hreflang="de" aria-current={locale === 'de' ? 'page' : undefined} aria-label="Deutsch">DE</a></nav><a href={login} class="login-link">{t.login} <span aria-hidden="true">↗</span></a></div>
 </header>

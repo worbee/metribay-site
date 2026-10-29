@@ -1,0 +1,64 @@
+---
+title: Bing Webmaster Tools
+description: Verbinde die Bing Webmaster Tools über einen API-Schlüssel und verfolge Klicks, Impressionen und indexierte Seiten aus Bing.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Bing steckt in mehr Suchen als nur auf der eigenen Website: Seine Ergebnisse fließen auch in andere Suchmaschinen und Assistenten ein. Ergänze Bing neben der Search Console für ein vollständigeres Bild deines Suchtraffics.
+
+## Was du bekommst
+
+| Kennzahl | Bedeutung | Wert im Zeitraum |
+|---|---|---|
+| **Clicks** | Klicks aus den Bing-Suchergebnissen | Summe der Tage |
+| **Impressions** | Wie oft deine Website in den Ergebnissen erschien | Summe der Tage |
+| **Indexed pages** | Seiten im Bing-Index | Letzte Beobachtung |
+
+Tage werden in UTC gezählt. Bing hält selbst nur einen begrenzten Verlauf vor, der erste Import umfasst deshalb eventuell weniger als deinen Verlaufszeitraum.
+
+## Bevor du anfängst
+
+Du brauchst eine in den [Bing Webmaster Tools](https://www.bing.com/webmasters) bestätigte Website. Nutzt du schon die Search Console, kann Bing deine Websites mit wenigen Klicks von dort übernehmen.
+
+## Schritt 1: API-Schlüssel holen
+
+<Steps>
+
+1. Melde dich bei den [Bing Webmaster Tools](https://www.bing.com/webmasters) an.
+
+2. Öffne die Einstellungen über das Zahnrad-Symbol (**Settings**) und wähle **API access**.
+
+3. Wähle **API Key**, erzeuge einen Schlüssel, falls du noch keinen hast, und kopier ihn.
+
+</Steps>
+
+:::note[Ein Schlüssel für das ganze Konto]
+Bing hat einen API-Schlüssel pro Konto, und er gilt für alle Websites in diesem Konto. Einen reinen Leseschlüssel bietet Bing nicht an. Metribay nutzt ihn nur, um Statistiken zu lesen.
+:::
+
+## Schritt 2: In Metribay verbinden
+
+<Steps>
+
+1. Wähle **Add source** und dann **Bing Webmaster Tools**.
+
+2. Öffne **Use your own credentials** und füge deinen Schlüssel in **Api Key** ein.
+
+3. Wähle die Website aus der Liste.
+
+4. Wähle ein Projekt und dann **Connect and start import**.
+
+</Steps>
+
+### Website von Hand eintragen
+
+Öffne **Enter a resource manually** und trag die **Site URL** genau so ein, wie sie in den Bing Webmaster Tools steht, etwa `https://www.example.com/`.
+
+## Wenn die Erfassung fehlschlägt
+
+**Die Website fehlt in der Liste.** Sie ist nicht in dem Bing-Konto bestätigt, zu dem der Schlüssel gehört. Prüf das Konto und wähle dann **Refresh resources**.
+
+**„Needs attention“, obwohl es vorher lief.** Vielleicht wurde der Schlüssel in Bing neu erzeugt. Kopier den neuen und [aktualisiere das gespeicherte Konto](../../saved-accounts/#zugangsdaten-ändern-oder-erneuern).
+
+Siehe auch [Fehlerbehebung](../../troubleshooting/).
