@@ -3,17 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22.23.4" },
+  "engines": {
+    "node": ">=22.23.4"
+  },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "check": "astro check",
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
+    "preview:headers": "node scripts/preview-headers.mjs",
     "test": "node scripts/check-build.mjs",
     "deploy": "node --env-file-if-exists=.env scripts/cloudflare-pages.mjs deploy",
     "cf:setup": "node --env-file-if-exists=.env scripts/cloudflare-pages.mjs setup",
     "cf:status": "node --env-file-if-exists=.env scripts/cloudflare-pages.mjs status"
   },
-  "dependencies": { "astro": "7.4.2" },
-  "devDependencies": { "@astrojs/check": "0.9.12", "typescript": "6.0.3" }
+  "dependencies": {
+    "@astrojs/starlight": "0.42.7",
+    "astro": "7.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "typescript": "6.0.3"
+  }
 }

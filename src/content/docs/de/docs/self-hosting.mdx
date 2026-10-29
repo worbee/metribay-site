@@ -1,0 +1,137 @@
+---
+title: Metribay selbst betreiben
+description: Die kostenlose, quelloffene selbst gehostete Version von Metribay für eine Person auf deinem eigenen Server.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Die selbst gehostete Version, auch **Personal edition** genannt, ist Metribay auf deinem eigenen Server. Sie ist kostenlos und Open Source unter der Apache-2.0-Lizenz.
+
+## Passt sie zu dir?
+
+| | Selbst gehostet | Metribay Cloud |
+|---|---|---|
+| Kosten | Kostenlos | Siehe [Pläne und Abrechnung](../billing/) |
+| Personen | Eine Person | Teams mit Rollen |
+| Arbeitsbereiche | Einer, im Hintergrund | Bis zu 5 |
+| Projekte und Datenquellen | Unbegrenzt | 10 und 50 aktive |
+| Integrationen | Alle sieben | Alle sieben |
+| Updates, Backups, Verfügbarkeit | Du | Wir |
+| Google-Anmeldebutton | Deine eigene Google-App | Bereitgestellt, sobald verfügbar |
+
+Nimm die selbst gehostete Version, wenn du eine PHP-Anwendung sicher betreiben kannst und alles auf deiner eigenen Hardware haben willst. Nimm Cloud, wenn du dich nicht um einen Server kümmern oder mit anderen zusammenarbeiten willst.
+
+:::note[So bekommst du den Quellcode]
+Der Quellcode ist noch nicht veröffentlicht. [Schreib uns](mailto:rob@worbee.com?subject=Metribay%20self-hosted), dann schicken wir dir Zugang.
+:::
+
+## Voraussetzungen
+
+- PHP 8.3 oder neuer mit den Erweiterungen cURL, OpenSSL, PDO (SQLite oder PostgreSQL), intl und mbstring
+- Composer 2
+- SQLite für eine persönliche Installation oder PostgreSQL
+- Eine Möglichkeit, zwei Hintergrundprozesse am Laufen zu halten, etwa systemd oder Supervisor, und Cron
+- Node 24 nur, wenn du die Frontend-Assets neu bauen willst. Das Release enthält sie.
+
+## Installation
+
+<Steps>
+
+1. Führ im Hauptverzeichnis des Repositorys das Setup-Skript aus und wechsle dann in die Anwendung:
+
+   ```sh
+   ./scripts/setup.sh
+   cd standalone
+   ```
+
+2. Leg dein Konto an. Der Befehl fragt das Passwort verdeckt ab:
+
+   ```sh
+   php artisan metribay:install --email=du@example.com
+   ```
+
+3. Starte den Webserver. Für einen schnellen lokalen Test:
+
+   ```sh
+   php artisan serve --host=127.0.0.1 --port=8000
+   ```
+
+   Im Produktivbetrieb liefert dein Webserver das Verzeichnis `standalone/public` über HTTPS aus.
+
+4. Starte Queue-Worker und Scheduler als getrennte, dauerhaft laufende Prozesse:
+
+   ```sh
+   php artisan queue:work --timeout=900
+   php artisan schedule:work
+   ```
+
+   Im Produktivbetrieb läuft der Worker unter einem Prozessmanager, und statt `schedule:work` ruft ein Cron-Eintrag jede Minute `php artisan schedule:run` auf.
+
+</Steps>
+
+Melde dich mit der gewählten E-Mail-Adresse und dem Passwort an. Die Registrierung ist ausgeschaltet: Die Installation gehört dem einen Konto, das du angelegt hast.
+
+:::tip[Nur mal reinschauen?]
+`php artisan metribay:demo --email=du@example.com` füllt eine Installation außerhalb des Produktivbetriebs mit deutlich gekennzeichneten Beispieldaten.
+:::
+
+## So läuft die Erfassung
+
+Der Scheduler startet die Erfassung alle vier Stunden, Uptime-Monitore jede Stunde und das vollständige Neueinlesen einmal pro Woche, genau wie in Cloud. Erfasst wird nur, solange Queue-Worker und Scheduler laufen.
+
+So startest du eine Synchronisierung von Hand:
+
+```sh
+php artisan metribay:sync                    # alle aktiven Datenquellen einreihen
+php artisan metribay:sync --kind=github      # nur ein Anbieter
+php artisan metribay:sync --except=uptimerobot
+php artisan metribay:sync --source=12        # eine Datenquelle per ID
+php artisan metribay:sync --full             # ganzen Verlaufszeitraum neu lesen
+php artisan metribay:sync --inline           # sofort, ohne Queue
+```
+
+## Anbieter verbinden
+
+Jede Integration funktioniert mit deinen eigenen Zugangsdaten, genau wie in den [Anleitungen zu den Integrationen](../integrations/) beschrieben. Nichts läuft über die Server von Metribay.
+
+Für einen Button **Connect Google** bei Analytics und Search Console legst du einen eigenen OAuth-Client an:
+
+1. Aktiviere in der Google Cloud Console die Analytics Admin API, die Analytics Data API und die Search Console API.
+2. Leg einen OAuth-Client vom Typ **Webanwendung** an, mit dieser Weiterleitungs-URI und deiner eigenen Adresse: `https://metribay.example.com/integrations/google/callback`
+3. Trag die Daten in deine `.env`-Datei ein:
+
+   ```dotenv
+   METRIBAY_GOOGLE_CLIENT_ID=deine-client-id
+   METRIBAY_GOOGLE_CLIENT_SECRET=dein-client-secret
+   METRIBAY_GOOGLE_REDIRECT_URI=https://metribay.example.com/integrations/google/callback
+   ```
+
+Solange deine Google-App im Testmodus ist, lässt Google ihre Anmeldungen nach sieben Tagen ablaufen. Dienstkonten haben dieses Problem nicht.
+
+## Checkliste für den Produktivbetrieb
+
+- Liefere über HTTPS aus, mit `APP_ENV=production` und `APP_DEBUG=false`.
+- Halte `.env`, die Datenbank und Backups außerhalb des öffentlichen Webverzeichnisses.
+- Lass angemeldete Seiten nie von einem CDN oder Proxy cachen.
+- Führe nach einem Update die Migrationen aus, veröffentliche die Assets und starte den Worker neu:
+
+  ```sh
+  php artisan migrate --force
+  php artisan vendor:publish --tag=metribay-assets --force
+  php artisan queue:restart
+  ```
+
+- Richte einen Mailversand ein, damit E-Mails zum Zurücksetzen des Passworts ankommen.
+
+## Backups
+
+Sichere zwei Dinge, getrennt voneinander:
+
+- **Die Datenbank.** Nutze bei SQLite das Online-Backup von SQLite, statt die Datei im laufenden Betrieb zu kopieren. Nutze bei PostgreSQL `pg_dump`.
+- **Den `APP_KEY`.** Gespeicherte Zugangsdaten sind damit verschlüsselt. Ohne den Schlüssel lassen sie sich aus einem Datenbank-Backup nicht entschlüsseln. Ändere den Schlüssel nur, wenn du die Neuverschlüsselung geplant hast.
+
+Teste ab und zu eine Wiederherstellung. Der [Konfigurationsexport](../import-export/) ist ebenfalls nützlich, aber kein vollständiges Backup: Er enthält weder Verlauf noch Zugangsdaten.
+
+## Umzug zu Metribay Cloud
+
+[Exportiere deine Konfiguration](../import-export/), registriere dich bei Cloud, leg deine gespeicherten Konten mit denselben Namen an und importiere die Datei. Cloud holt deinen Verlauf dann innerhalb des Verlaufszeitraums jeder Datenquelle erneut von deinen Anbietern.

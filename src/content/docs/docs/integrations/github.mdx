@@ -1,0 +1,90 @@
+---
+title: GitHub
+description: Connect a GitHub repository with a read-only token and track commits, merged pull requests, lines changed, open issues and releases.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Follow the activity in your public and private repositories next to the rest of each project.
+
+## What you get
+
+| Metric | How it's counted | Period value |
+|---|---|---|
+| **Commits** | Commits on the default branch, by commit date | Sum of the days |
+| **PRs merged** | Pull requests merged, by merge date | Sum of the days |
+| **Lines changed** | Lines added plus lines removed, leaving out merge commits | Sum of the days |
+| **Open issues** | Issues open right now (pull requests excluded) | Latest observation |
+
+**Releases** become [annotations](../../annotations/#github-releases) on the project, so you can see what shipped when.
+
+Days are counted in UTC. Open issues only appear if the repository has issues turned on.
+
+:::note[Activity, not productivity]
+These numbers describe a repository's activity. They aren't a measure of anyone's work, and one big commit can mean less than ten small ones.
+:::
+
+## Step 1: Create a token
+
+A **fine-grained personal access token** lets you choose exactly which repositories Metribay can read, with read-only access.
+
+<Steps>
+
+1. On GitHub, open **Settings → Developer settings → Personal access tokens → Fine-grained tokens** and select **Generate new token**.
+
+2. Give it a name like “Metribay”, and pick an expiration date.
+
+3. Under **Resource owner**, choose yourself or the organisation that owns the repositories.
+
+4. Under **Repository access**, choose **Only select repositories** and pick the ones to track.
+
+5. Under **Permissions → Repository permissions**, set these to **Read-only**:
+   - **Contents**
+   - **Issues**
+   - **Pull requests**
+
+   **Metadata** is added as read-only on its own.
+
+6. Select **Generate token** and copy it. GitHub shows it only once.
+
+</Steps>
+
+Some organisations must approve fine-grained tokens before they work. If the repositories don't show up, ask an organisation owner to approve the request.
+
+:::tip[Plan for expiry]
+When the token expires, the source shows *Needs attention*. Set a calendar reminder, create a new token before then and [update the saved account](../../saved-accounts/#update-or-rotate-credentials).
+:::
+
+## Step 2: Connect it in Metribay
+
+<Steps>
+
+1. Select **Add source** and choose **GitHub**.
+
+2. Open **Use your own credentials** and paste the token into **Personal access token**.
+
+3. Select **Save account and continue**.
+
+4. Choose a repository from the list.
+
+5. Pick a project and select **Connect and start import**.
+
+</Steps>
+
+### Enter the repository by hand
+
+Open **Enter a resource manually** and type it as `owner/repository`, like `octocat/hello-world`.
+
+## Other ways to sign in
+
+**Classic personal access token.** Works too. For public repositories it needs no scopes. For private ones it needs the `repo` scope, which also grants write access, so prefer a fine-grained token.
+
+**GitHub App.** If you run your own GitHub App, open **Use a GitHub App instead** and fill in its **Client Id**, **Installation Id** and **GitHub App private key (PEM)**. Give the app read-only **Contents**, **Issues** and **Pull requests** permissions. With an app, enter repositories by hand: the list isn't available.
+
+## Good to know
+
+- **First imports can take a while** for busy repositories, because Metribay reads every commit, pull request and release in the history window.
+- **Every sync rereads the whole history window.** Commits can turn up on the default branch long after they were written, when a branch is merged. Rereading keeps the counts right.
+- **Long windows on very large repositories** may hit GitHub's limits. If the first import fails, try a shorter history window.
+
+See also [Troubleshooting](../../troubleshooting/).

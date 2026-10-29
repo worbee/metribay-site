@@ -1,0 +1,85 @@
+/* Metribay palette for Starlight. Unlayered, so it wins over Starlight's layers, and set for both
+   theme attributes so the page stays light even before (or without) the theme script. */
+:root,
+:root[data-theme='light'],
+:root[data-theme='dark'],
+::backdrop {
+  color-scheme: light;
+  --sl-font: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --sl-color-white: #172235;
+  --sl-color-gray-1: #1f2a3c;
+  --sl-color-gray-2: #303a4a;
+  --sl-color-gray-3: #5c6470;
+  --sl-color-gray-4: #8b9097;
+  --sl-color-gray-5: #cfd2ca;
+  --sl-color-gray-6: #eff0e8;
+  --sl-color-gray-7: #f5f5f0;
+  --sl-color-black: #fafaf7;
+
+  --sl-color-accent-low: #f4dfe9;
+  --sl-color-accent: #aa336d;
+  --sl-color-accent-high: #8e285a;
+
+  --sl-color-green-low: #eef3d8;
+  --sl-color-green: #8cb114;
+  --sl-color-green-high: #3f5b00;
+  --sl-color-blue-low: #e3e8f1;
+  --sl-color-blue: #3f5a8a;
+  --sl-color-blue-high: #172235;
+  --sl-color-orange-low: #f8ecd2;
+  --sl-color-orange: #d39a1c;
+  --sl-color-orange-high: #6b4700;
+  --sl-color-red-low: #f6dede;
+  --sl-color-red: #c43c3c;
+  --sl-color-red-high: #8a1f1f;
+  --sl-color-purple-low: #f4dfe9;
+  --sl-color-purple: #aa336d;
+  --sl-color-purple-high: #8e285a;
+
+  --sl-color-text: var(--sl-color-gray-2);
+  --sl-color-text-accent: var(--sl-color-accent-high);
+  --sl-color-text-invert: var(--sl-color-black);
+  --sl-color-bg: var(--sl-color-black);
+  --sl-color-bg-nav: var(--sl-color-black);
+  --sl-color-bg-sidebar: var(--sl-color-black);
+  --sl-color-bg-inline-code: var(--sl-color-gray-6);
+  --sl-color-bg-accent: var(--sl-color-accent);
+  --sl-color-hairline-light: #e6e8e1;
+  --sl-color-hairline: #dddfd9;
+  --sl-color-hairline-shade: #dddfd9;
+  --sl-color-backdrop-overlay: #17223560;
+
+  --sl-shadow-sm: 0 1px 2px #17223510;
+  --sl-shadow-md: 0 6px 18px -8px #17223530, 0 2px 4px #1722350a;
+  --sl-shadow-lg: 0 20px 60px -30px #17223545, 0 3px 10px #17223508;
+}
+
+h1, h2, h3, h4, .sl-markdown-content :is(h1, h2, h3, h4) { font-weight: 550; letter-spacing: -.03em; }
+h1#_top { letter-spacing: -.045em; }
+.site-title img { height: 1.9rem; width: auto; }
+::selection { background: #e7edcf; color: #172235; }
+:focus-visible { outline-color: #aa336d; }
+
+.sl-markdown-content a { text-underline-offset: .2em; text-decoration-color: #aa336d66; }
+.sl-markdown-content a:hover { text-decoration-color: currentColor; }
+.sl-markdown-content table { font-size: var(--sl-text-sm); }
+
+/* Header links that replace the social icons. */
+.docs-header-link { color: var(--sl-color-gray-2); font-size: var(--sl-text-sm); text-decoration: none; white-space: nowrap; }
+.docs-header-link:hover { color: var(--sl-color-accent); }
+.docs-header-app { padding: .35rem .8rem; border-radius: 5px; background: var(--sl-color-accent); color: white; font-weight: 550; }
+.docs-header-app:hover { background: var(--sl-color-accent-high); color: white; }
+@media (max-width: 50rem) { .docs-header-link:not(.docs-header-app) { display: none; } }
+
+/* Sidebar: berry marks the current page, like the app's active tab. */
+.sidebar-content a[aria-current='page'] { background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); font-weight: 600; }
+.sidebar-content .large { font-weight: 600; color: var(--sl-color-white); }
+
+/* Asides in brand tones. */
+.starlight-aside--note { --sl-color-asides-text-accent: var(--sl-color-blue-high); --sl-color-asides-border: var(--sl-color-blue); background: var(--sl-color-blue-low); }
+.starlight-aside--tip { --sl-color-asides-text-accent: var(--sl-color-green-high); --sl-color-asides-border: var(--sl-color-green); background: var(--sl-color-green-low); }
+.starlight-aside--caution { --sl-color-asides-text-accent: var(--sl-color-orange-high); --sl-color-asides-border: var(--sl-color-orange); background: var(--sl-color-orange-low); }
+.starlight-aside--danger { --sl-color-asides-text-accent: var(--sl-color-red-high); --sl-color-asides-border: var(--sl-color-red); background: var(--sl-color-red-low); }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }

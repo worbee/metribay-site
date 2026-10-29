@@ -1,0 +1,66 @@
+---
+title: UptimeRobot
+description: Verbinde UptimeRobot über einen Read-only-API-Schlüssel und verfolge Monitorstatus, Verfügbarkeit der letzten 24 Stunden und Antwortzeit.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Sieh auf einen Blick, ob deine Websites erreichbar sind, gleich neben ihren anderen Zahlen.
+
+## Was du bekommst
+
+| Kennzahl | Bedeutung |
+|---|---|
+| **Monitor status** | *Up*, *Seems down*, *Down*, *Paused* oder *Not checked yet* |
+| **Uptime · last 24h** | Anteil der letzten 24 Stunden, in denen der Monitor erreichbar war |
+| **Response time · last 24h** | Durchschnittliche Antwortzeit der letzten 24 Stunden in Millisekunden |
+
+Alle drei beschreiben den aktuellen Zustand. Jede Karte zeigt deshalb die letzte Beobachtung und wann sie erfasst wurde. Metribay fragt jede Stunde ab, häufiger als bei anderen Datenquellen.
+
+Für Heartbeat-Monitore gibt es keine Antwortzeit.
+
+:::note[Der Verlauf beginnt mit dem Verbinden]
+UptimeRobot meldet den aktuellen Zustand und die letzten 24 Stunden. Metribay speichert ab dem Hinzufügen des Monitors jede Stunde eine neue Beobachtung. Das Diagramm füllt sich also mit der Zeit.
+:::
+
+## Schritt 1: Read-only-API-Schlüssel holen
+
+<Steps>
+
+1. Melde dich bei [UptimeRobot](https://uptimerobot.com/) an.
+
+2. Öffne **Integrations & API** und dort den Bereich **API**.
+
+3. Erstelle oder kopiere den **Read-only API key**.
+
+</Steps>
+
+Ein Read-only-Schlüssel sieht alle deine Monitore und kann keinen davon ändern. Mehr braucht Metribay nicht.
+
+Willst du nur einen Monitor freigeben, erstell stattdessen einen **Monitor-specific API key** für ihn. Metribay sieht dann nur diesen Monitor.
+
+## Schritt 2: In Metribay verbinden
+
+<Steps>
+
+1. Wähle **Add source** und dann **UptimeRobot**.
+
+2. Öffne **Use your own credentials** und füge den Schlüssel in **Api Key** ein.
+
+3. Wähle einen Monitor aus der Liste.
+
+4. Wähle ein Projekt und dann **Connect and start import**.
+
+</Steps>
+
+### Monitor von Hand eintragen
+
+Öffne **Enter a resource manually** und gib die **Monitor ID** ein. Das ist die Zahl am Ende der Monitor-Adresse im UptimeRobot-Dashboard.
+
+## Gut zu wissen
+
+- **Der Verlaufszeitraum spielt keine Rolle.** Verfügbarkeit ist eine Momentaufnahme, die Einstellung wirkt sich bei dieser Datenquelle nicht aus.
+- **Anfragelimits.** UptimeRobot begrenzt, wie viele API-Anfragen ein Schlüssel stellen darf, besonders in kostenlosen Tarifen. Metribay verteilt die Anfragen aller Monitore mit demselben Schlüssel. Ist das Limit erreicht, versucht es die nächste stündliche Abfrage einfach erneut.
+- **Der Monitorstatus** in der Übersicht zeigt die letzte Abfrage, höchstens eine Stunde alt. Für sofortige Alarme nutze weiter die Benachrichtigungen von UptimeRobot.
+
+Siehe auch [Fehlerbehebung](../../troubleshooting/).

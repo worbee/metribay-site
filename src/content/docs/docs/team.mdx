@@ -1,0 +1,71 @@
+---
+title: Team members and roles
+description: Invite people to a workspace as owners, editors or viewers. Metribay Cloud only.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Invite your colleagues, clients or partners to follow along. Each person gets a role that decides what they can do.
+
+:::note[Metribay Cloud]
+Teams are part of Metribay Cloud. The self-hosted edition is built for one person.
+:::
+
+## Roles
+
+| What they can do | Owner | Editor | Viewer |
+|---|:---:|:---:|:---:|
+| See the overview, projects, charts and annotations | ✓ | ✓ | ✓ |
+| Add and edit projects, sources and annotations | ✓ | ✓ | |
+| Sync sources, import and export the configuration | ✓ | ✓ | |
+| Add and edit saved accounts (credentials) | ✓ | | |
+| Invite people, change roles and remove access | ✓ | | |
+| Rename the workspace | ✓ | | |
+
+The person who created the workspace is its **workspace owner**. They always keep ownership, so someone is always responsible for the workspace, and its billing runs through their account. You can make other people owners too. They get the same rights, except that they can't remove the workspace owner.
+
+**Which role should I choose?** Viewer for clients and stakeholders who only want to see the numbers. Editor for teammates who set up projects. Owner only for people you'd trust with your provider credentials.
+
+## Invite someone
+
+<Steps>
+
+1. Open the workspace and select **Team** in the navigation.
+
+2. Under **Invite a teammate**, enter their **Email address** and choose a **Role**.
+
+3. Select **Create invitation**.
+
+4. Metribay emails the invitation. You also see the invitation link once, so you can send it another way, privately.
+
+</Steps>
+
+Invitations expire after 72 hours. A pending invitation takes up a seat until it's accepted, revoked or expired. To send a new link, create the invitation again: the old link stops working.
+
+## Accept an invitation
+
+<Steps>
+
+1. Open the link in the invitation.
+
+2. Sign in, or [create an account](../getting-started/) first, **with the email address the invitation was sent to**.
+
+3. Select **Accept invitation**. If the code field is empty, open the link again in the same browser.
+
+</Steps>
+
+The workspace now appears in your workspace switcher.
+
+## Change a role or remove someone
+
+On the **Team** page, choose a new **Role** next to the person and select **Save role**. To take away their access, select **Remove access**. Their changes and annotations stay in the workspace.
+
+Revoke an invitation that hasn't been accepted yet with **Revoke invitation** under **Pending invitations**.
+
+## Seats
+
+Each workspace has room for 10 people, including the workspace owner. Pending invitations count too.
+
+## Sharing needs an active plan
+
+Shared access depends on the workspace owner's Metribay Cloud plan. If their trial or subscription ends, members lose access to the workspace until it's active again. Nothing is deleted, and members come back with the same roles. See [Plans and billing](../billing/).

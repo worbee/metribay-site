@@ -1,0 +1,71 @@
+---
+title: Add and manage sources
+description: Connect a provider to a project with the guided setup, then rename, pause, re-point or check a source.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+A source feeds one provider's numbers into one project. A typical website has three: Google Analytics for traffic, Search Console for search and UptimeRobot for uptime.
+
+## Add a source
+
+Select **Add source** on the overview, on a project page or in **Settings → Sources**. If you start from a project page, the source goes to that project.
+
+<Steps>
+
+1. **Provider.** Choose where your data lives. See [all integrations](../integrations/).
+
+2. **Account.** Choose a saved account under **Saved account**, or open **Use your own credentials** to add a new one. Metribay tests the credentials before it saves them. Your [integration guide](../integrations/) explains which credentials to use.
+
+3. **Resource.** Metribay lists the websites, properties, repositories or monitors this account can see. Use the filter to find one and select it.
+
+   If yours is missing, check that the account has access to it, then select **Refresh resources**. You can also open **Enter a resource manually** and type its ID.
+
+4. **Connect.** Choose the **Project**: an existing one, or **Create a new project** with a name and an optional domain. Under **Advanced settings** you can set a **Source label** and the **History window (days)**. The reporting timezone is shown for your information.
+
+   Select **Connect and start import**.
+
+</Steps>
+
+New projects are only created when you confirm this last step. Leaving the setup early creates nothing.
+
+### Leave and come back
+
+- **Save for later** keeps your progress for an hour in this browser. Select **Add source** again to continue.
+- **Change provider** starts over with a different provider.
+- **Choose another resource** goes back one step from the confirmation.
+
+### Who can add sources
+
+| | Owner | Editor | Viewer |
+|---|---|---|---|
+| Add a source with a new account | ✓ | | |
+| Add a source with a saved account | ✓ | ✓ (enter the resource manually) | |
+| Add a WordPress.org source | ✓ | ✓ | |
+
+Only owners can add accounts and browse everything an account can see, because that touches credentials. In the self-hosted edition, you are the owner.
+
+## Manage a source
+
+Go to **Settings → Sources**. Each source shows its project, provider, timezone, resource ID, the time of the last sync and any recent collection issue. Open **Manage source** to change:
+
+- **Source label**: the name shown on the dashboard.
+- **Collection window (days)**: the [history window](../syncing/#the-history-window), from 1 to 366 days.
+- **Connection**: the saved account this source uses. Switching keeps the source's history. Useful when you rotate credentials or move to a new service account.
+- **Collect automatically**: turn off to pause the source. It keeps its history.
+
+Select **Save source** to apply. Below the form you'll find **Sync now** and, for owners, **Check provider access**. See [Updates and syncing](../syncing/).
+
+## Change what a source tracks
+
+A source's provider, resource and timezone are fixed once it's created. This keeps its history consistent: a year of data from one property never gets mixed with another's.
+
+If you need to track a different property, repository or monitor, add a new source and pause the old one. Both keep their own history.
+
+## Remove a source
+
+There's no delete button for sources. Pause the source instead: turn off **Collect automatically**. It stops collecting, stops counting towards your plan limits and keeps its history in case you need it again.
+
+## Several sources of the same kind
+
+You can add as many sources to a project as you like, even two of the same provider. For example, a site that moved from Umami to Google Analytics can show both. Give each a clear label.

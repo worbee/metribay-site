@@ -1,4 +1,6 @@
 # Cloudflare Pages response headers. Other static hosts serve this file as plain text.
+# The build replaces this policy with one that also allows the docs' own scripts and hashed inline code
+# (scripts/content-security-policy.mjs). Keep a Content-Security-Policy line here for it to replace.
 /*
   Content-Security-Policy: default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   X-Content-Type-Options: nosniff

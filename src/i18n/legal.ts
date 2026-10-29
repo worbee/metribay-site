@@ -5,7 +5,7 @@ import { company, plan } from '../lib/company';
 // Drafted on 2026-10-26 against Paddle's seller-policy requirements. Have them reviewed before relying on them, and bump `updated` with every change.
 export interface LegalDocument { title: string; description: string; intro: string; sections: { heading: string; body: string[] }[] }
 
-export const legalUpdated = { iso: '2026-10-26', en: '26 October 2026', de: '26. Oktober 2026' };
+export const legalUpdated = { iso: '2026-10-29', en: '29 October 2026', de: '29. Oktober 2026' };
 
 const address = company.address.join(', ');
 
@@ -92,9 +92,8 @@ export const legalContent: Record<Locale, Record<LegalPage, LegalDocument>> = {
         ] },
         { heading: 'Who receives data', body: [
           'Hetzner Online GmbH hosts the app and database in its data centre in Finland.',
-          'Cloudflare, Inc. provides the network in front of the app, DNS and hosting for this website.',
+          'Cloudflare, Inc. provides the network in front of the app, DNS, hosting for this website and delivery of the app’s emails.',
           'Paddle.com Market Ltd handles checkout, payments, invoices and taxes as Merchant of Record.',
-          'Zoho Corporation delivers the app’s emails.',
           'Professional advisers and authorities, only where the law requires it.',
           'We don’t sell personal data or share it for advertising.',
         ] },
@@ -236,9 +235,8 @@ export const legalContent: Record<Locale, Record<LegalPage, LegalDocument>> = {
         ] },
         { heading: 'Empfänger', body: [
           'Hetzner Online GmbH hostet App und Datenbank in ihrem Rechenzentrum in Finnland.',
-          'Cloudflare, Inc. stellt das Netzwerk vor der App, DNS und das Hosting dieser Website bereit.',
+          'Cloudflare, Inc. stellt das Netzwerk vor der App, DNS und das Hosting dieser Website bereit und versendet die E-Mails der App.',
           'Paddle.com Market Ltd übernimmt als Merchant of Record Checkout, Zahlungen, Rechnungen und Steuern.',
-          'Zoho Corporation versendet die E-Mails der App.',
           'Berater und Behörden, nur soweit gesetzlich vorgeschrieben.',
           'Wir verkaufen keine personenbezogenen Daten und geben sie nicht für Werbung weiter.',
         ] },

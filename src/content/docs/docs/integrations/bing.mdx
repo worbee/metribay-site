@@ -1,0 +1,64 @@
+---
+title: Bing Webmaster Tools
+description: Connect Bing Webmaster Tools with an API key and track clicks, impressions and indexed pages from Bing.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Bing powers more search than its own website: its results also feed other search engines and assistants. Add it next to Search Console for a fuller view of your search traffic.
+
+## What you get
+
+| Metric | Meaning | Period value |
+|---|---|---|
+| **Clicks** | Clicks from Bing search results | Sum of the days |
+| **Impressions** | How often your site appeared in results | Sum of the days |
+| **Indexed pages** | Pages Bing has in its index | Latest observation |
+
+Days are counted in UTC. Bing only keeps a limited history of its own, so the first import may cover less than your history window.
+
+## Before you start
+
+You need a site verified in [Bing Webmaster Tools](https://www.bing.com/webmasters). If you already use Search Console, Bing can import your sites from it in a few clicks.
+
+## Step 1: Get your API key
+
+<Steps>
+
+1. Sign in to [Bing Webmaster Tools](https://www.bing.com/webmasters).
+
+2. Open **Settings** (the gear icon) and choose **API access**.
+
+3. Select **API Key**, generate a key if you don't have one, and copy it.
+
+</Steps>
+
+:::note[One key for the whole account]
+Bing has one API key per account, and it covers every site in that account. Bing doesn't offer a read-only key. Metribay only uses it to read statistics.
+:::
+
+## Step 2: Connect it in Metribay
+
+<Steps>
+
+1. Select **Add source** and choose **Bing Webmaster Tools**.
+
+2. Open **Use your own credentials** and paste your key into **Api Key**.
+
+3. Choose the site from the list.
+
+4. Pick a project and select **Connect and start import**.
+
+</Steps>
+
+### Enter the site by hand
+
+Open **Enter a resource manually** and type the **Site URL** exactly as it appears in Bing Webmaster Tools, like `https://www.example.com/`.
+
+## If collection fails
+
+**The site isn't listed.** It's not verified in the Bing account the key belongs to. Check the account, then select **Refresh resources**.
+
+**“Needs attention” after it worked.** The key may have been regenerated in Bing. Copy the new one and [update the saved account](../../saved-accounts/#update-or-rotate-credentials).
+
+See also [Troubleshooting](../../troubleshooting/).

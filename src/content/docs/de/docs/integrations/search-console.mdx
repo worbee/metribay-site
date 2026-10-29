@@ -1,0 +1,84 @@
+---
+title: Google Search Console
+description: Verbinde eine Search-Console-Property über ein Dienstkonto und verfolge Klicks und Impressionen aus der Google-Suche.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Sieh, wie deine Websites in der Google-Suche abschneiden.
+
+## Was du bekommst
+
+| Kennzahl | Bedeutung | Wert im Zeitraum |
+|---|---|---|
+| **Clicks** | Klicks aus den Google-Suchergebnissen auf deine Website | Summe der Tage |
+| **Impressions** | Wie oft deine Website in den Ergebnissen erschien | Summe der Tage |
+
+Search Console zählt Tage in **pazifischer Zeit** (America/Los_Angeles), Metribay ebenso. Google veröffentlicht zuerst frische und zwei bis drei Tage später endgültige Zahlen. Metribay zeigt die frischen Zahlen als vorläufig und ersetzt sie, sobald die endgültigen bereitstehen.
+
+## Bevor du anfängst
+
+Du brauchst **Inhaber**-Zugriff auf die Search-Console-Property, damit du einen Nutzer hinzufügen kannst, und ein Google-Dienstkonto.
+
+Hast du schon eins für [Google Analytics 4](../google-analytics/) eingerichtet, nutz es weiter. Du musst nur eine weitere API aktivieren und das Konto in der Search Console hinzufügen.
+
+:::note[Connect Google]
+Siehst du beim Hinzufügen der Datenquelle einen Button **Connect Google**, kannst du dich stattdessen mit deinem eigenen Google-Konto anmelden und dir das Dienstkonto sparen. Metribay fragt dabei nur Lesezugriff auf die Search Console an.
+:::
+
+## Schritt 1: Dienstkonto vorbereiten
+
+<Steps>
+
+1. Geh in der [Google Cloud Console](https://console.cloud.google.com/) zu **APIs & Dienste → Bibliothek** (APIs & Services → Library) und aktiviere die **Google Search Console API**.
+
+2. Hast du noch kein Dienstkonto, folge [Schritt 1 der Google-Analytics-Anleitung](../google-analytics/#schritt-1-dienstkonto-erstellen), um eins zu erstellen und seinen JSON-Schlüssel herunterzuladen. Die Analytics-APIs kannst du dabei weglassen.
+
+3. Kopier die E-Mail-Adresse des Dienstkontos. Sie endet auf `iam.gserviceaccount.com`.
+
+</Steps>
+
+## Schritt 2: Zur Property hinzufügen
+
+<Steps>
+
+1. Öffne die [Search Console](https://search.google.com/search-console) und wähle die Property.
+
+2. Geh zu **Einstellungen → Nutzer und Berechtigungen** und wähle **Nutzer hinzufügen**.
+
+3. Füge die E-Mail-Adresse des Dienstkontos ein und wähle die Berechtigung **Eingeschränkt**. Eingeschränkt heißt nur lesen, und mehr braucht Metribay nicht.
+
+4. Wähle **Hinzufügen**. Wiederhole das für jede Property, die du verfolgen willst.
+
+</Steps>
+
+## Schritt 3: In Metribay verbinden
+
+<Steps>
+
+1. Wähle **Add source** und dann **Google Search Console**.
+
+2. Wähle dein gespeichertes Google-Konto oder öffne **Use your own credentials** und füge den ganzen JSON-Schlüssel in **Service account JSON** ein.
+
+3. Wähle die Property aus der Liste.
+
+4. Wähle ein Projekt und dann **Connect and start import**.
+
+</Steps>
+
+### Property von Hand eintragen
+
+Öffne **Enter a resource manually** und trag die Property genau so ein, wie die Search Console sie nennt:
+
+- **Domain-Property:** `sc-domain:example.com`
+- **URL-Präfix-Property:** die vollständige Adresse, etwa `https://www.example.com/`, mit Schrägstrich am Ende
+
+## Wenn die Erfassung fehlschlägt
+
+**Die Property fehlt in der Liste.** Das Dienstkonto ist noch kein Nutzer der Property, oder die Search Console API ist nicht aktiviert. Behebe das und wähle dann **Refresh resources**.
+
+**Falsche Art von Property.** `https://example.com/` und `sc-domain:example.com` sind in der Search Console zwei verschiedene Properties. Nimm die, der du das Dienstkonto hinzugefügt hast.
+
+**Die Zahlen hängen ein paar Tage hinterher.** Das ist normal. Search-Console-Daten kommen meist mit zwei bis drei Tagen Verzögerung, und die Datenquelle zeigt hin und wieder *Delayed*.
+
+Siehe auch [Fehlerbehebung](../../troubleshooting/).

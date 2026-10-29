@@ -2,6 +2,19 @@
 
 Updated 2026-10-25. Current scope: English/German Astro marketing site and GitHub Pages preparation; see the latest closeout below. Earlier holding-page/Cloudflare entries are historical. Rob authorized committing and pushing the completed website source; Pages publication remains disabled.
 
+## User documentation added (2026-10-29)
+
+Rob approved building /docs/ in site/ with Starlight, covering the whole product from the user's point of view, English then German. Not committed, pushed or deployed.
+
+- Starlight 0.42.7 (pinned, `npm audit` 0) on the existing Astro 7.4.2 project, using the Astro i18n config (en root, de). 27 pages per language under `src/content/docs/docs/` and `src/content/docs/de/docs/`: start here, everyday use, sources and projects, seven integration guides, workspaces and team, account and billing, self-hosting, troubleshooting, security. Every claim was checked against Core/Cloud source (roles, limits, cooldowns, status rules, import matching by connection name, field labels). Desktop is left out while it is a private prototype; self-hosting says the source is available by email.
+- Branding: Metribay palette and lockup, light only (theme switcher removed), header links to the website and app, localized share cards in the head. Starlight's own 404 and sitemap are off; `src/pages/sitemap.xml.ts` now lists all 54 docs URLs with hreflang pairs. Site header and footer link to Docs/Doku.
+- Astro prefetch disabled: Starlight enables it site-wide, which would have added a script to the script-free marketing pages.
+- CSP: production `_headers` had no `script-src`, which would have blocked docs search and menus. The build now writes one strict policy into `dist/_headers` (`scripts/content-security-policy.mjs`): `script-src 'self' 'wasm-unsafe-eval'` plus hashes of every inline script, `style-src 'self' 'unsafe-hashes'` plus hashes of inline styles and style attributes, `img-src 'self' data:`, `connect-src 'self'`; no `'unsafe-inline'`. `npm run preview:headers` (port 4322, also `site-headers` in the workspace launch config) serves dist/ with those headers.
+
+Verification: `npm run check` 0 errors/warnings/hints; `npm run build`; `npm test` passed 6156 checks (now also docs pairs, lang, single h1, canonical/hreflang, share card, real translations, every local link and cross-page anchor, sitemap entries, no sitemap-index, CSP equals the hashes in the build). Subdirectory build `SITE_URL=https://worbee.github.io SITE_BASE=/metribay-site/` passed 6155 checks; default build restored afterwards. Browser, under the enforced CSP: theme script, custom elements, German Pagefind search (“Dienstkonto”, 8 results) and the mobile menu work with no console errors; no horizontal overflow at 375px; marketing /de/ has no console errors and both Doku links.
+
+Rob's review the same day: the privacy policy (EN/DE) now names Cloudflare as the app's email sender instead of Zoho, matching production since 2026-10-27, with `legalUpdated` bumped to 2026-10-29; the docs security pages say the same. The 12-character password hints were fixed in Core. The German docs stay at `/de/docs/` (there was never a `/du/` path) and keep the informal “du” of the marketing site. Remaining small follow-up: credential fields read “Api Key”/“Client Id” (Str::headline). Rob authorized commit and deploy.
+
 ## Direction
 
 - Visual thesis: a quiet cream/navy poster, bold Metribay wordmark, and the supplied two-colour icon as the visual anchor.

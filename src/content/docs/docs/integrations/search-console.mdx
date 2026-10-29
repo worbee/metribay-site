@@ -1,0 +1,84 @@
+---
+title: Google Search Console
+description: Connect a Search Console property with a service account and track clicks and impressions from Google Search.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+See how your sites perform in Google Search.
+
+## What you get
+
+| Metric | Meaning | Period value |
+|---|---|---|
+| **Clicks** | Clicks from Google Search results to your site | Sum of the days |
+| **Impressions** | How often your site appeared in results | Sum of the days |
+
+Search Console counts days in **Pacific time** (America/Los_Angeles), and so does Metribay. Google publishes fresh numbers first and final ones two or three days later. Metribay shows the fresh numbers as provisional and swaps in the final ones when they're ready.
+
+## Before you start
+
+You need **Owner** access to the Search Console property, so you can add a user, and a Google service account.
+
+If you've already set one up for [Google Analytics 4](../google-analytics/), reuse it. You only need to enable one more API and add it to Search Console.
+
+:::note[Connect Google]
+If you see a **Connect Google** button when adding the source, you can sign in with your own Google account instead and skip the service account. Metribay asks only for read access to Search Console.
+:::
+
+## Step 1: Prepare the service account
+
+<Steps>
+
+1. In the [Google Cloud console](https://console.cloud.google.com/), go to **APIs & Services → Library** and enable the **Google Search Console API**.
+
+2. If you don't have a service account yet, follow [step 1 of the Google Analytics guide](../google-analytics/#step-1-create-a-service-account) to create one and download its JSON key. You can skip the Analytics APIs.
+
+3. Copy the service account's email address. It ends in `iam.gserviceaccount.com`.
+
+</Steps>
+
+## Step 2: Add it to your property
+
+<Steps>
+
+1. Open [Search Console](https://search.google.com/search-console) and choose the property.
+
+2. Go to **Settings → Users and permissions** and select **Add user**.
+
+3. Paste the service account's email address and choose **Restricted** permission. Restricted is read-only and all Metribay needs.
+
+4. Select **Add**. Repeat for every property you want to track.
+
+</Steps>
+
+## Step 3: Connect it in Metribay
+
+<Steps>
+
+1. Select **Add source** and choose **Google Search Console**.
+
+2. Pick your saved Google account, or open **Use your own credentials** and paste the whole JSON key into **Service account JSON**.
+
+3. Choose the property from the list.
+
+4. Pick a project and select **Connect and start import**.
+
+</Steps>
+
+### Enter the property by hand
+
+Open **Enter a resource manually** and type the property exactly as Search Console names it:
+
+- **Domain property:** `sc-domain:example.com`
+- **URL-prefix property:** the full address, like `https://www.example.com/`, including the trailing slash
+
+## If collection fails
+
+**The property isn't listed.** The service account isn't a user of it yet, or the Search Console API isn't enabled. Fix that, then select **Refresh resources**.
+
+**Wrong property type.** `https://example.com/` and `sc-domain:example.com` are different properties in Search Console. Use the one you added the service account to.
+
+**Numbers are a few days behind.** That's normal. Search Console data usually arrives with a delay of two to three days, and the source may show *Delayed* now and then.
+
+See also [Troubleshooting](../../troubleshooting/).

@@ -1,0 +1,104 @@
+---
+title: Google Analytics 4
+description: Connect a Google Analytics 4 property with a read-only service account and track visitors, visits and page views.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Track the traffic of any Google Analytics 4 property.
+
+## What you get
+
+| Metric | Meaning in Google Analytics | Period value |
+|---|---|---|
+| **Visitors** | Total users | Exact unique users for the whole period |
+| **Visits** | Sessions | Sum of the days |
+| **Page views** | Views (page and screen views) | Sum of the days |
+
+Days are counted in your property's reporting timezone, so daily numbers match Google Analytics. The last three days are treated as provisional, because Google may still revise them.
+
+## Before you start
+
+You need:
+
+- Editor or Administrator access to the Google Analytics property, so you can add a user to it.
+- A Google Cloud project where you can create a service account. Any free Google account can create one.
+
+A **service account** is a Google account for software. You give it Viewer access to your property, the same way you'd add a colleague, and Metribay signs in as it. You can reuse the same service account for all your properties and for [Search Console](../search-console/).
+
+:::note[Connect Google]
+If you see a **Connect Google** button when adding the source, you can sign in with your own Google account instead and skip the service account. Metribay asks only for read access to Analytics.
+:::
+
+## Step 1: Create a service account
+
+<Steps>
+
+1. Open the [Google Cloud console](https://console.cloud.google.com/) and select a project, or create one called “Metribay”.
+
+2. Go to **APIs & Services → Library**. Find and enable both **Google Analytics Data API** and **Google Analytics Admin API**. The Data API delivers your numbers; the Admin API lets Metribay list your properties and read their timezones.
+
+3. Go to **IAM & Admin → Service Accounts** and select **Create service account**. Name it something like `metribay-reader`. It doesn't need any project roles: skip those steps and select **Done**.
+
+4. Open the new service account, go to **Keys** and select **Add key → Create new key → JSON**. A JSON file downloads. Keep it safe: it's the account's password.
+
+5. Copy the service account's email address. It ends in `iam.gserviceaccount.com`.
+
+</Steps>
+
+:::caution[Key creation blocked?]
+Some Google Workspace organisations block service account keys with a policy. If Google won't let you create a key, ask your Google Cloud administrator, or create the project under a personal Google account.
+:::
+
+## Step 2: Give it access to your property
+
+<Steps>
+
+1. In [Google Analytics](https://analytics.google.com/), open **Admin**.
+
+2. Under **Property**, select **Property access management**. To cover every property in the account at once, use **Account access management** instead.
+
+3. Select **+ → Add users**, paste the service account's email address and choose the **Viewer** role. You can untick the email notification.
+
+4. Select **Add**.
+
+</Steps>
+
+## Step 3: Connect it in Metribay
+
+<Steps>
+
+1. Select **Add source** and choose **Google Analytics 4**.
+
+2. Open **Use your own credentials** and paste the **whole contents** of the JSON key file into **Service account JSON**.
+
+3. Select **Save account and continue**. Metribay checks the key.
+
+4. Choose your property from the list. Its reporting timezone is filled in for you.
+
+5. Pick a project and select **Connect and start import**.
+
+</Steps>
+
+You can delete the downloaded JSON file afterwards. Metribay keeps an encrypted copy.
+
+### Enter the property by hand
+
+If the list is empty, open **Enter a resource manually**:
+
+- **Property ID**: the number under **Admin → Property details**, like `412345678`. It's not the `G-` measurement ID.
+- **Property reporting timezone**: the timezone shown under **Admin → Property details**. It must match, or your days will be shifted.
+
+## Advanced: OAuth refresh token
+
+Instead of a service account, you can connect with your own Google OAuth app. Open **Use OAuth credentials instead** and fill in **Client Id**, **Client Secret** and a **Refresh Token** issued with the `analytics.readonly` scope. Leave **Service account JSON** empty. Use this only if you already manage a Google OAuth app.
+
+## If collection fails
+
+**The property isn't listed.** The service account hasn't been added to it, or the Admin API isn't enabled. Check step 2, wait a minute, then select **Refresh resources**.
+
+**“Needs attention” after it worked before.** Someone may have removed the service account's access, or deleted its key. Add it again, or create a new key and [update the saved account](../../saved-accounts/#update-or-rotate-credentials).
+
+**Sampled, thresholded or restricted data.** Metribay won't store numbers that Google has estimated, hidden or cut short. If Google applies thresholds, which often happens with Google signals turned on, the source needs attention. In Google Analytics, open **Admin → Reporting identity** and choose **Device-based**. This usually removes thresholds for these totals.
+
+See also [Troubleshooting](../../troubleshooting/).

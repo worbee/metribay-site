@@ -1,0 +1,137 @@
+---
+title: Run Metribay yourself
+description: The free, open-source self-hosted edition of Metribay for one person on your own server.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+The self-hosted edition, also called the **Personal edition**, is Metribay on your own server. It's free and open source under the Apache-2.0 licence.
+
+## Is it right for you?
+
+| | Self-hosted | Metribay Cloud |
+|---|---|---|
+| Cost | Free | See [Plans and billing](../billing/) |
+| People | One person | Teams with roles |
+| Workspaces | One, in the background | Up to 5 |
+| Projects and sources | No limit | 10 and 50 active |
+| Integrations | All seven | All seven |
+| Updates, backups, uptime | You | Us |
+| Google sign-in button | Your own Google app | Provided when available |
+
+Choose self-hosting if you're comfortable running a PHP application and want everything on your own hardware. Choose Cloud if you'd rather not look after a server, or want to work with others.
+
+:::note[Getting the source]
+The source code isn't published yet. [Email us](mailto:rob@worbee.com?subject=Metribay%20self-hosted) and we'll send you access.
+:::
+
+## Requirements
+
+- PHP 8.3 or later with the cURL, OpenSSL, PDO (SQLite or PostgreSQL), intl and mbstring extensions
+- Composer 2
+- SQLite for a personal installation, or PostgreSQL
+- A way to keep two background processes running, such as systemd or Supervisor, and cron
+- Node 24 only if you want to rebuild the frontend assets. The release includes them.
+
+## Install
+
+<Steps>
+
+1. Run the setup script from the repository root, then switch to the application:
+
+   ```sh
+   ./scripts/setup.sh
+   cd standalone
+   ```
+
+2. Create your account. The command asks for a password privately:
+
+   ```sh
+   php artisan metribay:install --email=you@example.com
+   ```
+
+3. Start the web server. For a quick local try:
+
+   ```sh
+   php artisan serve --host=127.0.0.1 --port=8000
+   ```
+
+   In production, serve the `standalone/public` directory over HTTPS with your web server.
+
+4. Start the queue worker and the scheduler as separate long-running processes:
+
+   ```sh
+   php artisan queue:work --timeout=900
+   php artisan schedule:work
+   ```
+
+   In production, run the worker under a process manager, and use one cron entry for `php artisan schedule:run` every minute instead of `schedule:work`.
+
+</Steps>
+
+Sign in with the email and password you chose. Registration is turned off: the installation belongs to the one account you created.
+
+:::tip[Just looking?]
+`php artisan metribay:demo --email=you@example.com` fills a non-production installation with clearly labelled sample data.
+:::
+
+## How collection runs
+
+The scheduler starts collection every four hours, uptime monitors every hour and a full history refresh once a week, exactly like in Cloud. Collection only happens while the queue worker and scheduler are running.
+
+To start a sync by hand:
+
+```sh
+php artisan metribay:sync                    # queue every active source
+php artisan metribay:sync --kind=github      # only one provider
+php artisan metribay:sync --except=uptimerobot
+php artisan metribay:sync --source=12        # one source by ID
+php artisan metribay:sync --full             # reread the whole history window
+php artisan metribay:sync --inline           # run now, without the queue
+```
+
+## Connecting providers
+
+Every integration works with your own credentials, exactly as described in the [integration guides](../integrations/). Nothing goes through Metribay's servers.
+
+To get a **Connect Google** button for Analytics and Search Console, create your own OAuth client:
+
+1. In the Google Cloud console, enable the Analytics Admin, Analytics Data and Search Console APIs.
+2. Create an OAuth client of type **Web application** with this redirect URI, using your own address: `https://metribay.example.com/integrations/google/callback`
+3. Add the details to your `.env` file:
+
+   ```dotenv
+   METRIBAY_GOOGLE_CLIENT_ID=your-client-id
+   METRIBAY_GOOGLE_CLIENT_SECRET=your-client-secret
+   METRIBAY_GOOGLE_REDIRECT_URI=https://metribay.example.com/integrations/google/callback
+   ```
+
+While your Google app is in testing mode, Google expires its sign-ins after seven days. Service accounts don't have that problem.
+
+## Production checklist
+
+- Serve over HTTPS with `APP_ENV=production` and `APP_DEBUG=false`.
+- Keep `.env`, the database and backups outside the public web directory.
+- Never cache signed-in pages at a CDN or proxy.
+- After updating, run migrations, publish assets and restart the worker:
+
+  ```sh
+  php artisan migrate --force
+  php artisan vendor:publish --tag=metribay-assets --force
+  php artisan queue:restart
+  ```
+
+- Configure a mail transport so password reset emails can reach you.
+
+## Backups
+
+Back up two things, separately:
+
+- **The database.** For SQLite, use SQLite's online backup rather than copying the file while it's in use. For PostgreSQL, use `pg_dump`.
+- **The `APP_KEY`.** Saved credentials are encrypted with it. Without the key, a database backup can't decrypt them. Don't change the key unless you've planned how to re-encrypt.
+
+Test a restore now and then. The [configuration export](../import-export/) is useful too, but it's not a full backup: it has no history and no credentials.
+
+## Moving to Metribay Cloud
+
+[Export your configuration](../import-export/), sign up for Cloud, add your saved accounts with the same names and import the file. Cloud then collects your history again from your providers, within each source's history window.

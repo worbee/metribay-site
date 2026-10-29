@@ -1,0 +1,47 @@
+---
+title: Welcome to Metribay
+description: Metribay puts traffic, search, downloads, repository activity and uptime for all your projects in one dashboard. Start here to learn how it works.
+tableOfContents: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Metribay is a dashboard for the projects you run. It reads numbers from the tools you already use, such as Google Analytics, Search Console, GitHub and UptimeRobot, and shows them side by side. You see how every project is doing without opening a tab for each tool.
+
+Metribay doesn't replace those tools. It only reads from them, and it never changes anything in them.
+
+## Where to start
+
+<CardGrid>
+  <LinkCard title="Quick start" description="Create an account, connect your first source and see your first chart in a few minutes." href="getting-started/" />
+  <LinkCard title="How Metribay is organised" description="Workspaces, projects, sources and saved accounts in one short page." href="concepts/" />
+  <LinkCard title="Connect your tools" description="Step-by-step guides for each of the seven integrations." href="integrations/" />
+  <LinkCard title="Reading the numbers" description="Why a dash isn't a zero, what “Partial” means and how comparisons work." href="reading-the-numbers/" />
+</CardGrid>
+
+## What you can do with Metribay
+
+- **See every project at once.** The overview lists each project with its latest numbers, small trend charts and a health status for each source.
+- **Compare periods.** Switch between the last 7, 30 or 90 days and see the change against the period before.
+- **Remember why things changed.** Add annotations for launches, campaigns or fixes. GitHub releases appear on their own.
+- **Work as a team.** Invite people to a workspace as owners, editors or viewers. *(Metribay Cloud)*
+- **Trust what you see.** Metribay shows missing data as missing, marks recent days that providers may still revise, and never adds up numbers that can't be added.
+
+## Ways to run Metribay
+
+| | Metribay Cloud | Self-hosted |
+|---|---|---|
+| Where it runs | Hosted for you in the EU at [app.metribay.com](https://app.metribay.com/) | Your own server |
+| People | Up to 5 workspaces with 10 members each | One person, one workspace |
+| Projects and sources | 10 active projects, 50 active sources | No limit |
+| Updates and backups | Done for you | Your job |
+
+Both editions have the same dashboard and the same integrations. See [Plans and billing](billing/) and [Run Metribay yourself](self-hosting/).
+
+:::note[The app is in English]
+The Metribay app is currently available in English. These docs are in English and German, and they use the app's English labels so you can find every button.
+:::
+
+## Need a hand?
+
+Check [Troubleshooting](troubleshooting/) first. If you're still stuck, email [rob@worbee.com](mailto:rob@worbee.com). Questions go straight to the person who builds Metribay.
