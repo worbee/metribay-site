@@ -1,0 +1,72 @@
+---
+title: Datenquellen hinzufügen und verwalten
+description: Füge einem Projekt mit der geführten Einrichtung eine Datenquelle hinzu und benenne, pausiere, verknüpfe oder prüfe sie später.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Eine Datenquelle bringt die Zahlen eines Anbieters in ein Projekt. Eine typische Website hat drei: Google Analytics für Besuche, Search Console für die Suche und UptimeRobot für die Verfügbarkeit.
+
+## Datenquelle hinzufügen
+
+Datenquellen gehören immer zu einem Projekt, deshalb fügst du sie im Projekt hinzu. Öffne das Projekt und wähle **Datenquelle hinzufügen**, oder nutze **Datenquelle hinzufügen** in seinen **Projekteinstellungen**. Noch kein Projekt? [Leg zuerst eins an](../projects/#projekt-anlegen).
+
+<Steps>
+
+1. **Anbieter.** Wähle, wo deine Daten liegen. Siehe [alle Integrationen](../integrations/).
+
+2. **Verbundenes Konto.** Wähle ein Konto unter **Verbundenes Konto verwenden**, melde dich beim Anbieter an (in Metribay Cloud zum Beispiel mit **Google verbinden**) oder öffne **Konto mit eigenen Zugangsdaten verbinden**. Mit **Konto speichern und weiter** wird das Konto sofort unter **Einstellungen → Verbundene Konten** gespeichert, auch wenn du vor dem letzten Schritt aufhörst. Die [Anleitung zu deiner Integration](../integrations/) erklärt, welche Zugangsdaten du brauchst.
+
+3. **Was erfasst wird.** Metribay listet die Websites, Properties, Repositorys oder Monitore, die dieses Konto sehen kann. Nutze den Filter und wähle eine aus.
+
+   Fehlt deine, prüfe, ob das Konto Zugriff darauf hat, und wähle dann **Liste aktualisieren**. Du kannst auch **Manuell eingeben** öffnen und die ID eintippen.
+
+4. **Bestätigen.** Unter **Erweiterte Einstellungen** legst du den **Namen der Datenquelle** und den **Verlaufszeitraum (Tage)** fest. Die Berichtszeitzone wird dir zur Information angezeigt.
+
+   Wähle **Hinzufügen und Import starten**.
+
+</Steps>
+
+Die Datenquelle entsteht erst, wenn du diesen letzten Schritt bestätigst.
+
+### Abbrechen und neu beginnen
+
+- Die Einrichtung wird nie fortgesetzt. Verlässt du die Seite vor dem letzten Schritt, wird verworfen, was du ins Formular eingegeben hast. Wähle wieder **Datenquelle hinzufügen**, um neu zu beginnen. Bereits verbundene Konten bleiben gespeichert.
+- **Abbrechen** bringt dich zurück zum Projekt.
+- **Anbieter wechseln** beginnt mit einem anderen Anbieter von vorn.
+- **Etwas anderes wählen** geht von der Bestätigung einen Schritt zurück.
+
+### Wer Datenquellen hinzufügen kann
+
+| | Eigentümer | Bearbeiter | Leser |
+|---|---|---|---|
+| Datenquelle mit neuem Konto hinzufügen | ✓ | | |
+| Datenquelle mit verbundenem Konto hinzufügen | ✓ | ✓ (Ressource manuell eingeben) | |
+| WordPress.org-Datenquelle hinzufügen | ✓ | ✓ | |
+
+Nur Eigentümer können Konten verbinden und alles durchsuchen, was ein Konto sehen kann, weil das Zugangsdaten berührt. In der selbst gehosteten Version bist du der Eigentümer.
+
+## Datenquelle verwalten
+
+Öffne das Projekt und wähle **Projekteinstellungen**, oder gehe zu **Einstellungen → Projekte** und wähle **Projekt und Datenquellen bearbeiten**. Jede Datenquelle zeigt ihren Anbieter, das verbundene Konto, ihre Zeitzone, die Ressourcen-ID, den Zeitpunkt der letzten Synchronisierung und ein etwaiges Erfassungsproblem. Öffne **Datenquelle verwalten**, um Folgendes zu ändern:
+
+- **Name der Datenquelle**: der Name im Dashboard.
+- **Erfassungszeitraum (Tage)**: der [Verlaufszeitraum](../syncing/#der-verlaufszeitraum), 1 bis 366 Tage.
+- **Verbundenes Konto**: das Konto, mit dem diese Datenquelle liest. Beim Wechsel bleibt der Verlauf erhalten. Praktisch, wenn du Zugangsdaten austauschst oder zu einem neuen Service-Account wechselst.
+- **Automatisch erfassen**: Ausschalten pausiert die Datenquelle. Ihr Verlauf bleibt erhalten.
+
+Wähle **Datenquelle speichern**. Unter dem Formular findest du **Jetzt synchronisieren** und, für Eigentümer, **Zugriff beim Anbieter prüfen**. Siehe [Aktualisierung und Sync](../syncing/).
+
+## Ändern, was eine Datenquelle erfasst
+
+Anbieter, Ressource und Zeitzone einer Datenquelle stehen fest, sobald sie angelegt ist. So bleibt ihr Verlauf stimmig: Ein Jahr Daten einer Property wird nie mit denen einer anderen vermischt.
+
+Willst du eine andere Property, ein anderes Repository oder einen anderen Monitor erfassen, füge eine neue Datenquelle hinzu und pausiere die alte. Beide behalten ihren eigenen Verlauf.
+
+## Datenquelle entfernen
+
+Es gibt keinen Löschen-Knopf für Datenquellen. Pausiere die Datenquelle stattdessen: Schalte **Automatisch erfassen** aus. Sie erfasst dann nichts mehr, zählt nicht mehr zu deinen Tariflimits und behält ihren Verlauf, falls du ihn wieder brauchst.
+
+## Mehrere Datenquellen derselben Art
+
+Du kannst einem Projekt beliebig viele Datenquellen hinzufügen, auch zwei vom selben Anbieter. Eine Website, die von Umami zu Google Analytics gewechselt ist, kann zum Beispiel beide zeigen. Gib jeder einen eindeutigen Namen.

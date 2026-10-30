@@ -3,11 +3,11 @@ title: Pläne und Abrechnung
 description: Was Metribay Cloud kostet, was für deine Grenzen zählt und was passiert, wenn ein Testzeitraum oder Abonnement endet.
 ---
 
-Öffne **Billing** in der Navigation, um deinen Plan und deine Nutzung zu sehen.
+Öffne **Abrechnung** in der Navigation, um deinen Plan und deine Nutzung zu sehen.
 
 ## Derzeit kostenloser Zugang
 
-Metribay Cloud ist derzeit kostenlos. Auf deiner Abrechnungsseite steht **Free access**:
+Metribay Cloud ist derzeit kostenlos. Auf deiner Abrechnungsseite steht **Kostenloser Zugang**:
 
 - keine Zahlungsdaten nötig,
 - alle Integrationen und die geplante Erfassung inklusive,
@@ -42,7 +42,7 @@ Ein Abonnement deckt alle Arbeitsbereiche ab, die dir gehören. Die Grenzen gelt
 - Ein **Projekt** zählt, solange es aktiv ist. Archivierte Projekte zählen nicht.
 - Eine **Datenquelle** zählt, solange sie erfasst. Pausierte Datenquellen und Datenquellen in archivierten Projekten zählen nicht.
 
-So kannst du alte Projekte wegen ihres Verlaufs behalten, ohne dafür zu zahlen. Deine Nutzung steht auf der Abrechnungsseite und oben unter **Settings**.
+So kannst du alte Projekte wegen ihres Verlaufs behalten, ohne dafür zu zahlen. Deine Nutzung steht auf der Abrechnungsseite und oben unter **Einstellungen**.
 
 Du verfolgst ein ganzes Portfolio von Unternehmen? Schreib an [rob@worbee.com](mailto:rob@worbee.com), wir finden einen passenden Plan.
 
@@ -50,7 +50,7 @@ Du verfolgst ein ganzes Portfolio von Unternehmen? Schreib an [rob@worbee.com](m
 
 Der Plan beginnt mit einem **kostenlosen Testzeitraum von 14 Tagen**. Zum Start hinterlegst du eine Zahlungsmethode. Kündigst du innerhalb der 14 Tage, zahlst du nichts. Sonst startet der Plan automatisch.
 
-Zum Abschließen wählst du auf der Abrechnungsseite eine **Billing period** und dann **Continue to Paddle**. [Paddle](https://www.paddle.com/) ist unser Wiederverkäufer: Paddle wickelt Checkout, Zahlung, Steuern und Rechnungen ab und ist Merchant of Record für deine Bestellung.
+Zum Abschließen wählst du auf der Abrechnungsseite eine **Abrechnungszeitraum** und dann **Weiter zu Paddle**. [Paddle](https://www.paddle.com/) ist unser Wiederverkäufer: Paddle wickelt Checkout, Zahlung, Steuern und Rechnungen ab und ist Merchant of Record für deine Bestellung.
 
 ## Rechnungen, Zahlungsdaten und Kündigung
 

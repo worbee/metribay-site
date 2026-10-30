@@ -31,21 +31,21 @@ Einige Anbieter funktionieren etwas anders:
 
 ## Der Verlaufszeitraum
 
-Der Verlaufszeitraum (in der App **History window** oder **Collection window**) legt fest, wie viele Tage Metribay zurückliest, von 1 bis 366. Standard sind 180 Tage. Du wählst ihn beim Hinzufügen einer Datenquelle unter **Advanced settings** und kannst ihn später unter **Settings → Sources → Manage source** ändern.
+Der Verlaufszeitraum (in der App auch **Erfassungszeitraum**) legt fest, wie viele Tage Metribay zurückliest, von 1 bis 366. Standard sind 180 Tage. Du wählst ihn beim Hinzufügen einer Datenquelle unter **Erweiterte Einstellungen** und kannst ihn später unter **Projekteinstellungen → Datenquelle verwalten** ändern.
 
 Ein längerer Zeitraum bringt dir vom ersten Tag an mehr Verlauf, der erste Import dauert aber länger. Metribay behält alles, was es erfasst hat. Dein Verlauf wächst mit der Zeit also über den Zeitraum hinaus.
 
 ## Sync now
 
-Brauchst du sofort neue Daten? Wähle **Sync now** neben einer Datenquelle auf ihrer Projektseite oder unter **Settings → Sources**. Die Synchronisierung läuft im Hintergrund, und die Seite aktualisiert sich, wenn sie fertig ist.
+Brauchst du sofort neue Daten? Wähle **Jetzt synchronisieren** neben einer Datenquelle auf ihrer Projektseite oder unter **Projekteinstellungen**. Die Synchronisierung läuft im Hintergrund, und die Seite aktualisiert sich, wenn sie fertig ist.
 
-- **Sync now** steht nur Eigentümern und Bearbeitern zur Verfügung.
+- **Jetzt synchronisieren** steht nur Eigentümern und Bearbeitern zur Verfügung.
 - Bei pausierten Datenquellen und archivierten Projekten ist es deaktiviert.
 - In Metribay Cloud kannst du jede Datenquelle einmal alle 15 Minuten synchronisieren. Geplante Synchronisierungen laufen davon unabhängig weiter.
 
 ## Zugriff prüfen
 
-Eigentümer können unter **Settings → Sources** **Check provider access** wählen. Das prüft, ob das gespeicherte Konto die Ressource noch erreicht, ohne Daten zu importieren. Nutze es, nachdem du beim Anbieter Rechte geändert hast. In Metribay Cloud geht das einmal pro Minute und Datenquelle.
+Eigentümer können unter **Projekteinstellungen** **Zugriff beim Anbieter prüfen** wählen. Das prüft, ob das verbundene Konto die Ressource noch erreicht, ohne Daten zu importieren. Nutze es, nachdem du beim Anbieter Rechte geändert hast. In Metribay Cloud geht das einmal pro Minute und Datenquelle.
 
 ## Anfragelimits
 
@@ -53,4 +53,4 @@ Anbieter begrenzen, wie viele Anfragen ein Konto stellen darf. Metribay verteilt
 
 ## Erfassung pausieren
 
-Willst du für eine Datenquelle keine neuen Daten mehr erfassen, schalte unter **Settings → Sources → Manage source** **Collect automatically** aus. Die Datenquelle steht dann auf *Paused* und behält ihren Verlauf. Schaltest du es wieder ein, holt die nächste Synchronisierung innerhalb des Verlaufszeitraums auf.
+Willst du für eine Datenquelle keine neuen Daten mehr erfassen, schalte unter **Projekteinstellungen → Datenquelle verwalten** **Automatisch erfassen** aus. Die Datenquelle steht dann auf *Paused* und behält ihren Verlauf. Schaltest du es wieder ein, holt die nächste Synchronisierung innerhalb des Verlaufszeitraums auf.

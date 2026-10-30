@@ -1,9 +1,9 @@
 ---
 title: Arbeitsbereiche
-description: Trenne Unternehmen oder Kunden sauber, jeweils mit eigenen Projekten, gespeicherten Konten, Verlauf und Team. Nur in Metribay Cloud.
+description: Trenne Unternehmen oder Kunden sauber, jeweils mit eigenen Projekten, verbundenen Konten, Verlauf und Team. Nur in Metribay Cloud.
 ---
 
-Ein Arbeitsbereich (in der App **Workspace**) enthält alles für ein Unternehmen, einen Kunden oder ein Portfolio: Projekte, gespeicherte Konten, den Verlauf der Kennzahlen und die Teammitglieder. Zwischen Arbeitsbereichen wird nichts geteilt. Ein Kunde sieht also immer nur seine eigenen Daten.
+Ein Arbeitsbereich enthält alles für ein Unternehmen, einen Kunden oder ein Portfolio: Projekte, verbundene Konten, den Verlauf der Kennzahlen und die Teammitglieder. Zwischen Arbeitsbereichen wird nichts geteilt. Ein Kunde sieht also immer nur seine eigenen Daten.
 
 :::note[Metribay Cloud]
 Mehrere Arbeitsbereiche gibt es mit Metribay Cloud. Die selbst gehostete Version hat einen Arbeitsbereich, der im Hintergrund bleibt. Darum musst du dich dort nicht kümmern.
@@ -23,30 +23,30 @@ Willst du nur deine eigenen Projekte ordnen, reicht meist ein Arbeitsbereich.
 
 ## Arbeitsbereich anlegen
 
-1. Öffne das Kontomenü (dein Anfangsbuchstabe oben rechts) und wähle **Workspaces**.
-2. Wähle **New workspace**.
-3. Gib einen **Workspace name** ein und wähle **Create workspace**.
+1. Öffne das Profilmenü (dein Anfangsbuchstabe oben rechts) und wähle **Arbeitsbereiche**.
+2. Wähle **Neuer Arbeitsbereich**.
+3. Gib einen **Name des Arbeitsbereichs** ein und wähle **Arbeitsbereich erstellen**.
 
 Du kannst bis zu fünf Arbeitsbereiche besitzen. Arbeitsbereiche, in die dich andere eingeladen haben, zählen nicht dazu.
 
 ## Zwischen Arbeitsbereichen wechseln
 
-Wähle den Namen des Arbeitsbereichs in der Kopfzeile, um den Umschalter zu öffnen, oder geh im Kontomenü zu **Workspaces** und wähle einen aus. **Overview**, **Settings** und **Team** zeigen immer den aktuellen Arbeitsbereich.
+Wähle den Namen des Arbeitsbereichs in der Kopfzeile, um den Umschalter zu öffnen, oder geh im Profilmenü zu **Arbeitsbereiche** und wähle einen aus. **Übersicht**, **Einstellungen** und **Team** zeigen immer den aktuellen Arbeitsbereich.
 
 ## Arbeitsbereich umbenennen
 
-Geh zu **Settings → Workspace**, ändere den **Workspace name** und wähle **Save name**. Nur Eigentümer können einen Arbeitsbereich umbenennen.
+Geh zu **Einstellungen → Arbeitsbereich**, ändere den **Name des Arbeitsbereichs** und wähle **Namen speichern**. Nur Eigentümer können einen Arbeitsbereich umbenennen.
 
 ## Was zu einem Arbeitsbereich gehört
 
 | Gehört zum Arbeitsbereich | Gehört zu dir |
 |---|---|
 | Projekte und Datenquellen | Name, E-Mail-Adresse und Passwort |
-| Gespeicherte Konten | Zwei-Faktor-Authentifizierung |
-| Verlauf der Kennzahlen und Notizen | Dein Abonnement und die Abrechnung |
+| Verbundene Konten | Zwei-Faktor-Authentifizierung |
+| Verlauf der Kennzahlen und Ereignisse | Dein Abonnement und die Abrechnung |
 | Teammitglieder und Einladungen | Darstellung (pro Gerät) |
 
-Gespeicherte Konten lassen sich nicht zwischen Arbeitsbereichen teilen. Lesen zwei Arbeitsbereiche über dasselbe Google-Dienstkonto, füge es in jedem hinzu.
+Verbundene Konten lassen sich nicht zwischen Arbeitsbereichen teilen. Lesen zwei Arbeitsbereiche über dasselbe Google-Dienstkonto, füge es in jedem hinzu.
 
 ## Abrechnung über alle Arbeitsbereiche
 

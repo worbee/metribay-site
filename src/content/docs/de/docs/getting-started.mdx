@@ -1,6 +1,6 @@
 ---
 title: Schnellstart
-description: Ein Konto bei Metribay Cloud anlegen, die erste Datenquelle verbinden und die ersten Zahlen sehen.
+description: Ein Konto bei Metribay Cloud anlegen, das erste Projekt und die erste Datenquelle hinzufügen und die ersten Zahlen sehen.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -24,41 +24,54 @@ Diese Anleitung bringt dich vom fehlenden Konto zum ersten Diagramm. Das dauert 
 Metribay legt deinen ersten Arbeitsbereich automatisch an. Du landest in einer leeren Projektübersicht.
 
 :::tip[Keine E-Mail bekommen?]
-Sieh im Spam-Ordner nach und versuche es dann noch einmal über die Registrierungsseite. Aus Datenschutzgründen verrät die Seite nie, ob es zu einer Adresse schon ein Konto gibt. Hast du dich früher schon registriert, nutze auf der Anmeldeseite **Forgot password**.
+Sieh im Spam-Ordner nach und versuche es dann noch einmal über die Registrierungsseite. Aus Datenschutzgründen verrät die Seite nie, ob es zu einer Adresse schon ein Konto gibt. Hast du dich früher schon registriert, nutze auf der Anmeldeseite **Passwort vergessen?**.
 :::
 
-## 2. Erste Datenquelle verbinden
+## 2. Erstes Projekt anlegen
 
-Eine Datenquelle ist eine Verbindung, die ein Projekt mit Zahlen versorgt, etwa eine Search-Console-Property oder ein GitHub-Repository.
+Ein Projekt ist eine Website, App oder ein Produkt, das du verfolgen willst.
 
 <Steps>
 
-1. Wähle in der Übersicht **Add your first source**.
+1. Wähle in der Übersicht **Erstelle dein erstes Projekt**.
 
-2. **Provider.** Wähle, wo deine Daten liegen. Willst du Metribay nur ausprobieren, nimm **WordPress.org**. Dafür brauchst du kein Konto: Such einfach nach einem beliebigen Plugin.
-
-3. **Account.** Wähle ein gespeichertes Konto oder gib Zugangsdaten für ein neues ein. Die [Anleitung zur jeweiligen Integration](../integrations/) erklärt genau, was du eingeben musst. Metribay prüft die Zugangsdaten, bevor es sie speichert.
-
-4. **Resource.** Wähle die Website, Property, das Repository oder den Monitor, den du verfolgen willst. Metribay zeigt nur, was dieses Konto tatsächlich sehen kann. Du kannst die Angabe auch von Hand eintragen.
-
-5. **Connect.** Wähle ein vorhandenes Projekt oder lege ein neues an und wähle dann **Connect and start import**.
+2. Gib einen **Projektnamen** und optional eine **Domain** ein und wähle **Projekt erstellen**.
 
 </Steps>
 
-Du kannst die Einrichtung jederzeit mit **Save for later** verlassen. Wählst du innerhalb einer Stunde im selben Browser wieder **Add source**, machst du dort weiter, wo du aufgehört hast.
+## 3. Erste Datenquelle hinzufügen
 
-## 3. Auf den ersten Import warten
+Eine Datenquelle ist genau ein Ding, das Metribay für das Projekt erfasst, etwa eine Search-Console-Property oder ein GitHub-Repository. Sie liest über ein verbundenes Konto: deinen Login bei diesem Anbieter.
+
+<Steps>
+
+1. Wähle auf der Projektseite **Datenquelle hinzufügen**.
+
+2. **Anbieter.** Wähle, wo deine Daten liegen. Willst du Metribay nur ausprobieren, nimm **WordPress.org**. Dafür brauchst du kein Konto: Such einfach nach einem beliebigen Plugin.
+
+3. **Verbundenes Konto.** Melde dich beim Anbieter an, wähle ein Konto, das du schon verbunden hast, oder gib Zugangsdaten für ein neues ein. Die [Anleitung zur jeweiligen Integration](../integrations/) erklärt genau, was du eingeben musst.
+
+4. **Was erfasst wird.** Wähle die Website, Property, das Repository oder den Monitor, den du verfolgen willst. Metribay zeigt nur, was dieses Konto tatsächlich sehen kann. Du kannst die Angabe auch von Hand eintragen.
+
+5. **Bestätigen.** Wähle **Hinzufügen und Import starten**.
+
+</Steps>
+
+Verlässt du die Einrichtung vor dem letzten Schritt, beginnt sie beim nächsten Mal neu. Bereits gespeicherte Konten bleiben unter **Einstellungen → Verbundene Konten**.
+
+## 4. Auf den ersten Import warten
 
 Der erste Import liest bis zu 180 Tage Verlauf. Er läuft im Hintergrund, du kannst die Seite also schließen. Die meisten Datenquellen sind nach wenigen Minuten fertig. Große GitHub-Repositorys und lange Zeiträume dauern länger.
 
-Währenddessen zeigt die Übersicht eine kurze Checkliste, und die Datenquelle steht auf **Awaiting first sync**. Sobald der Import fertig ist, erscheinen deine Zahlen und Diagramme.
+Währenddessen zeigt die Übersicht eine kurze Checkliste, und die Datenquelle steht auf **Wartet auf erste Synchronisierung**. Sobald der Import fertig ist, erscheinen deine Zahlen und Diagramme.
 
-## 4. Mach es zu deinem Dashboard
+## 5. Mach es zu deinem Dashboard
 
-- [Füge weitere Datenquellen](../sources/) zum selben Projekt hinzu. Eine Website hat zum Beispiel Google Analytics, Search Console und einen Uptime-Monitor.
-- [Ergänze Notizen](../annotations/) zu Launches und Änderungen, damit du später noch weißt, warum sich ein Diagramm bewegt hat.
+- [Füge weitere Datenquellen](../data-sources/) zum selben Projekt hinzu. Eine Website hat zum Beispiel Google Analytics, Search Console und einen Uptime-Monitor.
+- [Füge Ereignisse hinzu](../events/) für Launches und Änderungen, damit du später noch weißt, warum sich ein Diagramm bewegt hat.
 - [Lade dein Team ein](../team/) als Bearbeiter oder Leser.
-- [Aktiviere die Zwei-Faktor-Authentifizierung](../account/#zwei-faktor-authentifizierung) für dein Konto.
+- Lieber auf Englisch? Stell die [Sprache](../profile/#sprache) in deinem Profil um.
+- [Aktiviere die Zwei-Faktor-Authentifizierung](../profile/#zwei-faktor-authentifizierung) für dein Konto.
 
 ## Wie es weitergeht
 

@@ -11,9 +11,9 @@ Verfolge die Besuche jeder Google-Analytics-4-Property.
 
 | Kennzahl | Bedeutung in Google Analytics | Wert im Zeitraum |
 |---|---|---|
-| **Visitors** | Nutzer insgesamt | Genaue eindeutige Nutzer für den ganzen Zeitraum |
-| **Visits** | Sitzungen | Summe der Tage |
-| **Page views** | Aufrufe (Seiten und Bildschirme) | Summe der Tage |
+| **Besucher** | Nutzer insgesamt | Genaue eindeutige Nutzer für den ganzen Zeitraum |
+| **Besuche** | Sitzungen | Summe der Tage |
+| **Seitenaufrufe** | Aufrufe (Seiten und Bildschirme) | Summe der Tage |
 
 Tage werden in der Berichtszeitzone deiner Property gezählt, die Tageswerte stimmen also mit Google Analytics überein. Die letzten drei Tage gelten als vorläufig, weil Google sie noch korrigieren kann.
 
@@ -27,7 +27,7 @@ Du brauchst:
 Ein **Dienstkonto** (Service Account) ist ein Google-Konto für Software. Du gibst ihm Lesezugriff auf deine Property, so wie du eine Kollegin hinzufügen würdest, und Metribay meldet sich damit an. Dasselbe Dienstkonto kannst du für alle deine Properties und für die [Search Console](../search-console/) nutzen.
 
 :::note[Connect Google]
-Siehst du beim Hinzufügen der Datenquelle einen Button **Connect Google**, kannst du dich stattdessen mit deinem eigenen Google-Konto anmelden und dir das Dienstkonto sparen. Metribay fragt dabei nur Lesezugriff auf Analytics an.
+Siehst du beim Hinzufügen der Datenquelle einen Button **Google verbinden**, kannst du dich stattdessen mit deinem eigenen Google-Konto anmelden und dir das Dienstkonto sparen. Metribay fragt dabei nur Lesezugriff auf Analytics an.
 :::
 
 ## Schritt 1: Dienstkonto erstellen
@@ -68,15 +68,15 @@ Manche Google-Workspace-Organisationen sperren Schlüssel für Dienstkonten per 
 
 <Steps>
 
-1. Wähle **Add source** und dann **Google Analytics 4**.
+1. Wähle auf der Projektseite **Datenquelle hinzufügen** und dann **Google Analytics 4**.
 
-2. Öffne **Use your own credentials** und füge den **ganzen Inhalt** der JSON-Datei in **Service account JSON** ein.
+2. Öffne **Konto mit eigenen Zugangsdaten verbinden** und füge den **ganzen Inhalt** der JSON-Datei in **Service-Account-JSON** ein.
 
-3. Wähle **Save account and continue**. Metribay prüft den Schlüssel.
+3. Wähle **Konto speichern und weiter**. Metribay prüft den Schlüssel.
 
 4. Wähle deine Property aus der Liste. Ihre Zeitzone wird automatisch übernommen.
 
-5. Wähle ein Projekt und dann **Connect and start import**.
+5. Wähle **Hinzufügen und Import starten**.
 
 </Steps>
 
@@ -84,20 +84,20 @@ Die heruntergeladene JSON-Datei kannst du danach löschen. Metribay hat eine ver
 
 ### Property von Hand eintragen
 
-Ist die Liste leer, öffne **Enter a resource manually**:
+Ist die Liste leer, öffne **Manuell eingeben**:
 
-- **Property ID**: die Zahl unter **Verwaltung → Property-Details**, etwa `412345678`. Das ist nicht die Mess-ID mit `G-`.
-- **Property reporting timezone**: die Zeitzone unter **Verwaltung → Property-Details**. Sie muss passen, sonst verschieben sich deine Tage.
+- **Property-ID**: die Zahl unter **Verwaltung → Property-Details**, etwa `412345678`. Das ist nicht die Mess-ID mit `G-`.
+- **Berichtszeitzone der Property**: die Zeitzone unter **Verwaltung → Property-Details**. Sie muss passen, sonst verschieben sich deine Tage.
 
 ## Für Fortgeschrittene: OAuth-Refresh-Token
 
-Statt eines Dienstkontos kannst du auch deine eigene Google-OAuth-App nutzen. Öffne **Use OAuth credentials instead** und trag **Client Id**, **Client Secret** und ein **Refresh Token** mit dem Scope `analytics.readonly` ein. Lass **Service account JSON** leer. Das lohnt sich nur, wenn du ohnehin eine Google-OAuth-App betreibst.
+Statt eines Dienstkontos kannst du auch deine eigene Google-OAuth-App nutzen. Öffne **Stattdessen OAuth-Zugangsdaten verwenden** und trag **Client-ID**, **Client-Secret** und ein **Refresh-Token** mit dem Scope `analytics.readonly` ein. Lass **Service-Account-JSON** leer. Das lohnt sich nur, wenn du ohnehin eine Google-OAuth-App betreibst.
 
 ## Wenn die Erfassung fehlschlägt
 
-**Die Property fehlt in der Liste.** Das Dienstkonto wurde ihr noch nicht hinzugefügt, oder die Admin API ist nicht aktiviert. Prüf Schritt 2, warte eine Minute und wähle dann **Refresh resources**.
+**Die Property fehlt in der Liste.** Das Dienstkonto wurde ihr noch nicht hinzugefügt, oder die Admin API ist nicht aktiviert. Prüf Schritt 2, warte eine Minute und wähle dann **Liste aktualisieren**.
 
-**„Needs attention“, obwohl es vorher lief.** Vielleicht hat jemand den Zugriff des Dienstkontos entfernt oder seinen Schlüssel gelöscht. Füg es erneut hinzu oder erstell einen neuen Schlüssel und [aktualisiere das gespeicherte Konto](../../saved-accounts/#zugangsdaten-ändern-oder-erneuern).
+**„Needs attention“, obwohl es vorher lief.** Vielleicht hat jemand den Zugriff des Dienstkontos entfernt oder seinen Schlüssel gelöscht. Füg es erneut hinzu oder erstell einen neuen Schlüssel und [aktualisiere das verbundene Konto](../../connected-accounts/#zugangsdaten-ändern-oder-erneuern).
 
 **Stichproben, Schwellenwerte oder eingeschränkte Daten.** Metribay speichert keine Zahlen, die Google geschätzt, ausgeblendet oder gekürzt hat. Wendet Google Schwellenwerte an, was bei aktivierten Google Signals häufig passiert, braucht die Datenquelle Aufmerksamkeit. Öffne in Google Analytics **Verwaltung → Berichtsidentität** und wähle **Gerätebasiert**. Das entfernt die Schwellenwerte für diese Summen meist.
 

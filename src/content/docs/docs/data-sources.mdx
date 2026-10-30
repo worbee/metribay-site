@@ -1,0 +1,72 @@
+---
+title: Add and manage data sources
+description: Add a data source to a project with the guided setup, then rename, pause, switch accounts or check it.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+A data source feeds one provider's numbers into one project. A typical website has three: Google Analytics for traffic, Search Console for search and UptimeRobot for uptime.
+
+## Add a data source
+
+Data sources always belong to a project, so you add them from the project. Open the project and select **Add data source**, or use **Add data source** in its **Project settings**. Don't have a project yet? [Create one first](../projects/#create-a-project).
+
+<Steps>
+
+1. **Provider.** Choose where your data lives. See [all integrations](../integrations/).
+
+2. **Connected account.** Choose an account under **Use a connected account**, sign in with the provider (for example **Connect Google** in Metribay Cloud), or open **Connect an account with your own credentials**. Selecting **Save account and continue** saves the account straight away under **Settings → Connected accounts**, even if you stop before the last step. Your [integration guide](../integrations/) explains which credentials to use.
+
+3. **What to track.** Metribay lists the websites, properties, repositories or monitors this account can see. Use the filter to find one and select it.
+
+   If yours is missing, check that the account has access to it, then select **Refresh list**. You can also open **Enter it manually** and type its ID.
+
+4. **Confirm.** Under **Advanced settings** you can set a **Data source label** and the **History window (days)**. The reporting timezone is shown for your information.
+
+   Select **Add and start import**.
+
+</Steps>
+
+The data source is only created when you confirm this last step.
+
+### Leave and start again
+
+- Setup never resumes. If you leave the page before the last step, what you entered in the form is discarded. Select **Add data source** again to start fresh. Accounts you already saved stay saved.
+- **Cancel** takes you back to the project.
+- **Change provider** starts over with a different provider.
+- **Choose something else** goes back one step from the confirmation.
+
+### Who can add data sources
+
+| | Owner | Editor | Viewer |
+|---|---|---|---|
+| Add a data source with a new account | ✓ | | |
+| Add a data source with a connected account | ✓ | ✓ (enter the resource manually) | |
+| Add a WordPress.org data source | ✓ | ✓ | |
+
+Only owners can connect accounts and browse everything an account can see, because that touches credentials. In the self-hosted edition, you are the owner.
+
+## Manage a data source
+
+Open the project and select **Project settings**, or go to **Settings → Projects** and choose **Edit project and data sources**. Each data source shows its provider, the connected account it uses, its timezone, resource ID, the time of the last sync and any recent collection issue. Open **Manage data source** to change:
+
+- **Data source label**: the name shown on the dashboard.
+- **Collection window (days)**: the [history window](../syncing/#the-history-window), from 1 to 366 days.
+- **Connected account**: the account this data source reads with. Switching keeps the data source's history. Useful when you rotate credentials or move to a new service account.
+- **Collect automatically**: turn off to pause the data source. It keeps its history.
+
+Select **Save data source** to apply. Below the form you'll find **Sync now** and, for owners, **Check provider access**. See [Updates and syncing](../syncing/).
+
+## Change what a data source tracks
+
+A data source's provider, resource and timezone are fixed once it's created. This keeps its history consistent: a year of data from one property never gets mixed with another's.
+
+If you need to track a different property, repository or monitor, add a new data source and pause the old one. Both keep their own history.
+
+## Remove a data source
+
+There's no delete button for data sources. Pause the data source instead: turn off **Collect automatically**. It stops collecting, stops counting towards your plan limits and keeps its history in case you need it again.
+
+## Several data sources of the same kind
+
+You can add as many data sources to a project as you like, even two of the same provider. For example, a site that moved from Umami to Google Analytics can show both. Give each a clear label.

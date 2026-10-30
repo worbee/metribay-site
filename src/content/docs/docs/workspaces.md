@@ -1,9 +1,9 @@
 ---
 title: Workspaces
-description: Keep each business or client separate with its own projects, saved accounts, history and team. Metribay Cloud only.
+description: Keep each business or client separate with its own projects, connected accounts, history and team. Metribay Cloud only.
 ---
 
-A workspace holds everything for one business, client or portfolio: projects, saved accounts, metric history and team members. Nothing is shared between workspaces, so a client only ever sees their own data.
+A workspace holds everything for one business, client or portfolio: projects, connected accounts, metric history and team members. Nothing is shared between workspaces, so a client only ever sees their own data.
 
 :::note[Metribay Cloud]
 Multiple workspaces are part of Metribay Cloud. The self-hosted edition has one workspace that stays in the background, so you never need to think about it.
@@ -23,7 +23,7 @@ If you just want to organise your own projects, one workspace is usually enough.
 
 ## Create a workspace
 
-1. Open the account menu (your initial, top right) and choose **Workspaces**.
+1. Open the profile menu (your initial, top right) and choose **Workspaces**.
 2. Select **New workspace**.
 3. Enter a **Workspace name** and select **Create workspace**.
 
@@ -31,7 +31,7 @@ You can own up to five workspaces. Workspaces other people invite you to don't c
 
 ## Switch between workspaces
 
-Select the workspace name in the header to open the switcher, or go to **Workspaces** in the account menu and pick one. **Overview**, **Settings** and **Team** always show the current workspace.
+Select the workspace name in the header to open the switcher, or go to **Workspaces** in the profile menu and pick one. **Overview**, **Settings** and **Team** always show the current workspace.
 
 ## Rename a workspace
 
@@ -41,12 +41,12 @@ Go to **Settings → Workspace**, change the **Workspace name** and select **Sav
 
 | Belongs to the workspace | Belongs to you |
 |---|---|
-| Projects and sources | Your name, email and password |
-| Saved accounts | Two-factor authentication |
-| Metric history and annotations | Your subscription and billing |
+| Projects and data sources | Your name, email and password |
+| Connected accounts | Two-factor authentication |
+| Metric history and events | Your subscription and billing |
 | Team members and invitations | Appearance preferences (per device) |
 
-Saved accounts can't be shared across workspaces. If two workspaces read from the same Google service account, add it to each.
+Connected accounts can't be shared across workspaces. If two workspaces read from the same Google service account, add it to each.
 
 ## Billing across workspaces
 

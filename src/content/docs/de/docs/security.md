@@ -11,7 +11,7 @@ Du verbindest echte Konten mit Metribay. So gehen wir damit um.
 - **So wenig Zugriff wie möglich.** Gib jedem Konto nur Zugriff auf das, was du verfolgen willst, etwa ausgewählte Repositorys oder eine einzelne Property.
 - **Verschlüsselt gespeichert.** API-Schlüssel, Tokens, Passwörter und Schlüssel von Dienstkonten werden vor dem Speichern verschlüsselt.
 - **Nie wieder angezeigt.** Nach dem Speichern tauchen Zugangsdaten weder in der App noch in Fehlermeldungen, Logs oder Exporten auf. Auch Eigentümer können sie nicht auslesen.
-- **An den Arbeitsbereich gebunden.** Ein gespeichertes Konto lässt sich nur in seinem eigenen Arbeitsbereich nutzen, und in Metribay Cloud können nur Eigentümer eins anlegen oder ändern.
+- **An den Arbeitsbereich gebunden.** Ein verbundenes Konto lässt sich nur in seinem eigenen Arbeitsbereich nutzen, und in Metribay Cloud können nur Eigentümer eins anlegen oder ändern.
 - **Nur öffentliches HTTPS.** Metribay verbindet sich nur mit den öffentlichen HTTPS-Adressen der Anbieter und folgt keinen Weiterleitungen anderswohin.
 - **Dein Zugriff, nicht der eines anderen.** Metribay Cloud liest Daten nur über die Konten, die du verbindest. Es verschafft sich nie über ein eigenes, geteiltes Konto Zugriff auf deine Daten.
 
@@ -19,7 +19,7 @@ Du kannst Metribay den Zugriff jederzeit beim Anbieter entziehen: Entferne das D
 
 ## Dein Metribay-Konto
 
-- **Zwei-Faktor-Authentifizierung** mit einer Authenticator-App. Siehe [Konto und Sicherheit](../account/#zwei-faktor-authentifizierung).
+- **Zwei-Faktor-Authentifizierung** mit einer Authenticator-App. Siehe [Konto und Sicherheit](../profile/#zwei-faktor-authentifizierung).
 - **Rollen** geben jeder Person nur den Zugriff, den sie braucht. Siehe [Teammitglieder und Rollen](../team/).
 - **Diskrete Registrierung und Wiederherstellung.** Registrierung und Passwort-Zurücksetzen verraten nie, ob es zu einer E-Mail-Adresse ein Konto gibt.
 
@@ -34,7 +34,7 @@ Die selbst gehostete Version speichert alles auf deinem eigenen Server und spric
 ## Was Metribay speichert
 
 - deinen Namen, deine E-Mail-Adresse und dein Passwort (als Hash),
-- deine Arbeitsbereiche, Projekte, Datenquellen, Notizen und dein Team,
+- deine Arbeitsbereiche, Projekte, Datenquellen, Ereignisse und dein Team,
 - verschlüsselte Zugangsdaten für Anbieter,
 - die täglichen Kennzahlen, die von deinen Anbietern erfasst werden.
 

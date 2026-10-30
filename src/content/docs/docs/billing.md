@@ -12,7 +12,7 @@ Metribay Cloud is currently free to use. Your billing page says **Free access**:
 - no payment details needed,
 - all integrations and scheduled collection included,
 - up to 5 workspaces with 10 members each,
-- no limit on projects or sources while free access lasts.
+- no limit on projects or data sources while free access lasts.
 
 We'll announce any move to paid plans before it happens. Nobody is charged without first choosing a plan.
 
@@ -30,7 +30,7 @@ The plan includes:
 | | Limit |
 |---|---|
 | Active projects | 10 |
-| Active sources | 50 |
+| Active data sources | 50 |
 | Workspaces you own | 5 |
 | Members per workspace | 10, including you |
 | Integrations | All of them |
@@ -40,7 +40,7 @@ One subscription covers every workspace you own. Limits count across all of them
 ### What counts
 
 - A **project** counts while it's active. Archived projects don't count.
-- A **source** counts while it's collecting. Paused sources, and sources in archived projects, don't count.
+- A **data source** counts while it's collecting. Paused data sources, and data sources in archived projects, don't count.
 
 So you can keep old projects for their history without paying for them. Your usage is shown on the billing page and at the top of **Settings**.
 
@@ -62,11 +62,11 @@ When you cancel, you keep full access until the end of the period you've paid fo
 
 If a trial ends without a subscription, or a subscription ends:
 
-- **Collection and changes pause.** No new data is collected, and projects and sources can't be changed.
+- **Collection and changes pause.** No new data is collected, and projects and data sources can't be changed.
 - **Your data stays.** You can still sign in, see your full history and export your configuration.
 - **Shared access pauses.** Team members can't open your workspaces until the plan is active again.
 
-Subscribe again and everything picks up where it left off, including your team's roles. Collection catches up within each source's history window.
+Subscribe again and everything picks up where it left off, including your team's roles. Collection catches up within each data source's history window.
 
 ## Refunds
 

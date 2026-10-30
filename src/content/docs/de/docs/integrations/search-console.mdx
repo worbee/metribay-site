@@ -11,8 +11,8 @@ Sieh, wie deine Websites in der Google-Suche abschneiden.
 
 | Kennzahl | Bedeutung | Wert im Zeitraum |
 |---|---|---|
-| **Clicks** | Klicks aus den Google-Suchergebnissen auf deine Website | Summe der Tage |
-| **Impressions** | Wie oft deine Website in den Ergebnissen erschien | Summe der Tage |
+| **Klicks** | Klicks aus den Google-Suchergebnissen auf deine Website | Summe der Tage |
+| **Impressionen** | Wie oft deine Website in den Ergebnissen erschien | Summe der Tage |
 
 Search Console zählt Tage in **pazifischer Zeit** (America/Los_Angeles), Metribay ebenso. Google veröffentlicht zuerst frische und zwei bis drei Tage später endgültige Zahlen. Metribay zeigt die frischen Zahlen als vorläufig und ersetzt sie, sobald die endgültigen bereitstehen.
 
@@ -23,7 +23,7 @@ Du brauchst **Inhaber**-Zugriff auf die Search-Console-Property, damit du einen 
 Hast du schon eins für [Google Analytics 4](../google-analytics/) eingerichtet, nutz es weiter. Du musst nur eine weitere API aktivieren und das Konto in der Search Console hinzufügen.
 
 :::note[Connect Google]
-Siehst du beim Hinzufügen der Datenquelle einen Button **Connect Google**, kannst du dich stattdessen mit deinem eigenen Google-Konto anmelden und dir das Dienstkonto sparen. Metribay fragt dabei nur Lesezugriff auf die Search Console an.
+Siehst du beim Hinzufügen der Datenquelle einen Button **Google verbinden**, kannst du dich stattdessen mit deinem eigenen Google-Konto anmelden und dir das Dienstkonto sparen. Metribay fragt dabei nur Lesezugriff auf die Search Console an.
 :::
 
 ## Schritt 1: Dienstkonto vorbereiten
@@ -56,26 +56,26 @@ Siehst du beim Hinzufügen der Datenquelle einen Button **Connect Google**, kann
 
 <Steps>
 
-1. Wähle **Add source** und dann **Google Search Console**.
+1. Wähle auf der Projektseite **Datenquelle hinzufügen** und dann **Google Search Console**.
 
-2. Wähle dein gespeichertes Google-Konto oder öffne **Use your own credentials** und füge den ganzen JSON-Schlüssel in **Service account JSON** ein.
+2. Wähle dein gespeichertes Google-Konto oder öffne **Konto mit eigenen Zugangsdaten verbinden** und füge den ganzen JSON-Schlüssel in **Service-Account-JSON** ein.
 
 3. Wähle die Property aus der Liste.
 
-4. Wähle ein Projekt und dann **Connect and start import**.
+4. Wähle **Hinzufügen und Import starten**.
 
 </Steps>
 
 ### Property von Hand eintragen
 
-Öffne **Enter a resource manually** und trag die Property genau so ein, wie die Search Console sie nennt:
+Öffne **Manuell eingeben** und trag die Property genau so ein, wie die Search Console sie nennt:
 
 - **Domain-Property:** `sc-domain:example.com`
 - **URL-Präfix-Property:** die vollständige Adresse, etwa `https://www.example.com/`, mit Schrägstrich am Ende
 
 ## Wenn die Erfassung fehlschlägt
 
-**Die Property fehlt in der Liste.** Das Dienstkonto ist noch kein Nutzer der Property, oder die Search Console API ist nicht aktiviert. Behebe das und wähle dann **Refresh resources**.
+**Die Property fehlt in der Liste.** Das Dienstkonto ist noch kein Nutzer der Property, oder die Search Console API ist nicht aktiviert. Behebe das und wähle dann **Liste aktualisieren**.
 
 **Falsche Art von Property.** `https://example.com/` und `sc-domain:example.com` sind in der Search Console zwei verschiedene Properties. Nimm die, der du das Dienstkonto hinzugefügt hast.
 

@@ -10,7 +10,7 @@ Metribay gibt sich viel Mühe, dir keine Zahl zu zeigen, für die es nicht gerad
 Hat ein Anbieter für einen Tag keinen Wert gemeldet, speichert Metribay für diesen Tag nichts. Es trägt keine Null ein.
 
 - Im Diagramm ist ein fehlender Tag eine **Lücke** in der Linie.
-- In der Tabelle der Tageswerte steht **Missing**.
+- In der Tabelle der Tageswerte steht **Fehlt**.
 - Lässt sich für einen Zeitraum keine verlässliche Summe bilden, zeigt die Karte **—** statt einer Zahl.
 
 Eine echte Null, etwa ein Tag ohne Downloads, steht als 0 da. Siehst du also eine 0, hat der Anbieter wirklich null gemeldet.
@@ -42,7 +42,7 @@ Manche Zahlen sind noch nicht endgültig.
 - **Google Analytics** kann die letzten Tage noch korrigieren. Metribay behandelt die letzten drei Tage als vorläufig und liest sie erneut.
 - **Search Console** veröffentlicht zuerst frische und einige Tage später endgültige Daten. Metribay behält die frischen Zahlen als vorläufig und ersetzt sie, sobald die endgültigen da sind.
 
-Enthält der Zeitraum solche Tage, trägt die Karte das Label **Partial**. In der Tabelle der Tageswerte sind diese Tage mit **Partial** markiert.
+Enthält der Zeitraum solche Tage, trägt die Karte das Label **Unvollständig**. In der Tabelle der Tageswerte sind diese Tage mit **Unvollständig** markiert.
 
 Keine Sorge, wenn die Zahl von gestern bei der nächsten Synchronisierung etwas steigt. Dann hat der Anbieter seine Zählung abgeschlossen.
 

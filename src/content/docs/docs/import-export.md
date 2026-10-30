@@ -11,10 +11,10 @@ Both options are in **Settings → Import & export**.
 
 | Included | Not included |
 |---|---|
-| Projects: names, domains, archived state | Saved account credentials |
-| Sources: provider, resource, label, timezone, history window, paused state | Metric history |
-| The *name* of the saved account each source uses | |
-| | Annotations |
+| Projects: names, domains, archived state | Connected account credentials |
+| Data sources: provider, resource, label, timezone, history window, paused state | Metric history |
+| The *name* of the connected account each data source uses | |
+| | Events |
 | | Team members |
 
 Credentials are left out on purpose, so the file is safe to store or send. Metric history is left out because it can be collected again from your providers.
@@ -30,34 +30,34 @@ Select **Download JSON**. Owners and editors can export.
 
 Importing:
 
-- **adds** projects and sources that don't exist yet,
-- **updates** the settings of matching projects and sources,
+- **adds** projects and data sources that don't exist yet,
+- **updates** the settings of matching projects and data sources,
 - **keeps** all existing metric history.
 
 Nothing is deleted.
 
-When it's done, Metribay says *Configuration imported. Sources without an existing matching connection are paused.*
+When it's done, Metribay says *Configuration imported. Data sources without a matching connected account are paused.*
 
-## Connecting imported sources
+## Connecting imported data sources
 
-The file remembers which saved account each source used, by name. When you import, Metribay looks for a saved account with **the same name and provider** in the workspace:
+The file remembers which connected account each data source used, by name. When you import, Metribay looks for a connected account with **the same name and provider** in the workspace:
 
-- **Found:** the source is connected to it and collects as usual.
-- **Not found:** the source is imported paused, so it doesn't fail on missing credentials.
+- **Found:** the data source is connected to it and collects as usual.
+- **Not found:** the data source is imported paused, so it doesn't fail on missing credentials.
 
-WordPress.org sources need no account and are never paused for this reason.
+WordPress.org data sources need no account and are never paused for this reason.
 
 :::tip[Save time when moving]
-Before importing into a new workspace or installation, [add your saved accounts](../saved-accounts/) with exactly the same names as before. Every source then connects on its own.
+Before importing into a new workspace or installation, [add your connected accounts](../connected-accounts/) with exactly the same names as before. Every data source then connects on its own.
 :::
 
-To connect a paused source afterwards:
+To connect a paused data source afterwards:
 
-1. In **Settings → Sources**, open **Manage source**.
-2. Choose the saved account under **Connection** and tick **Collect automatically**.
-3. Select **Save source**. The next sync reads the source's whole history window.
+1. In **Project settings**, open **Manage data source**.
+2. Choose the connected account under **Connected account** and tick **Collect automatically**.
+3. Select **Save data source**. The next sync reads the data source's whole history window.
 
 ## Limits
 
-- A file can hold up to 100 projects with up to 100 sources each, and can be up to 1 MB.
-- In Metribay Cloud, imported active projects and sources count towards your plan limits like any others.
+- A file can hold up to 100 projects with up to 100 data sources each, and can be up to 1 MB.
+- In Metribay Cloud, imported active projects and data sources count towards your plan limits like any others.

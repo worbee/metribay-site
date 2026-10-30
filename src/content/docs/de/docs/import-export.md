@@ -5,27 +5,27 @@ description: Lade die Einrichtung deines Arbeitsbereichs als JSON-Datei herunter
 
 Du kannst die Einrichtung deines Arbeitsbereichs als Datei speichern und in einen anderen Arbeitsbereich oder eine andere Metribay-Installation laden. So ziehst du von einer selbst gehosteten Installation zu Metribay Cloud um oder zurück, kopierst eine Einrichtung zwischen Arbeitsbereichen oder bewahrst eine Kopie deiner Konfiguration auf.
 
-Beides findest du unter **Settings → Import & export**.
+Beides findest du unter **Einstellungen → Import & Export**.
 
 ## Was in der Datei steht
 
 | Enthalten | Nicht enthalten |
 |---|---|
-| Projekte: Namen, Domains, Archivierung | Zugangsdaten gespeicherter Konten |
+| Projekte: Namen, Domains, Archivierung | Zugangsdaten verbundener Konten |
 | Datenquellen: Anbieter, Ressource, Bezeichnung, Zeitzone, Verlaufszeitraum, Pausierung | Verlauf der Kennzahlen |
-| Der *Name* des gespeicherten Kontos jeder Datenquelle | Notizen |
+| Der *Name* des verbundenen Kontos jeder Datenquelle | Ereignisse |
 | | Teammitglieder |
 
 Zugangsdaten fehlen mit Absicht, damit du die Datei gefahrlos aufbewahren oder verschicken kannst. Der Verlauf fehlt, weil Metribay ihn erneut bei deinen Anbietern abrufen kann.
 
 ## Konfiguration exportieren
 
-Wähle **Download JSON**. Eigentümer und Bearbeiter können exportieren.
+Wähle **JSON herunterladen**. Eigentümer und Bearbeiter können exportieren.
 
 ## Konfiguration importieren
 
-1. Wähle unter **Import configuration** bei **Configuration file** eine JSON-Datei, die aus Metribay exportiert wurde.
-2. Wähle **Import configuration**.
+1. Wähle unter **Konfiguration importieren** bei **Konfigurationsdatei** eine JSON-Datei, die aus Metribay exportiert wurde.
+2. Wähle **Konfiguration importieren**.
 
 Der Import:
 
@@ -37,7 +37,7 @@ Es wird nichts gelöscht. Danach meldet Metribay *Configuration imported. Source
 
 ## Importierte Datenquellen verbinden
 
-Die Datei merkt sich über den Namen, welches gespeicherte Konto jede Datenquelle genutzt hat. Beim Import sucht Metribay im Arbeitsbereich ein gespeichertes Konto mit **gleichem Namen und Anbieter**:
+Die Datei merkt sich über den Namen, welches verbundene Konto jede Datenquelle genutzt hat. Beim Import sucht Metribay im Arbeitsbereich ein verbundenes Konto mit **gleichem Namen und Anbieter**:
 
 - **Gefunden:** Die Datenquelle wird damit verbunden und erfasst wie gewohnt.
 - **Nicht gefunden:** Die Datenquelle wird pausiert importiert, damit sie nicht an fehlenden Zugangsdaten scheitert.
@@ -45,14 +45,14 @@ Die Datei merkt sich über den Namen, welches gespeicherte Konto jede Datenquell
 WordPress.org-Datenquellen brauchen kein Konto und werden deshalb nie pausiert.
 
 :::tip[Zeit sparen beim Umzug]
-Leg vor dem Import in einen neuen Arbeitsbereich oder eine neue Installation [deine gespeicherten Konten](../saved-accounts/) mit genau denselben Namen wie vorher an. Dann verbindet sich jede Datenquelle von selbst.
+Leg vor dem Import in einen neuen Arbeitsbereich oder eine neue Installation [deine verbundenen Konten](../connected-accounts/) mit genau denselben Namen wie vorher an. Dann verbindet sich jede Datenquelle von selbst.
 :::
 
 So verbindest du eine pausierte Datenquelle nachträglich:
 
-1. Öffne unter **Settings → Sources** **Manage source**.
-2. Wähle unter **Connection** das gespeicherte Konto und setz den Haken bei **Collect automatically**.
-3. Wähle **Save source**. Die nächste Synchronisierung liest den ganzen Verlaufszeitraum der Datenquelle.
+1. Öffne unter **Projekteinstellungen** **Datenquelle verwalten**.
+2. Wähle unter **Verbundenes Konto** das verbundene Konto und setz den Haken bei **Automatisch erfassen**.
+3. Wähle **Datenquelle speichern**. Die nächste Synchronisierung liest den ganzen Verlaufszeitraum der Datenquelle.
 
 ## Grenzen
 

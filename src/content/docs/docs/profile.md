@@ -1,13 +1,13 @@
 ---
-title: Account and security
-description: Change your name, email and password, turn on two-factor authentication and set how Metribay looks.
+title: Profile and security
+description: Change your name, email, password and language, turn on two-factor authentication and set how Metribay looks.
 ---
 
-Open the account menu (your initial, top right) and choose **Account & preferences**.
+Open the profile menu (your initial, top right) and choose **Profile & preferences**. These are your personal settings. Logins at providers such as Google are managed separately, under [Connected accounts](../connected-accounts/).
 
-## Profile
+## Personal details
 
-Change your **Name** or **Email address** and select **Save profile**.
+Change your **Name** or **Email address** and select **Save details**.
 
 If you change your email address, Metribay sends a confirmation link to the new address. Confirm it before you continue using the app.
 
@@ -38,6 +38,14 @@ Two-factor authentication asks for a code from an authenticator app each time yo
 Email [rob@worbee.com](mailto:rob@worbee.com) from the address on your account. For your security, we'll need to verify that the account is yours before we can help.
 :::
 
+## Language
+
+Choose **English** or **Deutsch** under **Language**. The change applies straight away to the app and to the emails Metribay sends you, such as password resets. It's saved with your profile, so it follows you to other devices.
+
+Before you sign in, Metribay uses your browser's language. You can switch it at the bottom of the sign-in page.
+
+Names and content from your providers, like property names or release notes, are shown as they are and aren't translated.
+
 ## Appearance
 
 These preferences are saved in your browser on this device, and apply straight away.
@@ -50,7 +58,7 @@ Because they're saved per device, you can use compact numbers on your phone and 
 
 ## Sign out
 
-Open the account menu and choose **Sign out**.
+Open the profile menu and choose **Sign out**.
 
 ## Delete your account
 

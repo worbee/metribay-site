@@ -46,9 +46,9 @@ You can use your own Umami login, but a separate user is safer: it keeps your ad
 
 <Steps>
 
-1. Select **Add source** and choose **Umami**.
+1. On the project page, select **Add data source** and choose **Umami**.
 
-2. Open **Use your own credentials** and fill in:
+2. Open **Connect an account with your own credentials** and fill in:
    - **Server URL**: the address you open Umami at, like `https://analytics.example.com`. Leave off `/login` or any other path.
    - **Username** and **Password** of the user from step 1.
 
@@ -56,20 +56,20 @@ You can use your own Umami login, but a separate user is safer: it keeps your ad
 
 4. Choose a website from the list. You can search by name or domain.
 
-5. Pick a project and select **Connect and start import**.
+5. Select **Add and start import**.
 
 </Steps>
 
 ### Enter the website by hand
 
-Open **Enter a resource manually** and paste the **Website UUID**. In Umami, find it under **Settings → Websites → Edit** as the **Website ID**, for example `4fb7fa4c-5b46-438d-94b3-3a8fb9bc2e8b`.
+Open **Enter it manually** and paste the **Website UUID**. In Umami, find it under **Settings → Websites → Edit** as the **Website ID**, for example `4fb7fa4c-5b46-438d-94b3-3a8fb9bc2e8b`.
 
 ## If collection fails
 
 **“Use a public HTTPS server URL on port 443.”** The address starts with `http://`, has a port number like `:3000`, or has extra parts. Use the plain `https://` address.
 
-**The website isn't listed.** The user can't see it. Check its access in Umami, then select **Refresh resources**.
+**The website isn't listed.** The user can't see it. Check its access in Umami, then select **Refresh list**.
 
-**“Needs attention” after it worked.** The user's password may have changed, or the server may be unreachable. Sign in to Umami with the same details to check, then [update the saved account](../../saved-accounts/#update-or-rotate-credentials).
+**“Needs attention” after it worked.** The user's password may have changed, or the server may be unreachable. Sign in to Umami with the same details to check, then [update the connected account](../../connected-accounts/#update-or-rotate-credentials).
 
 See also [Troubleshooting](../../troubleshooting/).

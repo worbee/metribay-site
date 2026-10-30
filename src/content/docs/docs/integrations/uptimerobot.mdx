@@ -15,7 +15,7 @@ See at a glance whether your sites are up, next to how they're doing.
 | **Uptime · last 24h** | Share of the last 24 hours the monitor was up |
 | **Response time · last 24h** | Average response time over the last 24 hours, in milliseconds |
 
-All three describe the current state, so each card shows the latest observation and when it was taken. Metribay checks every hour, more often than other sources.
+All three describe the current state, so each card shows the latest observation and when it was taken. Metribay checks every hour, more often than other data sources.
 
 Response time isn't available for heartbeat monitors.
 
@@ -43,23 +43,23 @@ If you only want to share one monitor, create a **monitor-specific API key** for
 
 <Steps>
 
-1. Select **Add source** and choose **UptimeRobot**.
+1. On the project page, select **Add data source** and choose **UptimeRobot**.
 
-2. Open **Use your own credentials** and paste the key into **Api Key**.
+2. Open **Connect an account with your own credentials** and paste the key into **Api Key**.
 
 3. Choose a monitor from the list.
 
-4. Pick a project and select **Connect and start import**.
+4. Select **Add and start import**.
 
 </Steps>
 
 ### Enter the monitor by hand
 
-Open **Enter a resource manually** and type the **Monitor ID**. It's the number at the end of the monitor's address in the UptimeRobot dashboard.
+Open **Enter it manually** and type the **Monitor ID**. It's the number at the end of the monitor's address in the UptimeRobot dashboard.
 
 ## Good to know
 
-- **The history window doesn't apply.** Uptime is a snapshot, so the setting has no effect for this source.
+- **The history window doesn't apply.** Uptime is a snapshot, so the setting has no effect for this data source.
 - **Request limits.** UptimeRobot limits how many API requests each key may make, especially on free plans. Metribay spreads requests for all monitors on the same key. If the limit is reached, the next hourly check simply tries again.
 - **Monitor status** on the overview reflects the last check, up to an hour old. For instant alerts, keep using UptimeRobot's own notifications.
 

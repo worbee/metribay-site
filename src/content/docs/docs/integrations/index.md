@@ -19,13 +19,13 @@ Metribay reads from seven providers. Each guide walks you through the access the
 
 - **Read only.** Metribay only reads numbers. It never posts, edits or deletes anything in your tools.
 - **Tested before saving.** Credentials are checked against the provider before they're stored.
-- **Only what the account can see.** When you pick a resource, Metribay lists what the saved account has access to. Grant access at the provider first.
-- **Encrypted.** Credentials are encrypted and never shown again. See [Saved accounts](../saved-accounts/).
+- **Only what the account can see.** When you pick a resource, Metribay lists what the connected account has access to. Grant access at the provider first.
+- **Encrypted.** Credentials are encrypted and never shown again. See [Connected accounts](../connected-accounts/).
 - **Public HTTPS only.** Metribay connects to each provider's public HTTPS address. Tools on a private network or behind a VPN can't be reached.
 
-## Which sources should a project have?
+## Which data sources should a project have?
 
-| You run | Good sources |
+| You run | Good data sources |
 |---|---|
 | A website or blog | Google Analytics 4 or Umami, Search Console, Bing, UptimeRobot |
 | A WordPress plugin | WordPress.org, GitHub, and the plugin's website |

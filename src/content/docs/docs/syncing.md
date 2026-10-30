@@ -1,6 +1,6 @@
 ---
 title: Updates and syncing
-description: How often Metribay collects new data, how far back it reads, and how to refresh a source right away.
+description: How often Metribay collects new data, how far back it reads, and how to refresh a data source right away.
 ---
 
 Metribay collects data in the background. You never need to press anything for your dashboard to stay current.
@@ -17,7 +17,7 @@ Opening the dashboard never contacts your providers. It shows what Metribay has 
 
 ## What each sync reads
 
-**First import.** When you add a source, Metribay reads its whole history window, 180 days unless you chose otherwise.
+**First import.** When you add a data source, Metribay reads its whole history window, 180 days unless you chose otherwise.
 
 **Regular syncs.** After that, each sync rereads the days since the last successful one, plus a week extra. That picks up late corrections from providers like Google.
 
@@ -31,26 +31,26 @@ Some providers work a little differently:
 
 ## The history window
 
-The history window is how many days back Metribay reads, from 1 to 366. The default is 180 days. You choose it under **Advanced settings** when adding a source, and can change it later in **Settings → Sources → Manage source**.
+The history window is how many days back Metribay reads, from 1 to 366. The default is 180 days. You choose it under **Advanced settings** when adding a data source, and can change it later in **Project settings → Manage data source**.
 
 A longer window gives you more history from day one, but the first import takes longer. Metribay keeps everything it has collected, so your history keeps growing beyond the window over time.
 
 ## Sync now
 
-Need fresh data right away? Select **Sync now** next to a source on its project page, or in **Settings → Sources**. The sync runs in the background and the page updates when it finishes.
+Need fresh data right away? Select **Sync now** next to a data source on its project page, or in **Project settings**. The sync runs in the background and the page updates when it finishes.
 
 - **Sync now** is only available to owners and editors.
-- It's disabled while a source is paused or its project is archived.
-- In Metribay Cloud, you can sync each source once every 15 minutes. Scheduled syncs carry on regardless.
+- It's disabled while a data source is paused or its project is archived.
+- In Metribay Cloud, you can sync each data source once every 15 minutes. Scheduled syncs carry on regardless.
 
 ## Check provider access
 
-Owners can select **Check provider access** in **Settings → Sources** to test whether the saved account can still reach the resource, without importing data. Use it after you change permissions at the provider. In Metribay Cloud you can run it once a minute per source.
+Owners can select **Check provider access** in **Project settings** to test whether the connected account can still reach the resource, without importing data. Use it after you change permissions at the provider. In Metribay Cloud you can run it once a minute per data source.
 
 ## Request limits
 
-Providers limit how many requests an account can make. Metribay spaces its requests out and shares a budget per account. If a provider's limit is reached, the source shows a message like *Request limit reached; scheduled imports will retry*. You don't need to do anything. The next scheduled sync tries again.
+Providers limit how many requests an account can make. Metribay spaces its requests out and shares a budget per account. If a provider's limit is reached, the data source shows a message like *Request limit reached; scheduled imports will retry*. You don't need to do anything. The next scheduled sync tries again.
 
 ## Pausing collection
 
-To stop collecting new data for a source, turn off **Collect automatically** in **Settings → Sources → Manage source**. The source shows *Paused* and keeps its history. Turn it back on and the next sync catches up within the history window.
+To stop collecting new data for a data source, turn off **Collect automatically** in **Project settings → Manage data source**. The data source shows *Paused* and keeps its history. Turn it back on and the next sync catches up within the history window.

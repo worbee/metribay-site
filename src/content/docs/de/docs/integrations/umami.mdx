@@ -11,9 +11,9 @@ import { Steps } from '@astrojs/starlight/components';
 
 | Kennzahl | Bedeutung | Wert im Zeitraum |
 |---|---|---|
-| **Visitors** | Eindeutige Besucher | Genaue eindeutige Besucher für den ganzen Zeitraum, von Umami |
-| **Visits** | Besuche (Sitzungen) | Summe der Tage |
-| **Page views** | Seitenaufrufe | Summe der Tage |
+| **Besucher** | Eindeutige Besucher | Genaue eindeutige Besucher für den ganzen Zeitraum, von Umami |
+| **Besuche** | Besuche (Sitzungen) | Summe der Tage |
+| **Seitenaufrufe** | Seitenaufrufe | Summe der Tage |
 
 Tage werden in UTC gezählt. Das Umami-Dashboard nutzt die Zeitzone deines Browsers, einzelne Tage können daher leicht abweichen. Die Summen über den Zeitraum stimmen überein.
 
@@ -46,30 +46,30 @@ Du kannst deinen eigenen Umami-Login verwenden, ein eigener Nutzer ist aber sich
 
 <Steps>
 
-1. Wähle **Add source** und dann **Umami**.
+1. Wähle auf der Projektseite **Datenquelle hinzufügen** und dann **Umami**.
 
-2. Öffne **Use your own credentials** und trag ein:
-   - **Server URL**: die Adresse, unter der du Umami öffnest, etwa `https://analytics.example.com`. Lass `/login` und andere Pfade weg.
-   - **Username** und **Password** des Nutzers aus Schritt 1.
+2. Öffne **Konto mit eigenen Zugangsdaten verbinden** und trag ein:
+   - **Server-URL**: die Adresse, unter der du Umami öffnest, etwa `https://analytics.example.com`. Lass `/login` und andere Pfade weg.
+   - **Benutzername** und **Passwort** des Nutzers aus Schritt 1.
 
-3. Wähle **Save account and continue**. Metribay meldet sich zur Prüfung an.
+3. Wähle **Konto speichern und weiter**. Metribay meldet sich zur Prüfung an.
 
 4. Wähle eine Website aus der Liste. Du kannst nach Name oder Domain suchen.
 
-5. Wähle ein Projekt und dann **Connect and start import**.
+5. Wähle **Hinzufügen und Import starten**.
 
 </Steps>
 
 ### Website von Hand eintragen
 
-Öffne **Enter a resource manually** und füge die **Website UUID** ein. Du findest sie in Umami unter **Settings → Websites → Edit** als **Website ID**, etwa `4fb7fa4c-5b46-438d-94b3-3a8fb9bc2e8b`.
+Öffne **Manuell eingeben** und füge die **Website-UUID** ein. Du findest sie in Umami unter **Settings → Websites → Edit** als **Website ID**, etwa `4fb7fa4c-5b46-438d-94b3-3a8fb9bc2e8b`.
 
 ## Wenn die Erfassung fehlschlägt
 
 **„Use a public HTTPS server URL on port 443.“** Die Adresse beginnt mit `http://`, hat eine Portnummer wie `:3000` oder zusätzliche Teile. Nimm die schlichte `https://`-Adresse.
 
-**Die Website fehlt in der Liste.** Der Nutzer sieht sie nicht. Prüf seinen Zugriff in Umami und wähle dann **Refresh resources**.
+**Die Website fehlt in der Liste.** Der Nutzer sieht sie nicht. Prüf seinen Zugriff in Umami und wähle dann **Liste aktualisieren**.
 
-**„Needs attention“, obwohl es vorher lief.** Vielleicht hat sich das Passwort des Nutzers geändert oder der Server ist nicht erreichbar. Melde dich mit denselben Daten bei Umami an, um das zu prüfen, und [aktualisiere dann das gespeicherte Konto](../../saved-accounts/#zugangsdaten-ändern-oder-erneuern).
+**„Needs attention“, obwohl es vorher lief.** Vielleicht hat sich das Passwort des Nutzers geändert oder der Server ist nicht erreichbar. Melde dich mit denselben Daten bei Umami an, um das zu prüfen, und [aktualisiere dann das verbundene Konto](../../connected-accounts/#zugangsdaten-ändern-oder-erneuern).
 
 Siehe auch [Fehlerbehebung](../../troubleshooting/).

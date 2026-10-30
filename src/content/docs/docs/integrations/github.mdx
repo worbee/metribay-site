@@ -16,7 +16,7 @@ Follow the activity in your public and private repositories next to the rest of 
 | **Lines changed** | Lines added plus lines removed, leaving out merge commits | Sum of the days |
 | **Open issues** | Issues open right now (pull requests excluded) | Latest observation |
 
-**Releases** become [annotations](../../annotations/#github-releases) on the project, so you can see what shipped when.
+**Releases** become [events](../../events/#imported-events) on the project, so you can see what shipped when.
 
 Days are counted in UTC. Open issues only appear if the repository has issues turned on.
 
@@ -52,28 +52,28 @@ A **fine-grained personal access token** lets you choose exactly which repositor
 Some organisations must approve fine-grained tokens before they work. If the repositories don't show up, ask an organisation owner to approve the request.
 
 :::tip[Plan for expiry]
-When the token expires, the source shows *Needs attention*. Set a calendar reminder, create a new token before then and [update the saved account](../../saved-accounts/#update-or-rotate-credentials).
+When the token expires, the data source shows *Needs attention*. Set a calendar reminder, create a new token before then and [update the connected account](../../connected-accounts/#update-or-rotate-credentials).
 :::
 
 ## Step 2: Connect it in Metribay
 
 <Steps>
 
-1. Select **Add source** and choose **GitHub**.
+1. On the project page, select **Add data source** and choose **GitHub**.
 
-2. Open **Use your own credentials** and paste the token into **Personal access token**.
+2. Open **Connect an account with your own credentials** and paste the token into **Personal access token**.
 
 3. Select **Save account and continue**.
 
 4. Choose a repository from the list.
 
-5. Pick a project and select **Connect and start import**.
+5. Select **Add and start import**.
 
 </Steps>
 
 ### Enter the repository by hand
 
-Open **Enter a resource manually** and type it as `owner/repository`, like `octocat/hello-world`.
+Open **Enter it manually** and type it as `owner/repository`, like `octocat/hello-world`.
 
 ## Other ways to sign in
 

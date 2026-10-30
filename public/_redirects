@@ -1,0 +1,9 @@
+# Cloudflare Pages redirects for renamed documentation pages (2026-10-30). Other static hosts serve this file as plain text.
+/docs/sources/ /docs/data-sources/ 301
+/docs/saved-accounts/ /docs/connected-accounts/ 301
+/docs/annotations/ /docs/events/ 301
+/docs/account/ /docs/profile/ 301
+/de/docs/sources/ /de/docs/data-sources/ 301
+/de/docs/saved-accounts/ /de/docs/connected-accounts/ 301
+/de/docs/annotations/ /de/docs/events/ 301
+/de/docs/account/ /de/docs/profile/ 301

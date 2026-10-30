@@ -19,8 +19,8 @@ Metribay liest von sieben Anbietern. Jede Anleitung zeigt dir, welchen Zugriff d
 
 - **Nur lesen.** Metribay liest nur Zahlen. Es veröffentlicht, ändert oder löscht nie etwas in deinen Tools.
 - **Vor dem Speichern geprüft.** Zugangsdaten werden beim Anbieter getestet, bevor Metribay sie speichert.
-- **Nur, was das Konto sehen kann.** Wählst du eine Ressource, listet Metribay, worauf das gespeicherte Konto Zugriff hat. Gib den Zugriff also zuerst beim Anbieter frei.
-- **Verschlüsselt.** Zugangsdaten werden verschlüsselt und nie wieder angezeigt. Siehe [Gespeicherte Konten](../saved-accounts/).
+- **Nur, was das Konto sehen kann.** Wählst du eine Ressource, listet Metribay, worauf das verbundene Konto Zugriff hat. Gib den Zugriff also zuerst beim Anbieter frei.
+- **Verschlüsselt.** Zugangsdaten werden verschlüsselt und nie wieder angezeigt. Siehe [Verbundene Konten](../connected-accounts/).
 - **Nur öffentliches HTTPS.** Metribay verbindet sich mit der öffentlichen HTTPS-Adresse jedes Anbieters. Tools in einem privaten Netzwerk oder hinter einem VPN sind nicht erreichbar.
 
 ## Welche Datenquellen passen zu einem Projekt?

@@ -50,14 +50,14 @@ export default defineConfig({
         group('Everyday use', 'Im Alltag', [
           page('overview', 'Project overview', 'Projektübersicht'),
           page('project-page', 'Project pages and charts', 'Projektseiten und Diagramme'),
-          page('annotations', 'Annotations', 'Notizen'),
+          page('events', 'Events', 'Ereignisse'),
           page('reading-the-numbers', 'Reading the numbers', 'Die Zahlen richtig lesen'),
           page('syncing', 'Updates and syncing', 'Aktualisierung und Sync'),
         ]),
-        group('Sources and projects', 'Datenquellen und Projekte', [
-          page('sources', 'Add and manage sources', 'Datenquellen hinzufügen und verwalten'),
-          page('saved-accounts', 'Saved accounts', 'Gespeicherte Konten'),
+        group('Projects and data', 'Projekte und Daten', [
           page('projects', 'Manage projects', 'Projekte verwalten'),
+          page('data-sources', 'Add and manage data sources', 'Datenquellen hinzufügen und verwalten'),
+          page('connected-accounts', 'Connected accounts', 'Verbundene Konten'),
           page('import-export', 'Import and export', 'Import und Export'),
         ]),
         group('Integrations', 'Integrationen', [
@@ -74,8 +74,8 @@ export default defineConfig({
           page('workspaces', 'Workspaces', 'Arbeitsbereiche'),
           page('team', 'Team members and roles', 'Teammitglieder und Rollen'),
         ]),
-        group('Account and billing', 'Konto und Abrechnung', [
-          page('account', 'Account and security', 'Konto und Sicherheit'),
+        group('Profile and billing', 'Profil und Abrechnung', [
+          page('profile', 'Profile and security', 'Profil und Sicherheit'),
           page('billing', 'Plans and billing', 'Pläne und Abrechnung'),
         ]),
         group('Self-hosting', 'Selbst hosten', [

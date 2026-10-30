@@ -1,23 +1,23 @@
 ---
 title: Project pages and charts
-description: Open a project to see full-size charts for each source, compare periods, inspect daily values and refresh data.
+description: Open a project to see full-size charts for each data source, compare periods, inspect daily values and refresh data.
 ---
 
-Select a project on the overview to open its project page. It shows every source of that project with full-size metric cards, followed by the project's [annotations](../annotations/).
+Select a project on the overview to open its project page. It shows every data source of that project with full-size metric cards, followed by the project's [events](../events/).
 
 ## The header
 
 - **Reporting period** switches between 7, 30 and 90 days.
-- **Add source** connects another tool to this project.
-- **Edit project** jumps to the project's settings.
+- **Add data source** connects another tool to this project.
+- **Project settings** opens the project's details and data sources.
 - **All projects** takes you back to the overview.
 
-## Each source
+## Each data source
 
-Every source has its own section with:
+Every data source has its own section with:
 
 - the provider, the reporting timezone and the time of the last successful sync,
-- its [status](../overview/#source-status),
+- its [status](../overview/#data-source-status),
 - **Sync now**, which asks for fresh data right away (see [Updates and syncing](../syncing/)),
 - one metric card per metric.
 
@@ -49,4 +49,4 @@ Charts are labelled with what they show and how many days have data. Focus a cha
 
 ## Archived projects
 
-An archived project's page still opens and shows its full history. You can't add sources to it or sync it until you unarchive it. See [Manage projects](../projects/).
+An archived project's page still opens and shows its full history. You can't add data sources to it or sync it until you unarchive it. See [Manage projects](../projects/).

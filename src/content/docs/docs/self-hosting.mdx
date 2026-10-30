@@ -14,14 +14,14 @@ The self-hosted edition, also called the **Personal edition**, is Metribay on yo
 | Cost | Free | See [Plans and billing](../billing/) |
 | People | One person | Teams with roles |
 | Workspaces | One, in the background | Up to 5 |
-| Projects and sources | No limit | 10 and 50 active |
+| Projects and data sources | No limit | 10 and 50 active |
 | Integrations | All seven | All seven |
 | Updates, backups, uptime | You | Us |
 | Google sign-in button | Your own Google app | Provided when available |
 
 Choose self-hosting if you're comfortable running a PHP application and want everything on your own hardware. Choose Cloud if you'd rather not look after a server, or want to work with others.
 
-:::note[Getting the source]
+:::note[Getting the data source]
 The source code isn't published yet. [Email us](mailto:rob@worbee.com?subject=Metribay%20self-hosted) and we'll send you access.
 :::
 
@@ -82,10 +82,10 @@ The scheduler starts collection every four hours, uptime monitors every hour and
 To start a sync by hand:
 
 ```sh
-php artisan metribay:sync                    # queue every active source
+php artisan metribay:sync                    # queue every active data source
 php artisan metribay:sync --kind=github      # only one provider
 php artisan metribay:sync --except=uptimerobot
-php artisan metribay:sync --source=12        # one source by ID
+php artisan metribay:sync --source=12        # one data source by ID
 php artisan metribay:sync --full             # reread the whole history window
 php artisan metribay:sync --inline           # run now, without the queue
 ```
@@ -134,4 +134,4 @@ Test a restore now and then. The [configuration export](../import-export/) is us
 
 ## Moving to Metribay Cloud
 
-[Export your configuration](../import-export/), sign up for Cloud, add your saved accounts with the same names and import the file. Cloud then collects your history again from your providers, within each source's history window.
+[Export your configuration](../import-export/), sign up for Cloud, add your connected accounts with the same names and import the file. Cloud then collects your history again from your providers, within each data source's history window.

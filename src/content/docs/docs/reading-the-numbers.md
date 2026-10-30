@@ -21,7 +21,7 @@ Metribay handles three kinds of metrics differently.
 
 **Metrics that add up.** Visits, page views, clicks, impressions, downloads, commits, merged pull requests and lines changed. The period value is the sum of the recorded days.
 
-**Unique visitors.** Someone who visits on Monday and again on Tuesday is one visitor for the week, not two. Adding up daily visitors would count them twice. So Metribay asks the provider for the exact number of unique visitors over the whole period. If the provider can't answer, the card shows a dash, even though the daily chart still has data. Visitors are never added across days, projects or sources.
+**Unique visitors.** Someone who visits on Monday and again on Tuesday is one visitor for the week, not two. Adding up daily visitors would count them twice. So Metribay asks the provider for the exact number of unique visitors over the whole period. If the provider can't answer, the card shows a dash, even though the daily chart still has data. Visitors are never added across days, projects or data sources.
 
 **Current-state metrics.** Indexed pages, open issues, monitor status, 24-hour uptime and response time describe how things are *now*. The card shows the latest observation and its date, like *Observed 29 Oct 2026*. They don't get a percentage change, because a growth rate for a status makes no sense.
 
@@ -60,11 +60,11 @@ A “day” depends on where it starts. Metribay uses each provider's own report
 | Google Search Console | Pacific time (America/Los_Angeles) |
 | Bing, Umami, GitHub, WordPress.org, UptimeRobot | UTC |
 
-This means two sources in the same project may start their day at different hours. The overview reminds you: *Dates follow each source's timezone*.
+This means two data sources in the same project may start their day at different hours. The overview reminds you: *Dates follow each data source's timezone*.
 
 ## Numbers you might see differently elsewhere
 
-- **Google Analytics sampling and thresholds.** If Google returns sampled, thresholded or otherwise incomplete data, Metribay rejects it instead of storing a guess. The source shows *Needs attention*. See [Google Analytics 4](../integrations/google-analytics/#if-collection-fails).
+- **Google Analytics sampling and thresholds.** If Google returns sampled, thresholded or otherwise incomplete data, Metribay rejects it instead of storing a guess. The data source shows *Needs attention*. See [Google Analytics 4](../integrations/google-analytics/#if-collection-fails).
 - **GitHub lines changed** count additions plus deletions, but leave out merge commits so the same change isn't counted twice.
 - **GitHub commits** count commits on the default branch only, by commit date.
 

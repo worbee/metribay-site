@@ -23,7 +23,7 @@ You need **Owner** access to the Search Console property, so you can add a user,
 If you've already set one up for [Google Analytics 4](../google-analytics/), reuse it. You only need to enable one more API and add it to Search Console.
 
 :::note[Connect Google]
-If you see a **Connect Google** button when adding the source, you can sign in with your own Google account instead and skip the service account. Metribay asks only for read access to Search Console.
+If you see a **Connect Google** button when adding the data source, you can sign in with your own Google account instead and skip the service account. Metribay asks only for read access to Search Console.
 :::
 
 ## Step 1: Prepare the service account
@@ -56,29 +56,29 @@ If you see a **Connect Google** button when adding the source, you can sign in w
 
 <Steps>
 
-1. Select **Add source** and choose **Google Search Console**.
+1. On the project page, select **Add data source** and choose **Google Search Console**.
 
-2. Pick your saved Google account, or open **Use your own credentials** and paste the whole JSON key into **Service account JSON**.
+2. Pick your saved Google account, or open **Connect an account with your own credentials** and paste the whole JSON key into **Service account JSON**.
 
 3. Choose the property from the list.
 
-4. Pick a project and select **Connect and start import**.
+4. Select **Add and start import**.
 
 </Steps>
 
 ### Enter the property by hand
 
-Open **Enter a resource manually** and type the property exactly as Search Console names it:
+Open **Enter it manually** and type the property exactly as Search Console names it:
 
 - **Domain property:** `sc-domain:example.com`
 - **URL-prefix property:** the full address, like `https://www.example.com/`, including the trailing slash
 
 ## If collection fails
 
-**The property isn't listed.** The service account isn't a user of it yet, or the Search Console API isn't enabled. Fix that, then select **Refresh resources**.
+**The property isn't listed.** The service account isn't a user of it yet, or the Search Console API isn't enabled. Fix that, then select **Refresh list**.
 
 **Wrong property type.** `https://example.com/` and `sc-domain:example.com` are different properties in Search Console. Use the one you added the service account to.
 
-**Numbers are a few days behind.** That's normal. Search Console data usually arrives with a delay of two to three days, and the source may show *Delayed* now and then.
+**Numbers are a few days behind.** That's normal. Search Console data usually arrives with a delay of two to three days, and the data source may show *Delayed* now and then.
 
 See also [Troubleshooting](../../troubleshooting/).

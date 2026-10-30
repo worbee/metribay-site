@@ -27,7 +27,7 @@ You need:
 A **service account** is a Google account for software. You give it Viewer access to your property, the same way you'd add a colleague, and Metribay signs in as it. You can reuse the same service account for all your properties and for [Search Console](../search-console/).
 
 :::note[Connect Google]
-If you see a **Connect Google** button when adding the source, you can sign in with your own Google account instead and skip the service account. Metribay asks only for read access to Analytics.
+If you see a **Connect Google** button when adding the data source, you can sign in with your own Google account instead and skip the service account. Metribay asks only for read access to Analytics.
 :::
 
 ## Step 1: Create a service account
@@ -68,15 +68,15 @@ Some Google Workspace organisations block service account keys with a policy. If
 
 <Steps>
 
-1. Select **Add source** and choose **Google Analytics 4**.
+1. On the project page, select **Add data source** and choose **Google Analytics 4**.
 
-2. Open **Use your own credentials** and paste the **whole contents** of the JSON key file into **Service account JSON**.
+2. Open **Connect an account with your own credentials** and paste the **whole contents** of the JSON key file into **Service account JSON**.
 
 3. Select **Save account and continue**. Metribay checks the key.
 
 4. Choose your property from the list. Its reporting timezone is filled in for you.
 
-5. Pick a project and select **Connect and start import**.
+5. Select **Add and start import**.
 
 </Steps>
 
@@ -84,7 +84,7 @@ You can delete the downloaded JSON file afterwards. Metribay keeps an encrypted 
 
 ### Enter the property by hand
 
-If the list is empty, open **Enter a resource manually**:
+If the list is empty, open **Enter it manually**:
 
 - **Property ID**: the number under **Admin → Property details**, like `412345678`. It's not the `G-` measurement ID.
 - **Property reporting timezone**: the timezone shown under **Admin → Property details**. It must match, or your days will be shifted.
@@ -95,10 +95,10 @@ Instead of a service account, you can connect with your own Google OAuth app. Op
 
 ## If collection fails
 
-**The property isn't listed.** The service account hasn't been added to it, or the Admin API isn't enabled. Check step 2, wait a minute, then select **Refresh resources**.
+**The property isn't listed.** The service account hasn't been added to it, or the Admin API isn't enabled. Check step 2, wait a minute, then select **Refresh list**.
 
-**“Needs attention” after it worked before.** Someone may have removed the service account's access, or deleted its key. Add it again, or create a new key and [update the saved account](../../saved-accounts/#update-or-rotate-credentials).
+**“Needs attention” after it worked before.** Someone may have removed the service account's access, or deleted its key. Add it again, or create a new key and [update the connected account](../../connected-accounts/#update-or-rotate-credentials).
 
-**Sampled, thresholded or restricted data.** Metribay won't store numbers that Google has estimated, hidden or cut short. If Google applies thresholds, which often happens with Google signals turned on, the source needs attention. In Google Analytics, open **Admin → Reporting identity** and choose **Device-based**. This usually removes thresholds for these totals.
+**Sampled, thresholded or restricted data.** Metribay won't store numbers that Google has estimated, hidden or cut short. If Google applies thresholds, which often happens with Google signals turned on, the data source needs attention. In Google Analytics, open **Admin → Reporting identity** and choose **Device-based**. This usually removes thresholds for these totals.
 
 See also [Troubleshooting](../../troubleshooting/).

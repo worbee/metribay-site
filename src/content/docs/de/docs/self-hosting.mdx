@@ -5,7 +5,7 @@ description: Die kostenlose, quelloffene selbst gehostete Version von Metribay f
 
 import { Steps } from '@astrojs/starlight/components';
 
-Die selbst gehostete Version, auch **Personal edition** genannt, ist Metribay auf deinem eigenen Server. Sie ist kostenlos und Open Source unter der Apache-2.0-Lizenz.
+Die selbst gehostete Version, auch **Personal Edition** genannt, ist Metribay auf deinem eigenen Server. Sie ist kostenlos und Open Source unter der Apache-2.0-Lizenz.
 
 ## Passt sie zu dir?
 
@@ -94,7 +94,7 @@ php artisan metribay:sync --inline           # sofort, ohne Queue
 
 Jede Integration funktioniert mit deinen eigenen Zugangsdaten, genau wie in den [Anleitungen zu den Integrationen](../integrations/) beschrieben. Nichts läuft über die Server von Metribay.
 
-Für einen Button **Connect Google** bei Analytics und Search Console legst du einen eigenen OAuth-Client an:
+Für einen Button **Google verbinden** bei Analytics und Search Console legst du einen eigenen OAuth-Client an:
 
 1. Aktiviere in der Google Cloud Console die Analytics Admin API, die Analytics Data API und die Search Console API.
 2. Leg einen OAuth-Client vom Typ **Webanwendung** an, mit dieser Weiterleitungs-URI und deiner eigenen Adresse: `https://metribay.example.com/integrations/google/callback`
@@ -134,4 +134,4 @@ Teste ab und zu eine Wiederherstellung. Der [Konfigurationsexport](../import-exp
 
 ## Umzug zu Metribay Cloud
 
-[Exportiere deine Konfiguration](../import-export/), registriere dich bei Cloud, leg deine gespeicherten Konten mit denselben Namen an und importiere die Datei. Cloud holt deinen Verlauf dann innerhalb des Verlaufszeitraums jeder Datenquelle erneut von deinen Anbietern.
+[Exportiere deine Konfiguration](../import-export/), registriere dich bei Cloud, leg deine verbundenen Konten mit denselben Namen an und importiere die Datei. Cloud holt deinen Verlauf dann innerhalb des Verlaufszeitraums jeder Datenquelle erneut von deinen Anbietern.
