@@ -2,6 +2,10 @@
 
 Updated 2026-10-25. Current scope: English/German Astro marketing site and GitHub Pages preparation; see the latest closeout below. Earlier holding-page/Cloudflare entries are historical. Rob authorized committing and pushing the completed website source; Pages publication remains disabled.
 
+## Overview docs for the compact project table (2026-10-31)
+
+EN/DE `overview.md` now describe the one-row-per-project table from Core (uncommitted): totals row, the five columns and how several data sources of a kind are added, dot vs dash, attention-first order, sorting, row opens the project page; the status table now says to open the project before **Review data source**. German labels match core/lang/de.json. `npm run check` 0 errors/warnings/hints. Shipped with production release 20261031-02 (Core v0.2.2).
+
 ## User documentation added (2026-10-29)
 
 Rob approved building /docs/ in site/ with Starlight, covering the whole product from the user's point of view, English then German. Not committed, pushed or deployed.

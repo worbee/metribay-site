@@ -13,13 +13,25 @@ The project overview is the first thing you see after signing in. It answers one
 
 **Find a project.** Type part of a project name or domain to filter the list. This appears once you have projects.
 
-**Projects.** Each project lists its data sources. For every data source you see:
+**Totals.** With more than one project, a row above the table adds up each column across all projects.
 
-- its label and provider,
-- its [status](#data-source-status) and the time of the last successful sync,
-- a strip of compact metric cards with the period value, the change against the previous period and a small trend chart.
+**Projects.** Each project takes one row, so you can compare many projects at a glance. The columns show one number per kind of data for the selected period:
 
-Select a project name to open its [project page](../project-page/) with full-size charts and events.
+- **Visits** from Umami and Google Analytics,
+- **Search clicks** from Search Console and Bing Webmaster Tools,
+- **Commits · PRs**: commits and merged pull requests from GitHub,
+- **Downloads** from WordPress.org,
+- **Uptime · 24h**: how many UptimeRobot monitors are up, and the lowest uptime of the last 24 hours.
+
+A column appears only when at least one project has that kind of data source. When a project has several data sources of one kind, for example two websites, the column adds them up. Point at a value to see each data source on its own. Unique visitors are never added, so the overview uses visits instead. Next to each number you see the change against the previous period and a small trend line.
+
+A dot (**·**) means the project has no data source of that kind. A dash (**—**) means the data source exists but has no data for the period.
+
+The colored dot before each project name shows its most urgent [data source status](#data-source-status). Projects with a data source that needs attention or is delayed are highlighted and listed first.
+
+**Sorting.** Select a column heading to sort by it, largest first. Select it again to reverse the order. Projects without a value for that column come last.
+
+Select a project's row to open its [project page](../project-page/). It shows each data source on its own, with full-size charts and events.
 
 ## Data source status
 
@@ -28,7 +40,7 @@ Select a project name to open its [project page](../project-page/) with full-siz
 | **Up to date** | The latest collection worked and the data is current. | Nothing. |
 | **Awaiting first sync** | The data source was just added and its first import hasn't finished yet. | Wait. You can leave the page. |
 | **Delayed** | Collection works, but the newest data is more than three days old. Some providers publish data late. | Usually nothing. If it lasts, check the provider. |
-| **Needs attention** | The last collection failed, or there has been no successful sync for 8 hours (2 hours for uptime monitors). | Select **Review data source**. See [Troubleshooting](../troubleshooting/). |
+| **Needs attention** | The last collection failed, or there has been no successful sync for 8 hours (2 hours for uptime monitors). | Open the project and select **Review data source**. See [Troubleshooting](../troubleshooting/). |
 | **Paused** | Automatic collection is turned off for this data source. | Turn on **Collect automatically** if you want new data. |
 
 When a data source needs attention, Metribay keeps showing the history it already has. Nothing is lost.
